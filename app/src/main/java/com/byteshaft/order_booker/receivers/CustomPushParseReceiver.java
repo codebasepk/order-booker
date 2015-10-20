@@ -12,13 +12,10 @@ import com.parse.ParsePushBroadcastReceiver;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by s9iper1 on 10/20/15.
- */
+
 public class CustomPushParseReceiver extends ParsePushBroadcastReceiver {
 
     private Intent parseIntent;
-
     public CustomPushParseReceiver() {
         super();
     }
@@ -50,18 +47,18 @@ public class CustomPushParseReceiver extends ParsePushBroadcastReceiver {
     }
 
     private void parsePushJson(Context context, JSONObject json) {
+        String title = null;
+        String message = null;
         try {
-            boolean isBackground = json.getBoolean("is_background");
-            JSONObject data = json.getJSONObject("data");
-            String title = data.getString("title");
-            String message = data.getString("message");
-            if (!isBackground) {
-                Intent resultIntent = new Intent(context, MainActivity.class);
-                showNotificationMessage(title, message, resultIntent);
-            }
-        } catch (JSONException e) {
-            Log.e(AppGlobals.getLogTag(getClass()), "Push message json exception: " + e.getMessage());
+            title = json.getString("title");
+            message = json.getString("response");
+            System.out.println(title);
+            System.out.println(message);
+        } catch (JSONException e1) {
+            e1.printStackTrace();
         }
+        Intent resultIntent = new Intent(context, MainActivity.class);
+                showNotificationMessage(title, message, resultIntent);
     }
 
     private void showNotificationMessage(String title, String message, Intent intent) {

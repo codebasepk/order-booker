@@ -21,16 +21,17 @@ public class AppGlobals extends Application{
     public static final String KEY_ORDER_NAME = "orderThingName";
     public static final String KEY_FROM_WHERE = "fromWhere";
     public static final String KEY_ORDER_TIME_DATE = "orderTimeDate";
+    public static String sAndroid_id;
 
     @Override
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
-        Parse.initialize(this, APP_ID, CLIENT_ID);
-        String android_id = Settings.Secure.getString(getContext().getContentResolver(),
+       sAndroid_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
+        Parse.initialize(this, APP_ID, CLIENT_ID);
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put("user", android_id);
+        installation.put("user", sAndroid_id.trim());
         installation.saveInBackground();
     }
 

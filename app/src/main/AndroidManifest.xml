@@ -35,8 +35,7 @@
         </activity>
         <activity android:name=".activites.OrderActivity"/>
         <service android:name="com.parse.PushService" />
-        <receiver
-            android:name=".receivers.CustomPushParseReceiver"
+        <receiver android:name=".receivers.CustomPushParseReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -55,7 +54,7 @@
                 <!--
                   IMPORTANT: Change "com.parse.starter" to match your app's package name.
                 -->
-                <category android:name="com.byteshaft.adminorder" />
+                <category android:name="com.byteshaft.order_booker" />
             </intent-filter>
         </receiver>
     </application>
