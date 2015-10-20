@@ -34,7 +34,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activites.OrderActivity"/>
-
         <service android:name="com.parse.PushService" />
         <receiver
             android:name=".receivers.CustomPushParseReceiver"
