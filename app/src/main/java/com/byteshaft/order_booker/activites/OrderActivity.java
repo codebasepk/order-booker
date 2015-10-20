@@ -18,9 +18,6 @@ public class OrderActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle("Fill in the details");
-
-
-
     }
 
     @Override
