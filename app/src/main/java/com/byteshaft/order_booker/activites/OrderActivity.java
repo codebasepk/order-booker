@@ -1,4 +1,4 @@
-package com.byteshaft.order_booker;
+package com.byteshaft.order_booker.activites;
 
 
 import android.app.Activity;
@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.EditText;
+
+import com.byteshaft.order_booker.R;
 
 public class OrderActivity extends Activity {
 
