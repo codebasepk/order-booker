@@ -1,8 +1,10 @@
-package com.byteshaft.order_booker;
+package com.byteshaft.order_booker.activites;
 
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.byteshaft.order_booker.R;
 
 public class OrderActivity extends Activity {
 
