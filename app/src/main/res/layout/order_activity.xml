@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="What do you want"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="37dp"
+        android:id="@+id/order_tv" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:singleLine="false"
+        android:gravity="top|left"
+        android:background="@android:drawable/edit_text"
+        android:ems="15"
+        android:id="@+id/order_et"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/order_tv"
+        android:layout_alignLeft="@+id/order_tv"
+        android:layout_alignStart="@+id/order_tv"
+        android:inputType="" />
+
+    <TextView
+        android:text="from where"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:id="@+id/from_where_tv"
+        android:layout_below="@+id/order_et"
+        android:layout_alignLeft="@+id/order_et"
+        android:layout_alignStart="@+id/order_et" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:maxLines="3"
+        android:singleLine="false"
+        android:inputType="textMultiLine"
+        android:gravity="top|left"
+        android:background="@android:drawable/edit_text"
+        android:ems="15"
+        android:id="@+id/from_where_et"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/from_where_tv"
+        android:layout_alignLeft="@+id/from_where_tv"
+        android:layout_alignStart="@+id/from_where_tv" />
+
+    <TextView
+        android:text="now or (time and date)"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:id="@+id/time_date_tv"
+        android:layout_below="@+id/from_where_et"
+        android:layout_alignLeft="@+id/from_where_et"
+        android:layout_alignStart="@+id/from_where_et" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:lines="2"
+        android:maxLines="3"
+        android:gravity="top|left"
+        android:background="@android:drawable/edit_text"
+        android:ems="15"
+        android:id="@+id/time_date_et"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/time_date_tv"
+        android:layout_alignLeft="@+id/time_date_tv"
+        android:layout_alignStart="@+id/time_date_tv" />
+
+</RelativeLayout>
