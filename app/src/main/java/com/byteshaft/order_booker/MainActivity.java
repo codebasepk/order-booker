@@ -1,40 +1,71 @@
 package com.byteshaft.order_booker;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText userName;
+    private EditText password;
+    private EditText mobileNumber;
+    private EditText address;
+    private EditText personsName;
+    private Button sendButton;
+    private String getUserName;
+    private String getPassword;
+    private String getMobileNumber;
+    private String getAddress;
+    private String getPersonsName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        userName = (EditText) findViewById(R.id.user_name_et);
+        password = (EditText) findViewById(R.id.password_et);
+        mobileNumber = (EditText) findViewById(R.id.number_et);
+        address = (EditText) findViewById(R.id.address_et);
+        personsName = (EditText) findViewById(R.id.name_et);
+        sendButton = (Button) findViewById(R.id.send);
+        getUserName = userName.getText().toString();
+        getPassword = password.getText().toString();
+        getPersonsName = personsName.getText().toString();
+        getAddress = address.getText().toString();
+        getMobileNumber = mobileNumber.getText().toString();
+        sendButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                startActivity(intent);
+                }
+        });
+    }
+    private void setValuesOfStrings() {
+        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+        editor.putString("username", userName.getText().toString());
+        editor.putString("password", password.getText().toString());
+        editor.putString("personsName", personsName.getText().toString());
+        editor.putString("address", address.getText().toString());
+        editor.putString("mobileNumber", mobileNumber.getText().toString());
+        editor.apply();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    private void getValuesOfStrings() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        preferences.getString("username", getUserName);
+        preferences.getString("password", getPassword);
+        preferences.getString("personsName", getPersonsName);
+        preferences.getString("address", getAddress);
+        preferences.getString("mobileNumber", getMobileNumber);
     }
 }
