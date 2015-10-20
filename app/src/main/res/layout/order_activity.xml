@@ -5,6 +5,7 @@
     <TextView
         android:text="What do you want"
         android:textSize="20dp"
+        android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -12,14 +13,17 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="35dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="90dp"
         android:id="@+id/order_tv" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#000"
         android:lines="2"
+        android:maxLines="2"
         android:singleLine="false"
+        android:inputType="textMultiLine"
         android:gravity="top|left"
         android:background="@android:drawable/edit_text"
         android:ems="15"
@@ -28,11 +32,12 @@
         android:layout_below="@+id/order_tv"
         android:layout_alignLeft="@+id/order_tv"
         android:layout_alignStart="@+id/order_tv"
-        android:inputType="" />
+        />
 
     <TextView
         android:text="from where"
         android:textSize="20dp"
+        android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
@@ -45,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lines="2"
+        android:textColor="#000"
         android:maxLines="3"
         android:singleLine="false"
         android:inputType="textMultiLine"
@@ -60,6 +66,7 @@
     <TextView
         android:text="now or (time and date)"
         android:textSize="20dp"
+        android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -73,6 +80,7 @@
         android:layout_height="wrap_content"
         android:singleLine="false"
         android:lines="2"
+        android:textColor="#000"
         android:maxLines="3"
         android:gravity="top|left"
         android:background="@android:drawable/edit_text"
