@@ -68,9 +68,7 @@ public class OrderActivity extends AppCompatActivity {
                 jsonObject.put("product", orderProduct);
                 jsonObject.put("from", from);
                 jsonObject.put("delivery_time", deliveryTime);
-                jsonObject.put("sender_id", AppGlobals.sAndroid_id);
-                System.out.println(AppGlobals.sAndroid_id);
-                System.out.println(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
+                jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
 
             } catch (JSONException e) {
                 e.printStackTrace();

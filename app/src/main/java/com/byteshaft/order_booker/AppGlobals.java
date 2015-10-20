@@ -27,13 +27,11 @@ public class AppGlobals extends Application{
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
-       sAndroid_id = Settings.Secure.getString(getContext().getContentResolver(),
+       sAndroid_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
         Parse.initialize(this, APP_ID, CLIENT_ID);
-        String android_id = Settings.Secure.getString(getContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID);
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put("user", android_id);
+        installation.put("user", sAndroid_id.trim());
         installation.saveInBackground();
     }
 
