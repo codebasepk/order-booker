@@ -3,6 +3,10 @@ package com.byteshaft.order_booker;
 
 import android.app.Application;
 import android.content.Context;
+import android.provider.Settings;
+
+import com.parse.Parse;
+import com.parse.ParseInstallation;
 
 public class AppGlobals extends Application{
 
@@ -22,6 +26,12 @@ public class AppGlobals extends Application{
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
+        Parse.initialize(this, APP_ID, CLIENT_ID);
+        String android_id = Settings.Secure.getString(getContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("user", android_id);
+        installation.saveInBackground();
     }
 
     public static Context getContext() {

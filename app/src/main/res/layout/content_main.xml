@@ -16,10 +16,11 @@
         android:id="@+id/name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/name_et"
-        android:layout_alignStart="@+id/name_et" />
+        android:layout_alignStart="@+id/name_et"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,9 +29,9 @@
         android:ems="12"
         android:id="@+id/name_et"
         android:layout_below="@+id/name_text_view"
-        android:layout_alignLeft="@+id/number_text_view"
-        android:layout_alignStart="@+id/number_text_view"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        android:layout_alignLeft="@+id/address_et"
+        android:layout_alignStart="@+id/address_et" />
     <TextView
         android:text="Mobile"
         android:textColor="#000"
