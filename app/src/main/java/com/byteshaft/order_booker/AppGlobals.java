@@ -14,6 +14,9 @@ public class AppGlobals extends Application{
     public static final String KEY_Name = "name";
     public static final String KEY_address = "address";
     public static final String KEY_MOBILE_NUMBER = "number";
+    public static final String KEY_ORDER_NAME = "orderThingName";
+    public static final String KEY_FROM_WHERE = "fromWhere";
+    public static final String KEY_ORDER_TIME_DATE = "orderTimeDate";
 
     @Override
     public void onCreate() {

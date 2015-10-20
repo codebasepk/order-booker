@@ -9,72 +9,38 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
 
-    <TextView android:text="Username" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/user_name"
-        android:layout_marginTop="53dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/user_name_et"
-        android:layout_alignStart="@+id/user_name_et" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="5dp"
-        android:id="@+id/user_name_et"
-        android:background="@android:drawable/edit_text"
-        android:layout_below="@+id/user_name"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Password"
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_name_et"
-        android:layout_alignLeft="@+id/password_et"
-        android:layout_alignStart="@+id/password_et"
-        android:layout_marginTop="140dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/edit_text"
-        android:ems="10"
-        android:id="@+id/password_et"
-        android:layout_marginTop="39dp"
-        android:layout_below="@+id/user_name_et"
-        android:layout_centerHorizontal="true" />
     <TextView
         android:text="Name"
+        android:textColor="#000"
+        android:textSize="20dp"
         android:id="@+id/name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/name_et"
-        android:layout_alignStart="@+id/name_et"
-        android:layout_marginTop="6dp"
-        android:layout_below="@+id/password_et"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/name_et" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
-        android:ems="10"
+        android:ems="12"
         android:id="@+id/name_et"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/name_text_view"
+        android:layout_alignLeft="@+id/number_text_view"
+        android:layout_alignStart="@+id/number_text_view"
+        android:layout_marginTop="6dp" />
     <TextView
         android:text="Mobile"
+        android:textColor="#000"
+        android:textSize="20dp"
         android:id="@+id/number_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/number_et"
         android:layout_alignStart="@+id/number_et"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/name_et"
         android:layout_centerHorizontal="true" />
 
@@ -82,8 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
-        android:ems="10"
-        android:layout_marginTop="4dp"
+        android:ems="12"
+        android:layout_marginTop="6dp"
         android:inputType="number"
         android:id="@+id/number_et"
         android:layout_below="@+id/number_text_view"
@@ -91,31 +57,34 @@
         android:layout_centerHorizontal="true" />
     <TextView
         android:text="Address"
+        android:textColor="#000"
+        android:textSize="20dp"
         android:id="@+id/address_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/number_et"
         android:layout_alignLeft="@+id/address_et"
-        android:layout_alignStart="@+id/address_et"
-        android:layout_marginTop="60dp"
-        android:layout_below="@+id/number_text_view"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/address_et" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
-        android:ems="10"
+        android:ems="12"
         android:id="@+id/address_et"
-        android:layout_below="@+id/number_et"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/address_text_view"
         android:layout_alignLeft="@+id/number_et"
-        android:layout_alignStart="@+id/number_et"
-        android:layout_marginTop="32dp" />
+        android:layout_alignStart="@+id/number_et" />
     <Button
         android:text="Continue"
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:id="@+id/continue_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/address_et"
-        android:layout_toRightOf="@+id/name_text_view"
-        android:layout_toEndOf="@+id/name_text_view" />
+        android:layout_toRightOf="@+id/number_text_view"
+        android:layout_toEndOf="@+id/number_text_view"
+        android:layout_marginTop="45dp" />
 </RelativeLayout>
