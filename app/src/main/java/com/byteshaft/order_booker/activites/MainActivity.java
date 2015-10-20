@@ -1,16 +1,13 @@
 package com.byteshaft.order_booker.activites;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
-import com.byteshaft.order_booker.utils.Helpers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,20 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private String getMobileNumber;
     private String getAddress;
     private String getPersonsName;
-    private SharedPreferences sharedPreferences;
-    private Helpers mHelpers;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mHelpers = new Helpers();
-        sharedPreferences = Helpers.getPrefrenceManager();
-        if (!sharedPreferences.contains(AppGlobals.KEY_USERNAME)) {
-            startActivity(new Intent(getApplicationContext(), RegisterUserActivity.class));
-        }
-
         userName = (EditText) findViewById(R.id.user_name_et);
         password = (EditText) findViewById(R.id.password_et);
         mobileNumber = (EditText) findViewById(R.id.number_et);
