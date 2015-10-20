@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<android.support.design.widget.AppBarLayout android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">-->
+
+        <!--<android.support.v7.widget.Toolbar android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
 
     <TextView
         android:text="What do you want"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -12,7 +23,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="35dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="60dp"
         android:id="@+id/order_tv" />
 
     <EditText
@@ -24,15 +35,15 @@
         android:background="@android:drawable/edit_text"
         android:ems="15"
         android:id="@+id/order_et"
-        android:layout_marginTop="5dp"
+        android:inputType=""
         android:layout_below="@+id/order_tv"
         android:layout_alignLeft="@+id/order_tv"
-        android:layout_alignStart="@+id/order_tv"
-        android:inputType="" />
+        android:layout_alignStart="@+id/order_tv" />
 
     <TextView
         android:text="from where"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
@@ -60,6 +71,7 @@
     <TextView
         android:text="now or (time and date)"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"

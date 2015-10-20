@@ -12,7 +12,7 @@
     <TextView android:text="Username" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/user_name"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/user_name_et"
         android:layout_alignStart="@+id/user_name_et" />
@@ -35,7 +35,7 @@
         android:layout_below="@+id/user_name_et"
         android:layout_alignLeft="@+id/password_et"
         android:layout_alignStart="@+id/password_et"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="95dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 
@@ -45,7 +45,7 @@
         android:background="@android:drawable/edit_text"
         android:ems="10"
         android:id="@+id/password_et"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="23dp"
         android:layout_below="@+id/user_name_et"
         android:layout_centerHorizontal="true" />
     <TextView
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/name_et"
         android:layout_alignStart="@+id/name_et"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         android:layout_below="@+id/password_et"
         android:layout_centerHorizontal="true" />
 
@@ -65,8 +65,9 @@
         android:background="@android:drawable/edit_text"
         android:ems="10"
         android:id="@+id/name_et"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/name_text_view"
+        android:layout_alignLeft="@+id/password_et"
+        android:layout_alignStart="@+id/password_et" />
     <TextView
         android:text="Mobile"
         android:id="@+id/number_text_view"
@@ -115,7 +116,7 @@
         android:id="@+id/send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/address_et"
-        android:layout_toRightOf="@+id/name_text_view"
-        android:layout_toEndOf="@+id/name_text_view" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
