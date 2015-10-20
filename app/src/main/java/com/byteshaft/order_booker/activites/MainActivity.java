@@ -7,46 +7,51 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
+import com.byteshaft.order_booker.utils.Helpers;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText userName;
-    private EditText password;
-    private EditText mobileNumber;
-    private EditText address;
-    private EditText personsName;
-    private Button sendButton;
-    private String getUserName;
-    private String getPassword;
-    private String getMobileNumber;
-    private String getAddress;
-    private String getPersonsName;
+    private EditText mMobileNumber;
+    private EditText mAddress;
+    private EditText mPersonsName;
+    private Button mContinueButton;
+    private Helpers mHelpers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mHelpers = new Helpers();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        userName = (EditText) findViewById(R.id.user_name_et);
-        password = (EditText) findViewById(R.id.password_et);
-        mobileNumber = (EditText) findViewById(R.id.number_et);
-        address = (EditText) findViewById(R.id.address_et);
-        personsName = (EditText) findViewById(R.id.name_et);
-        sendButton = (Button) findViewById(R.id.send);
-        getUserName = userName.getText().toString();
-        getPassword = password.getText().toString();
-        getPersonsName = personsName.getText().toString();
-        getAddress = address.getText().toString();
-        getMobileNumber = mobileNumber.getText().toString();
-        sendButton.setOnClickListener(new View.OnClickListener() {
+        mMobileNumber = (EditText) findViewById(R.id.number_et);
+        mAddress = (EditText) findViewById(R.id.address_et);
+        mPersonsName = (EditText) findViewById(R.id.name_et);
+        mContinueButton = (Button) findViewById(R.id.continue_button);
+        mContinueButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
-                startActivity(intent);
+                if ((mMobileNumber.getText().toString().trim()).isEmpty() ||
+                        mAddress.getText().toString().trim().isEmpty() ||
+                        mPersonsName.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "All fields must be filled",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                    mHelpers.setValuesOfStrings(mPersonsName.getText().toString(), AppGlobals.KEY_address,
+                            AppGlobals.KEY_MOBILE_NUMBER, AppGlobals.KEY_ORDER_NAME,
+                            AppGlobals.KEY_FROM_WHERE, AppGlobals.KEY_ORDER_TIME_DATE);
+                    mHelpers.getPersonName(AppGlobals.KEY_Name);
+                    System.out.println(mHelpers.getPersonName(AppGlobals.KEY_Name));
+                    startActivity(intent);
+
+                }
+
             }
         });
     }

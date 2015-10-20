@@ -2,19 +2,27 @@ package com.byteshaft.order_booker.activites;
 
 
 import android.os.Bundle;
+
+import android.widget.EditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.byteshaft.order_booker.R;
 
 public class OrderActivity extends AppCompatActivity {
+
+    private EditText orderThingName;
+    private EditText fromWhere;
+    private EditText orderTimeDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_activity);
+        orderThingName = (EditText) findViewById(R.id.order_et);
+        fromWhere = (EditText) findViewById(R.id.from_where_et);
+        orderTimeDate = (EditText) findViewById(R.id.time_date_et);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle("Fill in the details");
