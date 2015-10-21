@@ -1,6 +1,7 @@
 package com.byteshaft.order_booker.activites;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
 import com.byteshaft.order_booker.utils.Helpers;
 
@@ -50,5 +52,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        SharedPreferences sharedPreferences = Helpers.getPreferenceManager();
+        if (sharedPreferences.contains(AppGlobals.KEY_Name)) {
+            mPersonsName.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
+        }
+        if (sharedPreferences.contains(AppGlobals.KEY_address)) {
+            mAddress.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
+        }
+        
+        if (sharedPreferences.contains(AppGlobals.KEY_MOBILE_NUMBER)) {
+            mMobileNumber.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
+        }
     }
 }
