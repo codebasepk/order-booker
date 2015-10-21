@@ -35,6 +35,7 @@
         </activity>
         <activity android:name=".activites.OrderActivity"/>
         <service android:name="com.parse.PushService" />
+        <!--com.parse.ParsePushBroadcastReceiver for default notification-->
         <receiver android:name="com.parse.ParsePushBroadcastReceiver"
             android:exported="false">
             <intent-filter>
@@ -57,6 +58,7 @@
                 <category android:name="com.byteshaft.order_booker" />
             </intent-filter>
         </receiver>
+        <meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/ic_notification"/>
     </application>
 
 </manifest>
