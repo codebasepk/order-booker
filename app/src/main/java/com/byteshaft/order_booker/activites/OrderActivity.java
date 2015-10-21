@@ -1,7 +1,9 @@
 package com.byteshaft.order_booker.activites;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -48,34 +50,37 @@ public class OrderActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_done) {
-            String orderProduct = orderThingName.getText().toString();
-            String from = fromWhere.getText().toString();
-            String deliveryTime = orderTimeDate.getText().toString();
-            if (orderProduct.isEmpty() || from.isEmpty() || deliveryTime.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "you must fill all the fields",
-                        Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
-            parseQuery.whereEqualTo("admin", "admin_order_receiver");
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("name" , mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
-                jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
-                jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
-                jsonObject.put("product", orderProduct);
-                jsonObject.put("from", from);
-                jsonObject.put("delivery_time", deliveryTime);
-                jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
+        Intent upIntent = new Intent(this, MainActivity.class);
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                String orderProduct = orderThingName.getText().toString();
+                String from = fromWhere.getText().toString();
+                String deliveryTime = orderTimeDate.getText().toString();
+                if (orderProduct.isEmpty() || from.isEmpty() || deliveryTime.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "you must fill all the fields",
+                            Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
+                parseQuery.whereEqualTo("admin", "admin_order_receiver");
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("name" , mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
+                    jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
+                    jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
+                    jsonObject.put("product", orderProduct);
+                    jsonObject.put("from", from);
+                    jsonObject.put("delivery_time", deliveryTime);
+                    jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            ParsePush.sendDataInBackground(jsonObject, parseQuery);
-
-            return true;
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                ParsePush.sendDataInBackground(jsonObject, parseQuery);
+                return true;
+            case android.R.id.home:
+                NavUtils.navigateUpTo(this, upIntent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
