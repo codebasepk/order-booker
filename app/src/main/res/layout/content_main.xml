@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
         android:ems="12"
+        android:singleLine="false"
         android:id="@+id/name_et"
         android:layout_below="@+id/name_text_view"
         android:layout_marginTop="6dp"
