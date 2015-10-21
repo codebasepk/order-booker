@@ -58,7 +58,7 @@
                 <category android:name="com.byteshaft.order_booker" />
             </intent-filter>
         </receiver>
-        <meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/ic_notification"/>
+        <meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/notification"/>
     </application>
 
 </manifest>
