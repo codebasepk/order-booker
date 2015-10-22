@@ -16,7 +16,6 @@ import com.byteshaft.order_booker.utils.Helpers;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText mMobileNumber;
     private EditText mAddress;
     private EditText mPersonsName;
     private Button mContinueButton;
@@ -29,23 +28,20 @@ public class MainActivity extends AppCompatActivity {
         mHelpers = new Helpers();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mMobileNumber = (EditText) findViewById(R.id.number_et);
         mAddress = (EditText) findViewById(R.id.address_et);
         mPersonsName = (EditText) findViewById(R.id.name_et);
         mContinueButton = (Button) findViewById(R.id.continue_button);
         mContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((mMobileNumber.getText().toString().trim()).isEmpty() ||
-                        mAddress.getText().toString().trim().isEmpty() ||
+                if (mAddress.getText().toString().trim().isEmpty() ||
                         mPersonsName.getText().toString().trim().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "All fields must be filled",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
                     mHelpers.setValuesOfStrings(mPersonsName.getText().toString(),
-                            mAddress.getText().toString(), mMobileNumber.getText().toString());
-//                    mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name);
+                            mAddress.getText().toString());
                     startActivity(intent);
 
                 }
@@ -58,10 +54,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (sharedPreferences.contains(AppGlobals.KEY_address)) {
             mAddress.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
-        }
-        
-        if (sharedPreferences.contains(AppGlobals.KEY_MOBILE_NUMBER)) {
-            mMobileNumber.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
         }
     }
 }
