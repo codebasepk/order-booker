@@ -2,6 +2,7 @@ package com.byteshaft.order_booker.activites;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -31,6 +32,8 @@ public class OrderActivity extends AppCompatActivity {
     private EditText orderTimeDate;
     private Helpers mHelpers;
     private boolean mNetworkAvailable = false;
+    private ProgressDialog mProgressDialog;
+    private boolean showingProgressBar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,7 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     public void alertDialog() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                AppGlobals.getContext());
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         alertDialogBuilder.setTitle("conformation");
         alertDialogBuilder
@@ -57,11 +59,6 @@ public class OrderActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(AppGlobals.getContext(), MainActivity.class);
                         startActivity(intent);
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
                     }
                 });
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -81,7 +78,6 @@ public class OrderActivity extends AppCompatActivity {
         Intent upIntent = new Intent(this, MainActivity.class);
         switch (item.getItemId()) {
             case R.id.action_done:
-                new CheckInternet().execute();
                 String orderProduct = orderThingName.getText().toString();
                 String from = fromWhere.getText().toString();
                 String deliveryTime = orderTimeDate.getText().toString();
@@ -89,31 +85,12 @@ public class OrderActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "you must fill all the fields",
                             Toast.LENGTH_SHORT).show();
                     return false;
-                }
-                ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
-                parseQuery.whereEqualTo("admin", "test");
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
-                    jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
-                    jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
-                    jsonObject.put("product", orderProduct);
-                    jsonObject.put("from", from);
-                    jsonObject.put("delivery_time", deliveryTime);
-                    jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                if (mHelpers.isNetworkAvailable(AppGlobals.getContext()) && mNetworkAvailable) {
-                    ParsePush.sendDataInBackground(jsonObject, parseQuery);
-                    alertDialog();
-                    return true;
                 } else {
-                    alertDialog();
-                    Toast.makeText(getApplicationContext(), "internet not available", Toast.LENGTH_SHORT).show();
-                    return false;
+                    String[] array = new String[] {orderProduct, from, deliveryTime};
+                    new CheckInternet().execute(array);
+                    return true;
                 }
+
             case android.R.id.home:
                 NavUtils.navigateUpTo(this, upIntent);
                 return true;
@@ -124,9 +101,55 @@ public class OrderActivity extends AppCompatActivity {
     class CheckInternet extends AsyncTask<String, String, String> {
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mProgressDialog = new ProgressDialog(OrderActivity.this);
+            mProgressDialog.setMessage("Processing");
+            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.show();
+            showingProgressBar = true;
+        }
+
+        @Override
         protected String doInBackground(String... params) {
             mNetworkAvailable = mHelpers.isInternetWorking();
+
+            ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
+            parseQuery.whereEqualTo("admin", "test");
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
+                jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
+                jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
+                jsonObject.put("product", params[0]);
+                jsonObject.put("from", params[1]);
+                jsonObject.put("delivery_time", params[2]);
+                jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (mHelpers.isNetworkAvailable(AppGlobals.getContext()) && mNetworkAvailable) {
+                if (showingProgressBar) {
+                    mProgressDialog.dismiss();
+                }
+                ParsePush.sendDataInBackground(jsonObject, parseQuery);
+            }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if (mProgressDialog.isShowing()) {
+                mProgressDialog.dismiss();
+            }
+            if(!mNetworkAvailable) {
+                Toast.makeText(OrderActivity.this, "Internet not available", Toast.LENGTH_SHORT).show();
+            } else {
+                alertDialog();
+            }
         }
     }
 }
