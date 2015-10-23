@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/number_et"
+        android:layout_below="@+id/name_et"
         android:layout_alignLeft="@+id/address_et"
         android:layout_alignStart="@+id/address_et" />
 
@@ -54,9 +54,7 @@
         android:ems="12"
         android:id="@+id/address_et"
         android:layout_marginTop="6dp"
-        android:layout_below="@+id/address_text_view"
-        android:layout_alignLeft="@+id/number_et"
-        android:layout_alignStart="@+id/number_et" />
+        android:layout_below="@+id/address_text_view" />
     <Button
         android:text="Continue"
         android:textColor="@android:color/white"

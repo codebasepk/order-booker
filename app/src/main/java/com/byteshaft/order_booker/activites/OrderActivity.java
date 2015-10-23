@@ -2,6 +2,7 @@ package com.byteshaft.order_booker.activites;
 
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -27,6 +28,7 @@ public class OrderActivity extends AppCompatActivity {
     private EditText fromWhere;
     private EditText orderTimeDate;
     private Helpers mHelpers;
+    private boolean mNetworkAvailable = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,35 +55,50 @@ public class OrderActivity extends AppCompatActivity {
         Intent upIntent = new Intent(this, MainActivity.class);
         switch (item.getItemId()) {
             case R.id.action_done:
-                String orderProduct = orderThingName.getText().toString();
-                String from = fromWhere.getText().toString();
-                String deliveryTime = orderTimeDate.getText().toString();
-                if (orderProduct.isEmpty() || from.isEmpty() || deliveryTime.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "you must fill all the fields",
-                            Toast.LENGTH_SHORT).show();
+                new CheckInternet().execute();
+                    String orderProduct = orderThingName.getText().toString();
+                    String from = fromWhere.getText().toString();
+                    String deliveryTime = orderTimeDate.getText().toString();
+                    if (orderProduct.isEmpty() || from.isEmpty() || deliveryTime.isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "you must fill all the fields",
+                                Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                    ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
+                    parseQuery.whereEqualTo("admin", "test");
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
+                        jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
+                        jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
+                        jsonObject.put("product", orderProduct);
+                        jsonObject.put("from", from);
+                        jsonObject.put("delivery_time", deliveryTime);
+                        jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                if (mHelpers.isNetworkAvailable(AppGlobals.getContext()) && mNetworkAvailable) {
+                    ParsePush.sendDataInBackground(jsonObject, parseQuery);
+                    return true;
+                } else {
+                    Toast.makeText(getApplicationContext(), "internet not available", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-                ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
-                parseQuery.whereEqualTo("test", "test");
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("name" , mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
-                    jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
-                    jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
-                    jsonObject.put("product", orderProduct);
-                    jsonObject.put("from", from);
-                    jsonObject.put("delivery_time", deliveryTime);
-                    jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                ParsePush.sendDataInBackground(jsonObject, parseQuery);
-                return true;
             case android.R.id.home:
                 NavUtils.navigateUpTo(this, upIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    class CheckInternet extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            mNetworkAvailable =  mHelpers.isInternetWorking();
+            return null;
+        }
     }
 }
