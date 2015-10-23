@@ -1,6 +1,8 @@
 package com.byteshaft.order_booker.activites;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -43,6 +45,30 @@ public class OrderActivity extends AppCompatActivity {
         setTitle("Fill in the details");
     }
 
+    public void alertDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                AppGlobals.getContext());
+
+        alertDialogBuilder.setTitle("conformation");
+        alertDialogBuilder
+                .setMessage("You Will receive a message during few minutes for order conformation !")
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(AppGlobals.getContext(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -56,33 +82,35 @@ public class OrderActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_done:
                 new CheckInternet().execute();
-                    String orderProduct = orderThingName.getText().toString();
-                    String from = fromWhere.getText().toString();
-                    String deliveryTime = orderTimeDate.getText().toString();
-                    if (orderProduct.isEmpty() || from.isEmpty() || deliveryTime.isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "you must fill all the fields",
-                                Toast.LENGTH_SHORT).show();
-                        return false;
-                    }
-                    ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
-                    parseQuery.whereEqualTo("admin", "test");
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
-                        jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
-                        jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
-                        jsonObject.put("product", orderProduct);
-                        jsonObject.put("from", from);
-                        jsonObject.put("delivery_time", deliveryTime);
-                        jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
+                String orderProduct = orderThingName.getText().toString();
+                String from = fromWhere.getText().toString();
+                String deliveryTime = orderTimeDate.getText().toString();
+                if (orderProduct.isEmpty() || from.isEmpty() || deliveryTime.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "you must fill all the fields",
+                            Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
+                parseQuery.whereEqualTo("admin", "test");
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
+                    jsonObject.put("phone", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
+                    jsonObject.put("address", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
+                    jsonObject.put("product", orderProduct);
+                    jsonObject.put("from", from);
+                    jsonObject.put("delivery_time", deliveryTime);
+                    jsonObject.put("sender_id", AppGlobals.sAndroid_id.trim());
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 if (mHelpers.isNetworkAvailable(AppGlobals.getContext()) && mNetworkAvailable) {
                     ParsePush.sendDataInBackground(jsonObject, parseQuery);
+                    alertDialog();
                     return true;
                 } else {
+                    alertDialog();
                     Toast.makeText(getApplicationContext(), "internet not available", Toast.LENGTH_SHORT).show();
                     return false;
                 }
@@ -97,7 +125,7 @@ public class OrderActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            mNetworkAvailable =  mHelpers.isInternetWorking();
+            mNetworkAvailable = mHelpers.isInternetWorking();
             return null;
         }
     }
