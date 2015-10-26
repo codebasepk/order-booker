@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
         android:ems="12"
+        android:hint="jean-baptiste-Lallement"
         android:singleLine="false"
         android:id="@+id/name_et"
         android:layout_below="@+id/name_text_view"
@@ -50,20 +51,44 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="your full address"
         android:background="@android:drawable/edit_text"
         android:ems="12"
         android:id="@+id/address_et"
         android:layout_marginTop="6dp"
         android:layout_below="@+id/address_text_view" />
+
+
+    <TextView
+        android:text="Phone number"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:id="@+id/mobile_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="+49-555-5555555"
+        android:background="@android:drawable/edit_text"
+        android:ems="12"
+        android:id="@+id/mobile_editText"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/mobile_text_view" />
+
     <Button
         android:text="Continue"
         android:textColor="@android:color/white"
         android:background="@drawable/button_theme"
         android:id="@+id/continue_button"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="78dp"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/address_et"
+        android:layout_below="@+id/mobile_text_view"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

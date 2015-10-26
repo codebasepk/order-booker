@@ -116,7 +116,7 @@ public class OrderActivity extends AppCompatActivity {
             mNetworkAvailable = mHelpers.isInternetWorking();
 
             ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
-            parseQuery.whereEqualTo("admin", "admin_order_receiver");
+            parseQuery.whereEqualTo("admin", "test");
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));

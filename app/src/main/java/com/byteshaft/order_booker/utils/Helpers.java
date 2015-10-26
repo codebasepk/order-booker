@@ -19,11 +19,12 @@ public class Helpers {
         return PreferenceManager.getDefaultSharedPreferences(AppGlobals.getContext());
     }
 
-    public void setValuesOfStrings(String personsName, String address) {
+    public void setValuesOfStrings(String personsName, String number,  String address) {
         SharedPreferences sharedPreferences = getPreferenceManager();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(AppGlobals.KEY_Name, personsName);
         editor.putString(AppGlobals.KEY_address, address);
+        editor.putString(AppGlobals.KEY_MOBILE_NUMBER, number);
         editor.commit();
     }
 

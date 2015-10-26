@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mPersonsName;
     private Button mContinueButton;
     private Helpers mHelpers;
+    private EditText mPhoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +32,20 @@ public class MainActivity extends AppCompatActivity {
         mAddress = (EditText) findViewById(R.id.address_et);
         mPersonsName = (EditText) findViewById(R.id.name_et);
         mContinueButton = (Button) findViewById(R.id.continue_button);
+        mPhoneNumber = (EditText) findViewById(R.id.mobile_editText);
+
         mContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mAddress.getText().toString().trim().isEmpty() ||
-                        mPersonsName.getText().toString().trim().isEmpty()) {
+                        mPersonsName.getText().toString().trim().isEmpty() ||
+                        mPhoneNumber.getText().toString().trim().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "All fields must be filled",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
                     mHelpers.setValuesOfStrings(mPersonsName.getText().toString(),
-                            mAddress.getText().toString());
+                            mPhoneNumber.getText().toString(), mAddress.getText().toString());
                     startActivity(intent);
 
                 }
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if (sharedPreferences.contains(AppGlobals.KEY_address)) {
             mAddress.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_address));
+        }
+        if (sharedPreferences.contains(AppGlobals.KEY_MOBILE_NUMBER)) {
+            mPhoneNumber.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
         }
     }
 }
