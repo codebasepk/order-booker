@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
         android:ems="12"
-        android:hint="jean-baptiste-Lallement"
+        android:hint="firstname lastname"
         android:singleLine="false"
         android:id="@+id/name_et"
         android:layout_below="@+id/name_text_view"
@@ -73,7 +73,8 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="+49-555-5555555"
+        android:hint="03-000000"
+        android:inputType="phone"
         android:background="@android:drawable/edit_text"
         android:ems="12"
         android:id="@+id/mobile_editText"

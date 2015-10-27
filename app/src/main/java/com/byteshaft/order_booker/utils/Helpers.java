@@ -12,6 +12,9 @@ import com.byteshaft.order_booker.AppGlobals;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Helpers {
 
@@ -52,5 +55,12 @@ public class Helpers {
             e.printStackTrace();
         }
         return success;
+    }
+
+    public static String getTimeStamp() {
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy");
+        simpleDateFormat.setTimeZone(TimeZone.getDefault());
+        return simpleDateFormat.format(calendar.getTime());
     }
 }

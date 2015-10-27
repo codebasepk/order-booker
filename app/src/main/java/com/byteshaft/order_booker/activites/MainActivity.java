@@ -63,4 +63,14 @@ public class MainActivity extends AppCompatActivity {
             mPhoneNumber.setText(mHelpers.getDataFromSharedPreference(AppGlobals.KEY_MOBILE_NUMBER));
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
+        startActivity(startMain);
+        MainActivity.this.finish();
+    }
 }
