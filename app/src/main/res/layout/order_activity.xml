@@ -8,7 +8,6 @@
         android:text="What do you want"
         android:textSize="20dp"
         android:textColor="#000"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -40,7 +39,6 @@
         android:text="from where"
         android:textSize="20dp"
         android:textColor="#000"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
@@ -67,10 +65,9 @@
         android:layout_alignStart="@+id/from_where_tv" />
 
     <TextView
-        android:text="now or (time and date)"
+        android:text="select date / now"
         android:textSize="20dp"
         android:textColor="#000"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -79,20 +76,29 @@
         android:layout_alignLeft="@+id/from_where_et"
         android:layout_alignStart="@+id/from_where_et" />
 
-    <EditText
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:singleLine="false"
-        android:lines="2"
-        android:textColor="#000"
-        android:maxLines="3"
-        android:gravity="top|left"
-        android:background="@android:drawable/edit_text"
-        android:ems="13"
-        android:id="@+id/time_date_et"
-        android:layout_marginTop="12dp"
+        android:textColor="@android:color/white"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:background="@drawable/button_theme"
+        android:id="@+id/time_date_button"
         android:layout_below="@+id/time_date_tv"
         android:layout_alignLeft="@+id/time_date_tv"
         android:layout_alignStart="@+id/time_date_tv" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="now"
+        android:layout_marginLeft="5dp"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:background="@drawable/button_theme"
+        android:id="@+id/nowButton"
+        android:layout_below="@+id/time_date_tv"
+        android:layout_toRightOf="@+id/time_date_button"/>
 
 </RelativeLayout>

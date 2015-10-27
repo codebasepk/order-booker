@@ -12,6 +12,9 @@ import com.byteshaft.order_booker.AppGlobals;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Helpers {
 
@@ -19,11 +22,12 @@ public class Helpers {
         return PreferenceManager.getDefaultSharedPreferences(AppGlobals.getContext());
     }
 
-    public void setValuesOfStrings(String personsName, String address) {
+    public void setValuesOfStrings(String personsName, String number,  String address) {
         SharedPreferences sharedPreferences = getPreferenceManager();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(AppGlobals.KEY_Name, personsName);
         editor.putString(AppGlobals.KEY_address, address);
+        editor.putString(AppGlobals.KEY_MOBILE_NUMBER, number);
         editor.commit();
     }
 
@@ -51,5 +55,12 @@ public class Helpers {
             e.printStackTrace();
         }
         return success;
+    }
+
+    public static String getTimeStamp() {
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy");
+        simpleDateFormat.setTimeZone(TimeZone.getDefault());
+        return simpleDateFormat.format(calendar.getTime());
     }
 }

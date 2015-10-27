@@ -2,6 +2,8 @@ package com.byteshaft.order_booker.activites;
 
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +14,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,15 +30,26 @@ import com.parse.ParseQuery;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class OrderActivity extends AppCompatActivity {
+import java.util.Calendar;
+
+public class OrderActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText orderThingName;
     private EditText fromWhere;
-    private EditText orderTimeDate;
+    private Button orderTimeDate;
     private Helpers mHelpers;
     private boolean mNetworkAvailable = false;
     private ProgressDialog mProgressDialog;
     private boolean showingProgressBar = false;
+    private int year;
+    private int month;
+    private int day;
+    private Calendar calendar;
+    private boolean dateSelected = false;
+    private String mDate;
+    private Button mNowbutton;
+    String deliveryTime = null;
+    private boolean dateFromDatePicker = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +58,24 @@ public class OrderActivity extends AppCompatActivity {
         mHelpers = new Helpers();
         orderThingName = (EditText) findViewById(R.id.order_et);
         fromWhere = (EditText) findViewById(R.id.from_where_et);
-        orderTimeDate = (EditText) findViewById(R.id.time_date_et);
+        orderTimeDate = (Button) findViewById(R.id.time_date_button);
+        mNowbutton = (Button) findViewById(R.id.nowButton);
+        mNowbutton.setOnClickListener(this);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle("Fill in the details");
+        String message = "select date";
+        orderTimeDate.setText(message);
+        orderTimeDate.setOnClickListener(this);
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     public void alertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        alertDialogBuilder.setTitle("conformation");
+        alertDialogBuilder.setTitle("confirmation");
         alertDialogBuilder
                 .setMessage("You Will receive a message during few minutes for order conformation.")
                 .setCancelable(false)
@@ -63,7 +87,6 @@ public class OrderActivity extends AppCompatActivity {
                 });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-
     }
 
     @Override
@@ -80,12 +103,19 @@ public class OrderActivity extends AppCompatActivity {
             case R.id.action_done:
                 String orderProduct = orderThingName.getText().toString();
                 String from = fromWhere.getText().toString();
-                String deliveryTime = orderTimeDate.getText().toString();
-                if (orderProduct.isEmpty() || from.isEmpty() || deliveryTime.isEmpty()) {
+                if (dateSelected && dateFromDatePicker) {
+                    deliveryTime = orderTimeDate.getText().toString();
+                }
+                if (orderProduct.isEmpty() || from.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "you must fill all the fields",
                             Toast.LENGTH_SHORT).show();
                     return false;
+                } else if (deliveryTime == null && !dateSelected) {
+                    Toast.makeText(getApplicationContext(), "please select date",
+                            Toast.LENGTH_SHORT).show();
+                    return false;
                 } else {
+                    System.out.println(deliveryTime);
                     String[] array = new String[] {orderProduct, from, deliveryTime};
                     new CheckInternet().execute(array);
                     return true;
@@ -96,6 +126,39 @@ public class OrderActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if (id == 21) {
+            return new DatePickerDialog(this, myDateListener,year, month, day);
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            mDate = arg3 + "-" + (arg2+1) +"-"+ arg1;
+            System.out.println(mDate);
+            orderTimeDate.setText(mDate);
+            dateSelected = true;
+            dateFromDatePicker = true;
+        }
+    };
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.time_date_button:
+                showDialog(21);
+                break;
+            case R.id.nowButton:
+                deliveryTime = Helpers.getTimeStamp();
+                dateSelected = true;
+                Toast.makeText(OrderActivity.this, "Today's date selected", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     class CheckInternet extends AsyncTask<String, String, String> {
@@ -116,7 +179,7 @@ public class OrderActivity extends AppCompatActivity {
             mNetworkAvailable = mHelpers.isInternetWorking();
 
             ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
-            parseQuery.whereEqualTo("admin", "admin_order_receiver");
+            parseQuery.whereEqualTo("admin", "test");
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
