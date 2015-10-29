@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
         android:ems="12"
-        android:hint="firstname lastname"
+        android:hint="Firstname Lastname"
         android:singleLine="false"
         android:id="@+id/name_et"
         android:layout_below="@+id/name_text_view"
@@ -51,7 +51,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="your full address"
+        android:hint="Your Full Address"
         android:background="@android:drawable/edit_text"
         android:ems="12"
         android:id="@+id/address_et"
@@ -60,7 +60,7 @@
 
 
     <TextView
-        android:text="Phone number"
+        android:text="Phone Number"
         android:textColor="#000"
         android:textSize="20dp"
         android:id="@+id/mobile_text_view"

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.byteshaft.order_booker.AppGlobals;
@@ -50,6 +52,9 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private Button mNowbutton;
     String deliveryTime = null;
     private boolean dateFromDatePicker = false;
+    private String mTime;
+    private int mHours;
+    private int mMinutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,18 +69,20 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle("Fill in the details");
-        String message = "select date";
+        String message = "Select Date";
         orderTimeDate.setText(message);
         orderTimeDate.setOnClickListener(this);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+        mHours = calendar.get(Calendar.HOUR_OF_DAY);
+        mMinutes = calendar.get(Calendar.MINUTE);
     }
 
     public void alertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("confirmation");
+        alertDialogBuilder.setTitle("Confirmation");
         alertDialogBuilder
                 .setMessage("You will receive a message within few moments for order confirmation")
                 .setCancelable(false)
@@ -107,11 +114,11 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                     deliveryTime = orderTimeDate.getText().toString();
                 }
                 if (orderProduct.isEmpty() || from.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "you must fill all the fields",
+                    Toast.makeText(getApplicationContext(), "You must fill all the fields",
                             Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (deliveryTime == null && !dateSelected) {
-                    Toast.makeText(getApplicationContext(), "please select date",
+                    Toast.makeText(getApplicationContext(), "Please select date",
                             Toast.LENGTH_SHORT).show();
                     return false;
                 } else {
@@ -130,10 +137,13 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected Dialog onCreateDialog(int id) {
+        Dialog dialog = null;
         if (id == 21) {
-            return new DatePickerDialog(this, myDateListener,year, month, day);
+            dialog =  new DatePickerDialog(this, myDateListener,year, month, day);
+        } else if (id == 12) {
+            dialog =  new TimePickerDialog(this, timeListener, mHours, mMinutes, true);
         }
-        return null;
+        return dialog;
     }
 
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
@@ -147,16 +157,25 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         }
     };
 
+    private TimePickerDialog.OnTimeSetListener timeListener = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            mTime = hourOfDay + ":" + minute;
+            showDialog(21);
+
+        }
+    };
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.time_date_button:
-                showDialog(21);
+                showDialog(12);
                 break;
             case R.id.nowButton:
                 deliveryTime = Helpers.getTimeStamp();
                 dateSelected = true;
-                Toast.makeText(OrderActivity.this, "Today's date selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderActivity.this, "Time & Date Selected", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

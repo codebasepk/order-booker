@@ -5,7 +5,7 @@
     android:background="#7F7FFF">
 
     <TextView
-        android:text="What do you want"
+        android:text="What Do You Want"
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         />
 
     <TextView
-        android:text="from where"
+        android:text="From Where"
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
         android:layout_alignStart="@+id/from_where_tv" />
 
     <TextView
-        android:text="select date / now"
+        android:text="Select Date / Now"
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:text="now"
+        android:text="Now"
         android:padding="10dp"
         android:textAlignment="center"
         android:background="@drawable/button_theme"
