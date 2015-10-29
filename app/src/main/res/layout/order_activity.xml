@@ -65,7 +65,7 @@
         android:layout_alignStart="@+id/from_where_tv" />
 
     <TextView
-        android:text="Select Date / Now"
+        android:text="Select Time &amp; Date / Now"
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_width="wrap_content"
@@ -81,6 +81,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_marginTop="10dp"
+        android:textSize="12sp"
         android:padding="10dp"
         android:textAlignment="center"
         android:background="@drawable/button_theme"
@@ -99,7 +100,7 @@
         android:background="@drawable/button_theme"
         android:id="@+id/nowButton"
         android:layout_alignTop="@+id/time_date_button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toRightOf="@+id/time_date_tv"
+        android:layout_toEndOf="@+id/time_date_tv" />
 
 </RelativeLayout>

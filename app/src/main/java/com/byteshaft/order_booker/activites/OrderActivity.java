@@ -48,13 +48,15 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private int day;
     private Calendar calendar;
     private boolean dateSelected = false;
-    private String mDate;
+    private String mDateTime;
     private Button mNowbutton;
-    String deliveryTime = null;
+    private String deliveryTime = null;
     private boolean dateFromDatePicker = false;
     private String mTime;
     private int mHours;
     private int mMinutes;
+    private boolean mTimeSet = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle("Fill in the details");
-        String message = "Select Date";
+        String message = "Select Time and Date";
         orderTimeDate.setText(message);
         orderTimeDate.setOnClickListener(this);
         calendar = Calendar.getInstance();
@@ -110,15 +112,15 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             case R.id.action_done:
                 String orderProduct = orderThingName.getText().toString();
                 String from = fromWhere.getText().toString();
-                if (dateSelected && dateFromDatePicker) {
+                if (dateSelected && dateFromDatePicker && mTimeSet) {
                     deliveryTime = orderTimeDate.getText().toString();
                 }
                 if (orderProduct.isEmpty() || from.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "You must fill all the fields",
                             Toast.LENGTH_SHORT).show();
                     return false;
-                } else if (deliveryTime == null && !dateSelected) {
-                    Toast.makeText(getApplicationContext(), "Please select date",
+                } else if (!dateSelected || !mTimeSet) {
+                    Toast.makeText(getApplicationContext(), "Please select time and date",
                             Toast.LENGTH_SHORT).show();
                     return false;
                 } else {
@@ -149,9 +151,9 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            mDate = arg3 + "-" + (arg2+1) +"-"+ arg1;
-            System.out.println(mDate);
-            orderTimeDate.setText(mDate);
+            mDateTime = mTime+" " +arg3 + "-" + (arg2+1) +"-"+ arg1;
+            System.out.println(mDateTime);
+            orderTimeDate.setText(mTime+" "+ mDateTime);
             dateSelected = true;
             dateFromDatePicker = true;
         }
@@ -162,7 +164,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             mTime = hourOfDay + ":" + minute;
             showDialog(21);
-
+            mTimeSet = true;
         }
     };
 
@@ -170,11 +172,16 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.time_date_button:
-                showDialog(12);
+                if (mTimeSet) {
+                    showDialog(21);
+                } else {
+                    showDialog(12);
+                }
                 break;
             case R.id.nowButton:
                 deliveryTime = Helpers.getTimeStamp();
                 dateSelected = true;
+                mTimeSet = true;
                 Toast.makeText(OrderActivity.this, "Time & Date Selected", Toast.LENGTH_SHORT).show();
                 break;
         }
