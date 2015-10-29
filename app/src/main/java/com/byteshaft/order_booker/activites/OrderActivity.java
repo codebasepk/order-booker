@@ -77,7 +77,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("confirmation");
         alertDialogBuilder
-                .setMessage("You Will receive a message in few minutes for order confirmation.")
+                .setMessage("You will receive a message within few moments for order confirmation")
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
