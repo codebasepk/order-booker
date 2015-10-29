@@ -80,6 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
         android:padding="10dp"
         android:textAlignment="center"
         android:background="@drawable/button_theme"
@@ -93,12 +94,12 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:text="now"
-        android:layout_marginLeft="5dp"
         android:padding="10dp"
         android:textAlignment="center"
         android:background="@drawable/button_theme"
         android:id="@+id/nowButton"
-        android:layout_below="@+id/time_date_tv"
-        android:layout_toRightOf="@+id/time_date_button"/>
+        android:layout_alignTop="@+id/time_date_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
