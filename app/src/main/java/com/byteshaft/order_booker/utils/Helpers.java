@@ -59,7 +59,7 @@ public class Helpers {
 
     public static String getTimeStamp() {
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm aa dd-M-yyyy");
         simpleDateFormat.setTimeZone(TimeZone.getDefault());
         return simpleDateFormat.format(calendar.getTime());
     }

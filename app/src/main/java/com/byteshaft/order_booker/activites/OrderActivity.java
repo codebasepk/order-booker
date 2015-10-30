@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +33,10 @@ import com.parse.ParseQuery;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class OrderActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,6 +60,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private int mHours;
     private int mMinutes;
     private boolean mTimeSet = false;
+    private boolean selectedNow = false;
 
 
     @Override
@@ -119,11 +124,11 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(getApplicationContext(), "You must fill all the fields",
                             Toast.LENGTH_SHORT).show();
                     return false;
-                } else if (!dateSelected || !mTimeSet) {
+                } else if (!dateSelected) {
                     Toast.makeText(getApplicationContext(), "Please select time and date",
                             Toast.LENGTH_SHORT).show();
                     return false;
-                } else {
+                } else if (dateSelected || selectedNow) {
                     System.out.println(deliveryTime);
                     String[] array = new String[] {orderProduct, from, deliveryTime};
                     new CheckInternet().execute(array);
@@ -143,7 +148,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         if (id == 21) {
             dialog =  new DatePickerDialog(this, myDateListener,year, month, day);
         } else if (id == 12) {
-            dialog =  new TimePickerDialog(this, timeListener, mHours, mMinutes, true);
+            dialog =  new TimePickerDialog(this, timeListener, mHours, mMinutes, false);
         }
         return dialog;
     }
@@ -151,9 +156,20 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            mDateTime = mTime+" " +arg3 + "-" + (arg2+1) +"-"+ arg1;
+            String time = mTime;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat("h:mm aa");
+            String out = null;
+            try {
+                Date date = dateFormat.parse(time);
+
+                out = dateFormat2.format(date);
+                Log.e("Time", out);
+            } catch (ParseException e) {
+            }
+            mDateTime = out+" " +arg3 + "-" + (arg2+1) +"-"+ arg1;
             System.out.println(mDateTime);
-            orderTimeDate.setText(mTime+" "+ mDateTime);
+            orderTimeDate.setText(mDateTime);
             dateSelected = true;
             dateFromDatePicker = true;
         }
@@ -172,6 +188,13 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.time_date_button:
+                deliveryTime = null;
+                selectedNow = false;
+                mTime = null;
+                if (mTimeSet) {
+                    mTimeSet = false;
+                    dateSelected = false;
+                }
                 if (mTimeSet) {
                     showDialog(21);
                 } else {
@@ -179,9 +202,14 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.nowButton:
+                orderTimeDate.setText("select date");
+                mTime = null;
+                deliveryTime = null;
                 deliveryTime = Helpers.getTimeStamp();
+                selectedNow = true;
                 dateSelected = true;
-                mTimeSet = true;
+                mTimeSet = false;
+                dateFromDatePicker = false;
                 Toast.makeText(OrderActivity.this, "Time & Date Selected", Toast.LENGTH_SHORT).show();
                 break;
         }
