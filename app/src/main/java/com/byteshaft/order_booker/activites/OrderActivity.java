@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,12 +13,14 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.byteshaft.order_booker.AppGlobals;
@@ -30,7 +33,10 @@ import com.parse.ParseQuery;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class OrderActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -46,10 +52,16 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private int day;
     private Calendar calendar;
     private boolean dateSelected = false;
-    private String mDate;
+    private String mDateTime;
     private Button mNowbutton;
-    String deliveryTime = null;
+    private String deliveryTime = null;
     private boolean dateFromDatePicker = false;
+    private String mTime;
+    private int mHours;
+    private int mMinutes;
+    private boolean mTimeSet = false;
+    private boolean selectedNow = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,20 +76,22 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle("Fill in the details");
-        String message = "select date";
+        String message = "Select Time and Date";
         orderTimeDate.setText(message);
         orderTimeDate.setOnClickListener(this);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+        mHours = calendar.get(Calendar.HOUR_OF_DAY);
+        mMinutes = calendar.get(Calendar.MINUTE);
     }
 
     public void alertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("confirmation");
+        alertDialogBuilder.setTitle("Confirmation");
         alertDialogBuilder
-                .setMessage("You Will receive a message during few minutes for order conformation.")
+                .setMessage("You will receive a message within few moments for order confirmation")
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -103,18 +117,18 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             case R.id.action_done:
                 String orderProduct = orderThingName.getText().toString();
                 String from = fromWhere.getText().toString();
-                if (dateSelected && dateFromDatePicker) {
+                if (dateSelected && dateFromDatePicker && mTimeSet) {
                     deliveryTime = orderTimeDate.getText().toString();
                 }
                 if (orderProduct.isEmpty() || from.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "you must fill all the fields",
+                    Toast.makeText(getApplicationContext(), "You must fill all the fields",
                             Toast.LENGTH_SHORT).show();
                     return false;
-                } else if (deliveryTime == null && !dateSelected) {
-                    Toast.makeText(getApplicationContext(), "please select date",
+                } else if (!dateSelected) {
+                    Toast.makeText(getApplicationContext(), "Please select time and date",
                             Toast.LENGTH_SHORT).show();
                     return false;
-                } else {
+                } else if (dateSelected || selectedNow) {
                     System.out.println(deliveryTime);
                     String[] array = new String[] {orderProduct, from, deliveryTime};
                     new CheckInternet().execute(array);
@@ -130,20 +144,43 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected Dialog onCreateDialog(int id) {
+        Dialog dialog = null;
         if (id == 21) {
-            return new DatePickerDialog(this, myDateListener,year, month, day);
+            dialog =  new DatePickerDialog(this, myDateListener,year, month, day);
+        } else if (id == 12) {
+            dialog =  new TimePickerDialog(this, timeListener, mHours, mMinutes, false);
         }
-        return null;
+        return dialog;
     }
 
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            mDate = arg3 + "-" + (arg2+1) +"-"+ arg1;
-            System.out.println(mDate);
-            orderTimeDate.setText(mDate);
+            String time = mTime;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat("h:mm aa");
+            String out = null;
+            try {
+                Date date = dateFormat.parse(time);
+
+                out = dateFormat2.format(date);
+                Log.e("Time", out);
+            } catch (ParseException e) {
+            }
+            mDateTime = out+" " +arg3 + "-" + (arg2+1) +"-"+ arg1;
+            System.out.println(mDateTime);
+            orderTimeDate.setText(mDateTime);
             dateSelected = true;
             dateFromDatePicker = true;
+        }
+    };
+
+    private TimePickerDialog.OnTimeSetListener timeListener = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            mTime = hourOfDay + ":" + minute;
+            showDialog(21);
+            mTimeSet = true;
         }
     };
 
@@ -151,12 +188,29 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.time_date_button:
-                showDialog(21);
+                deliveryTime = null;
+                selectedNow = false;
+                mTime = null;
+                if (mTimeSet) {
+                    mTimeSet = false;
+                    dateSelected = false;
+                }
+                if (mTimeSet) {
+                    showDialog(21);
+                } else {
+                    showDialog(12);
+                }
                 break;
             case R.id.nowButton:
+                orderTimeDate.setText("select date");
+                mTime = null;
+                deliveryTime = null;
                 deliveryTime = Helpers.getTimeStamp();
+                selectedNow = true;
                 dateSelected = true;
-                Toast.makeText(OrderActivity.this, "Today's date selected", Toast.LENGTH_SHORT).show();
+                mTimeSet = false;
+                dateFromDatePicker = false;
+                Toast.makeText(OrderActivity.this, "Time & Date Selected", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -179,7 +233,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             mNetworkAvailable = mHelpers.isInternetWorking();
 
             ParseQuery<ParseInstallation> parseQuery = ParseQuery.getQuery(ParseInstallation.class);
-            parseQuery.whereEqualTo("admin", "test");
+            parseQuery.whereEqualTo("admin", "admin_order_receiver");
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("name", mHelpers.getDataFromSharedPreference(AppGlobals.KEY_Name));
