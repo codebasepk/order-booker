@@ -5,7 +5,7 @@
     android:background="#7F7FFF">
 
     <TextView
-        android:text="What Do You Want"
+        android:text="What Do You Want?"
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         />
 
     <TextView
-        android:text="From Where"
+        android:text="From Where?"
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_width="wrap_content"
