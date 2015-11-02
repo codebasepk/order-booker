@@ -7,30 +7,39 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="#7F7FFF"
+    android:background="@android:color/white"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/background_design"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 
     <TextView
         android:text="Name"
-        android:textColor="#000"
-        android:textSize="20dp"
+        android:textColor="#ED1C24"
+        android:textSize="25sp"
         android:id="@+id/name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/name_et"
         android:layout_alignStart="@+id/name_et"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/edittext_border"
         android:ems="12"
-        android:hint="Firstname Lastname"
         android:singleLine="false"
         android:id="@+id/name_et"
+        android:padding="4dp"
         android:layout_below="@+id/name_text_view"
         android:layout_marginTop="6dp"
         android:layout_alignLeft="@+id/address_et"
@@ -38,8 +47,8 @@
 
     <TextView
         android:text="Address"
-        android:textColor="#000"
-        android:textSize="20dp"
+        android:textColor="#ED1C24"
+        android:textSize="25sp"
         android:id="@+id/address_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,9 +60,9 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Your Full Address"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/edittext_border"
         android:ems="12"
+        android:padding="4dp"
         android:id="@+id/address_et"
         android:layout_marginTop="6dp"
         android:layout_below="@+id/address_text_view" />
@@ -61,9 +70,11 @@
 
     <TextView
         android:text="Phone Number"
-        android:textColor="#000"
-        android:textSize="20dp"
+        android:textColor="#ED1C24"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
         android:id="@+id/mobile_text_view"
+        android:layout_below="@+id/address_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -73,10 +84,10 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="03-000000"
         android:inputType="phone"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/edittext_border"
         android:ems="12"
+        android:padding="4dp"
         android:id="@+id/mobile_editText"
         android:layout_marginTop="6dp"
         android:layout_below="@+id/mobile_text_view" />
@@ -84,12 +95,23 @@
     <Button
         android:text="Continue"
         android:textColor="@android:color/white"
-        android:background="@drawable/button_theme"
+        android:background="@color/red"
+        android:textStyle="bold"
         android:id="@+id/continue_button"
-        android:layout_marginTop="78dp"
+        android:textSize="25sp"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/mobile_text_view"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="49dp" />
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bike"
+        android:id="@+id/imageView2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -67,11 +68,14 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_activity);
+        Typeface typeFace = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/BradBunR.ttf");
         mHelpers = new Helpers();
         orderThingName = (EditText) findViewById(R.id.order_et);
         fromWhere = (EditText) findViewById(R.id.from_where_et);
         orderTimeDate = (Button) findViewById(R.id.time_date_button);
+        orderTimeDate.setTypeface(typeFace);
         mNowbutton = (Button) findViewById(R.id.nowButton);
+        mNowbutton.setTypeface(typeFace);
         mNowbutton.setOnClickListener(this);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -85,6 +89,8 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         day = calendar.get(Calendar.DAY_OF_MONTH);
         mHours = calendar.get(Calendar.HOUR_OF_DAY);
         mMinutes = calendar.get(Calendar.MINUTE);
+
+
     }
 
     public void alertDialog() {
