@@ -2,20 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7F7FFF">
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/background_design"
+        android:id="@+id/imageViewBackground"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="What Do You Want"
-        android:textSize="20dp"
+        android:text="What Do You Want?"
+        android:textSize="20sp"
         android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="35dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="60dp"
+        android:layout_below="@id/imageViewBackground"
         android:id="@+id/order_tv" />
 
     <EditText
@@ -27,7 +33,7 @@
         android:singleLine="false"
         android:inputType="textMultiLine"
         android:gravity="top|left"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/edittext_border"
         android:ems="13"
         android:id="@+id/order_et"
         android:layout_below="@+id/order_tv"
@@ -36,8 +42,8 @@
         />
 
     <TextView
-        android:text="From Where"
-        android:textSize="20dp"
+        android:text="From Where?"
+        android:textSize="20sp"
         android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,7 +62,7 @@
         android:singleLine="false"
         android:inputType="textMultiLine"
         android:gravity="top|left"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/edittext_border"
         android:ems="13"
         android:id="@+id/from_where_et"
         android:layout_marginTop="10dp"
@@ -66,7 +72,7 @@
 
     <TextView
         android:text="Select Time &amp; Date / Now"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,7 +87,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_marginTop="10dp"
-        android:textSize="12sp"
+        android:textSize="18sp"
         android:padding="10dp"
         android:textAlignment="center"
         android:background="@drawable/button_theme"
@@ -94,6 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
+        android:textSize="25sp"
         android:text="Now"
         android:padding="10dp"
         android:textAlignment="center"
@@ -103,4 +110,11 @@
         android:layout_toRightOf="@+id/time_date_tv"
         android:layout_toEndOf="@+id/time_date_tv" />
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:background="@drawable/bike"
+        android:id="@+id/imageViewBike"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
