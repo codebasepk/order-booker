@@ -5,7 +5,7 @@
     android:background="#FFFFFF">
 
     <ImageView
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="100dp"
         android:background="@drawable/background_design"
         android:id="@+id/imageViewBackground"
@@ -15,7 +15,7 @@
     <TextView
         android:text="What Do You Want?"
         android:textSize="20sp"
-        android:textColor="#000"
+        android:textColor="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -44,7 +44,7 @@
     <TextView
         android:text="From Where?"
         android:textSize="20sp"
-        android:textColor="#000"
+        android:textColor="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
@@ -73,7 +73,7 @@
     <TextView
         android:text="Select Time &amp; Date / Now"
         android:textSize="20sp"
-        android:textColor="#000"
+        android:textColor="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -87,6 +87,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
         android:textSize="18sp"
         android:padding="10dp"
         android:textAlignment="center"
@@ -111,8 +112,8 @@
         android:layout_toEndOf="@+id/time_date_tv" />
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="120dp"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         android:background="@drawable/bike"
         android:id="@+id/imageViewBike"
         android:layout_alignParentBottom="true"
