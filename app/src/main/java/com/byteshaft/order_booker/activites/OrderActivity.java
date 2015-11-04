@@ -99,8 +99,6 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         day = calendar.get(Calendar.DAY_OF_MONTH);
         mHours = calendar.get(Calendar.HOUR_OF_DAY);
         mMinutes = calendar.get(Calendar.MINUTE);
-
-
     }
 
     public void alertDialog() {

@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Typeface typeFace = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/BradBunR.ttf");
         mNameTextView = (TextView) findViewById(R.id.name_text_view);
         mAddressTextView = (TextView) findViewById(R.id.address_text_view);
@@ -44,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         mContinueButton.setTypeface(typeFace);
         mobileNumberTextView.setTypeface(typeFace);
         mHelpers = new Helpers();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         mContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +60,14 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
                     mHelpers.setValuesOfStrings(mPersonsName.getText().toString(),
                             mPhoneNumber.getText().toString(), mAddress.getText().toString());
-                    startActivity(intent);
+                    if (AppGlobals.getSnacksSessionStatus() &&
+                            !AppGlobals.getSuperMarketSessionStatus()) {
+                        startActivity(intent);
+                    } else if (AppGlobals.getSuperMarketSessionStatus() &&
+                            !AppGlobals.getSnacksSessionStatus()) {
+                        // open the logos activity
+
+                    }
 
                 }
             }
@@ -78,12 +86,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent startMain = new Intent(Intent.ACTION_MAIN);
-        startMain.addCategory(Intent.CATEGORY_HOME);
-        startMain.setFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
-        startActivity(startMain);
-        MainActivity.this.finish();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent upIntent = new Intent(this, MainActivity.class);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpTo(this, upIntent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
