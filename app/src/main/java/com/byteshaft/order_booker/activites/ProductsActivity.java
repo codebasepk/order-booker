@@ -35,8 +35,8 @@ public class ProductsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // start activity
-                //startActivity(new Intent());
+//                 start activity
+                startActivity(new Intent(getApplicationContext(), ProductsDetailActivity.class));
 
             }
         });
