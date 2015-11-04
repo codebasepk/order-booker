@@ -1,5 +1,6 @@
 package com.byteshaft.order_booker.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,8 +29,8 @@ public class ProductsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // start activity
-                //startActivity(new Intent());
+//                 start activity
+                startActivity(new Intent(getApplicationContext(), ProductsDetailActivity.class));
 
             }
         });
