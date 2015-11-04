@@ -35,6 +35,7 @@
         </activity>
         <activity android:name=".activites.MainActivity"/>
         <activity android:name=".activites.OrderActivity"/>
+        <activity android:name=".activites.ProductsActivity"/>
         <service android:name="com.parse.PushService" />
         <!--com.parse.ParsePushBroadcastReceiver for default notification-->
         <receiver android:name="com.parse.ParsePushBroadcastReceiver"

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else if (AppGlobals.getSuperMarketSessionStatus() &&
                             !AppGlobals.getSnacksSessionStatus()) {
-                        // open the logos activity
+                        startActivity(new Intent(getApplicationContext(), ProductsActivity.class));
 
                     }
 
