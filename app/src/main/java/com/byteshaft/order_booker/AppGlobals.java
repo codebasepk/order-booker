@@ -17,6 +17,8 @@ public class AppGlobals extends Application{
     public static final String KEY_address = "address";
     public static final String KEY_MOBILE_NUMBER = "number";
     public static String sAndroid_id;
+    private static boolean sSnacksSession = false;
+    private static boolean sSuperMarketSession = false;
 
     @Override
     public void onCreate() {
@@ -36,5 +38,21 @@ public class AppGlobals extends Application{
 
     public static String getLogTag(Class aClass) {
         return aClass.getName();
+    }
+
+    public static void setSnacksSessionStatus(boolean value) {
+        sSnacksSession = value;
+    }
+
+    public static boolean getSnacksSessionStatus() {
+        return sSnacksSession;
+    }
+
+    public static void setSuperMarketSessionStatus(boolean value) {
+        sSuperMarketSession = value;
+    }
+
+    public static boolean getSuperMarketSessionStatus() {
+        return sSuperMarketSession;
     }
 }

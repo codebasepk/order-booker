@@ -11,8 +11,8 @@
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
         android:background="@drawable/background_design"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
@@ -99,19 +99,18 @@
         android:textStyle="bold"
         android:id="@+id/continue_button"
         android:textSize="25sp"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView2"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="49dp" />
+        android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="140dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         android:background="@drawable/bike"
         android:id="@+id/imageView2"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+        android:layout_alignRight="@+id/mobile_editText"
+        android:layout_alignEnd="@+id/mobile_editText" />
 </RelativeLayout>

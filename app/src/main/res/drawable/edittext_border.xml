@@ -3,12 +3,14 @@
         android:state_focused="true">
         <shape android:padding="10dp" android:shape="rectangle">
             <solid android:color="#FFFFFF" />
+            <padding android:left="5dp"/>
             <stroke android:width="3dp" android:color="@color/red" />
             </shape>
     </item>
     <item android:state_enabled="true">
         <shape android:padding="10dp"
             android:shape="rectangle">
+            <padding android:left="5dp"/>
             <solid android:color="#FFFFFF" />
             <stroke android:width="2dp" android:color="@color/red"/>
         </shape>

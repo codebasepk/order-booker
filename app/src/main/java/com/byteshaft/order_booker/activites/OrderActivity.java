@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -62,6 +63,9 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private int mMinutes;
     private boolean mTimeSet = false;
     private boolean selectedNow = false;
+    private TextView orderTextView;
+    private TextView fromWhereTextView;
+    private TextView timeDateTextView;
 
 
     @Override
@@ -75,6 +79,12 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         orderTimeDate = (Button) findViewById(R.id.time_date_button);
         orderTimeDate.setTypeface(typeFace);
         mNowbutton = (Button) findViewById(R.id.nowButton);
+        orderTextView = (TextView) findViewById(R.id.order_tv);
+        fromWhereTextView = (TextView) findViewById(R.id.from_where_tv);
+        timeDateTextView = (TextView) findViewById(R.id.time_date_tv);
+        timeDateTextView.setTypeface(typeFace);
+        fromWhereTextView.setTypeface(typeFace);
+        orderTextView.setTypeface(typeFace);
         mNowbutton.setTypeface(typeFace);
         mNowbutton.setOnClickListener(this);
         ActionBar actionBar = getSupportActionBar();
@@ -89,8 +99,6 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         day = calendar.get(Calendar.DAY_OF_MONTH);
         mHours = calendar.get(Calendar.HOUR_OF_DAY);
         mMinutes = calendar.get(Calendar.MINUTE);
-
-
     }
 
     public void alertDialog() {

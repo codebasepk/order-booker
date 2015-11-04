@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activites.MainActivity"
+            android:name=".activites.PreMainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activites.MainActivity"/>
         <activity android:name=".activites.OrderActivity"/>
+        <activity android:name=".activites.ProductsActivity"/>
         <service android:name="com.parse.PushService" />
         <!--com.parse.ParsePushBroadcastReceiver for default notification-->
         <receiver android:name="com.parse.ParsePushBroadcastReceiver"
