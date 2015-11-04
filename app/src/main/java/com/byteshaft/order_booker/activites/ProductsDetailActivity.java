@@ -84,32 +84,53 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataHeader.add("Fruit cocktails");
 
         // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        top250.add("The Shawshank Redemption");
-        top250.add("The Godfather");
-        top250.add("The Godfather: Part II");
-        top250.add("Pulp Fiction");
-        top250.add("The Good, the Bad and the Ugly");
-        top250.add("The Dark Knight");
-        top250.add("12 Angry Men");
+        List<String> sandwichies = new ArrayList<String>();
+        sandwichies.add("Roast beef");
+        sandwichies.add("Ham & cheese");
+        sandwichies.add("Tuna");
+        sandwichies.add("Frankfurter");
+        sandwichies.add("Tawouk");
+        sandwichies.add("Chicken sub");
+        sandwichies.add("Soujok");
+        sandwichies.add("Makanek");
+        sandwichies.add("Sub Marine");
+        sandwichies.add("Jumbo burger");
+        sandwichies.add("Phili steak");
+        sandwichies.add("Kachkawen\n");
+        sandwichies.add("+add cheese");
+        sandwichies.add("+add ham&cheese\n");
 
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("The Conjuring");
-        nowShowing.add("Despicable Me 2");
-        nowShowing.add("Turbo");
-        nowShowing.add("Grown Ups 2");
-        nowShowing.add("Red 2");
-        nowShowing.add("The Wolverine");
+        List<String> freshJuices = new ArrayList<String>();
+        freshJuices.add("Strawberry");
+        freshJuices.add("Mixed cocktail");
+        freshJuices.add("Pineapple");
+        freshJuices.add("Mango");
+        freshJuices.add("Guayava");
+        freshJuices.add("Orange");
+        freshJuices.add("Pomegrenade (winter)");
+        freshJuices.add("Lemonade  (summer) ");
+        freshJuices.add("Banana milk shake ");
+        freshJuices.add("Strawbanana shake");
+        freshJuices.add("Strawbanana milk shake");
+        freshJuices.add("Melon");
+        freshJuices.add("Apple");
+        freshJuices.add("Carrot");
+        freshJuices.add("Grapefruit");
 
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("2 Guns");
-        comingSoon.add("The Smurfs 2");
-        comingSoon.add("The Spectacular Now");
-        comingSoon.add("The Canyons");
-        comingSoon.add("Europa Report");
 
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
+        List<String> fruitCocktails = new ArrayList<String>();
+        fruitCocktails.add("\n (All cocktails contain same fruit slices w/different juices inside) \n");
+        fruitCocktails.add("Strawberry");
+        fruitCocktails.add("Mango");
+        fruitCocktails.add("Strawberry/mango");
+        fruitCocktails.add("Avocado");
+        fruitCocktails.add("Avocado/strawberry");
+        fruitCocktails.add("Avocado/mango");
+        fruitCocktails.add("TRIO");
+        fruitCocktails.add("\n With toppings of Achta , fresh almonds & honey or whipped cream \n");
+
+        listDataChild.put(listDataHeader.get(0), sandwichies); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), freshJuices);
+        listDataChild.put(listDataHeader.get(2), fruitCocktails);
     }
 }
