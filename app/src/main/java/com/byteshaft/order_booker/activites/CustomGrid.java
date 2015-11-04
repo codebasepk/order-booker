@@ -39,7 +39,7 @@ public class CustomGrid extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.grid_single, null);
+            convertView = inflater.inflate(R.layout.single_grid, null);
             ImageView imageView = (ImageView) convertView.findViewById(R.id.grid_image);
             imageView.setImageResource(imagesId[position]);
         }
