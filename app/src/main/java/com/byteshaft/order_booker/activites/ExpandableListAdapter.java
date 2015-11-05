@@ -19,13 +19,16 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listDataChild;
-    Typeface typeFace;
+    private Typeface typeFace;
+    private HashMap<String, String> priceMap;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, List<String>> listChildData,
+                                 HashMap<String, String> price) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listChildData;
+        this.priceMap = price;
         typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(),"fonts/BradBunR.ttf");
     }
 
@@ -96,7 +99,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        priceTextView.setText("price: 3000LL");
+        priceTextView.setText("price: " + priceMap.get(childText));
         return convertView;
     }
 

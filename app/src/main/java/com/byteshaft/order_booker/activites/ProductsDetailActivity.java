@@ -18,14 +18,16 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private ExpandableListView expListView;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listDataChild;
+    private HashMap<String, String> priceHashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_detail);
+        addPriceDetailsToHashMap();
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
         prepareListData();
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild, priceHashMap);
         expListView.setAdapter(listAdapter);
         // Listview on child click listener
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -64,6 +66,46 @@ public class ProductsDetailActivity extends AppCompatActivity {
         });
     }
 
+    private void addPriceDetailsToHashMap() {
+        priceHashMap = new HashMap<>();
+        priceHashMap.put("Roast beef", "6000 L.L");
+        priceHashMap.put("Ham & cheese" ,"5000 L.L");
+        priceHashMap.put("Tuna", "5000 L.L");
+        priceHashMap.put("Frankfurter", "5000 L.L");
+        priceHashMap.put("Tawouk", "6000 L.L");
+        priceHashMap.put("Chicken sub", "7000 L.L");
+        priceHashMap.put("Soujok", "5000 L.L");
+        priceHashMap.put("Makanek", "6000 L.L");
+        priceHashMap.put("Sub Marine", "6000 L.L");
+        priceHashMap.put("Jumbo burger", "8000 L.L");
+        priceHashMap.put("Phili steak", "6000 L.L");
+        priceHashMap.put("Kachkawen", "4000 L.L");
+        priceHashMap.put("+add cheese", "1000 L.L");
+        priceHashMap.put("+add ham&cheese", "2000 L.L");
+        priceHashMap.put("Strawberry", "6000 L.L");
+        priceHashMap.put("Mixed cocktail", "6000 L.L");
+        priceHashMap.put("Pineapple", "7000 L.L");
+        priceHashMap.put("Mango", "7000 L.L");
+        priceHashMap.put("Guayava", "5000 L.L");
+        priceHashMap.put("Orange", "4000 L.L");
+        priceHashMap.put("Pomegrenade (winter)", "7000 L.L");
+        priceHashMap.put("Lemonade  (summer) ", "4000 L.L");
+        priceHashMap.put("Banana milk shake ", "4000 L.L");
+        priceHashMap.put("Strawbanana shake", "6000 L.L");
+        priceHashMap.put("Strawbanana milk shake", "5000 L.L");
+        priceHashMap.put("Melon", "4000 L.L");
+        priceHashMap.put("Apple", "5000 L.L");
+        priceHashMap.put("Carrot", "5000 L.L");
+        priceHashMap.put("Grapefruit", "5000 L.L");
+        priceHashMap.put("Strawberry", "7000 L.L");
+        priceHashMap.put("Mango", "7000 L.L");
+        priceHashMap.put("Strawberry/mango", "7000 L.L");
+        priceHashMap.put("Avocado", "8000 L.L");
+        priceHashMap.put("Avocado/strawberry", "7000 L.L");
+        priceHashMap.put("Avocado/mango", "7000 L.L");
+        priceHashMap.put("TRIO", "7000 L.L");
+    }
+
     private void prepareListData() {
         listDataHeader = new ArrayList<>();
         listDataChild = new HashMap<>();
@@ -86,9 +128,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
         sandwichies.add("Sub Marine");
         sandwichies.add("Jumbo burger");
         sandwichies.add("Phili steak");
-        sandwichies.add("Kachkawen\n");
+        sandwichies.add("Kachkawen");
         sandwichies.add("+add cheese");
-        sandwichies.add("+add ham&cheese\n");
+        sandwichies.add("+add ham&cheese");
 
         List<String> freshJuices = new ArrayList<String>();
         freshJuices.add("Strawberry");
@@ -108,7 +150,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         freshJuices.add("Grapefruit");
 
 
-        List<String> fruitCocktails = new ArrayList<String>();
+        List<String> fruitCocktails = new ArrayList<>();
         fruitCocktails.add("\n (All cocktails contain same fruit slices w/different juices inside) \n");
         fruitCocktails.add("Strawberry");
         fruitCocktails.add("Mango");
