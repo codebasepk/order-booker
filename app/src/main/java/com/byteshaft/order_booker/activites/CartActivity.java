@@ -1,12 +1,17 @@
 package com.byteshaft.order_booker.activites;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,6 +51,9 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        ArrayAdapter<String> arrayAdapter = new CartAdapter(getApplicationContext(),
+                R.layout.single_cart_item, finalItems);
+        listView.setAdapter(arrayAdapter);
 
     }
 
@@ -87,6 +95,43 @@ public class CartActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-    
+
+    class CartAdapter extends ArrayAdapter<String> {
+
+        private int layout;
+
+        public CartAdapter(Context context, int resource, ArrayList<String> items) {
+            super(context, resource, items);
+            layout = resource;
+
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                LayoutInflater inflater = getLayoutInflater();
+                convertView = inflater.inflate(R.layout.single_cart_item, parent, false);
+                holder = new ViewHolder();
+                holder.deleteItem = (ImageButton) convertView.findViewById(R.id.delete);
+                holder.productName = (TextView) convertView.findViewById(R.id.product_name);
+                holder.productPrice = (TextView) convertView.findViewById(R.id.product_price);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+            holder.productName.setText(finalItems.get(position));
+            holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(finalItems.get(position)));
+            return convertView;
+        }
+    }
+
+    static class ViewHolder {
+        public ImageButton deleteItem;
+        public TextView productName;
+        public TextView productPrice;
+    }
+
+
 
 }
