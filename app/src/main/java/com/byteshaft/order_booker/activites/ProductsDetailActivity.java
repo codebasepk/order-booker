@@ -158,7 +158,6 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
 
         List<String> fruitCocktails = new ArrayList<>();
-        fruitCocktails.add("\n (All cocktails contain same fruit slices w/different juices inside) \n");
         fruitCocktails.add("Strawberry");
         fruitCocktails.add("Mango");
         fruitCocktails.add("Strawberry/mango");
@@ -166,7 +165,6 @@ public class ProductsDetailActivity extends AppCompatActivity {
         fruitCocktails.add("Avocado/strawberry");
         fruitCocktails.add("Avocado/mango");
         fruitCocktails.add("TRIO");
-        fruitCocktails.add("\n With toppings of Achta , fresh almonds & honey or whipped cream \n");
 
         listDataChild.put(listDataHeader.get(0), sandwichies); // Header, Child data
         listDataChild.put(listDataHeader.get(1), freshJuices);
