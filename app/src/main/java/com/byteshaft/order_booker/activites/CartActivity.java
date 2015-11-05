@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -49,6 +51,17 @@ public class CartActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view_cart);
         viewLine = findViewById(R.id.viewLine);
         initializeAllData();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent upIntent = new Intent(this, ProductsDetailActivity.class);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpTo(this, upIntent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -132,7 +145,7 @@ public class CartActivity extends AppCompatActivity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.productName.setText(arrayList.get(position));
+            holder.productName.setText(arrayList.get(position).replace("_", "->"));
             holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(arrayList.get(position)));
             holder.deleteItem.setOnClickListener(new View.OnClickListener() {
                 @Override
