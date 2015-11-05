@@ -28,9 +28,9 @@ public class CartActivity extends AppCompatActivity {
     private TextView totalAmountTextView;
     private ArrayList<String> finalItems;
     private ArrayList<String> allValues;
-    private int amount = 0;
+    private int amount;
     private ListView listView;
-
+    private View viewLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +39,12 @@ public class CartActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         finalItems = new ArrayList<>();
-        allValues = new ArrayList<>();
         getProductsFromHashMap();
         itemCount = (TextView) findViewById(R.id.item_count);
         cartLayout = (RelativeLayout) findViewById(R.id.cart_layout);
         totalAmountTextView = (TextView) findViewById(R.id.total_amount);
         listView = (ListView) findViewById(R.id.list_view_cart);
+        viewLine = (View) findViewById(R.id.viewLine);
         initializeAllData();
     }
 
@@ -54,7 +54,6 @@ public class CartActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new CartAdapter(getApplicationContext(),
                 R.layout.single_cart_item, finalItems);
         listView.setAdapter(arrayAdapter);
-
     }
 
     private void getProductsFromHashMap() {
@@ -64,16 +63,21 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void initializeAllData() {
+        amount = 0;
+        allValues = new ArrayList<>();
         itemCount.setText("(" + AppGlobals.getFinalOrdersHashMap().size() + ")");
         if (AppGlobals.getFinalOrdersHashMap().size() == 0) {
             alertDialog();
             cartLayout.setVisibility(View.INVISIBLE);
+            viewLine.setVisibility(View.INVISIBLE);
         } else {
             cartLayout.setVisibility(View.VISIBLE);
+            viewLine.setVisibility(View.VISIBLE);
         }
-        for ( String key : AppGlobals.getFinalOrdersHashMap().keySet() ) {
+        for (String key : AppGlobals.getFinalOrdersHashMap().keySet()) {
             allValues.add(AppGlobals.getFinalOrdersHashMap().get(key));
         }
+        System.out.println(allValues);
         for(String value: allValues) {
             int val =  Integer.valueOf(value.replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", ""));
             amount = amount+val;
@@ -99,19 +103,20 @@ public class CartActivity extends AppCompatActivity {
     class CartAdapter extends ArrayAdapter<String> {
 
         private ArrayList<String> arrayList;
+        private int layoutResource;
 
         public CartAdapter(Context context, int resource, ArrayList<String> items) {
             super(context, resource, items);
             this.arrayList = items;
-
+            this.layoutResource = resource;
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, final ViewGroup parent) {
             ViewHolder holder;
             if (convertView == null) {
                 LayoutInflater inflater = getLayoutInflater();
-                convertView = inflater.inflate(R.layout.single_cart_item, parent, false);
+                convertView = inflater.inflate(layoutResource, parent, false);
                 holder = new ViewHolder();
                 holder.deleteItem = (ImageButton) convertView.findViewById(R.id.delete);
                 holder.productName = (TextView) convertView.findViewById(R.id.product_name);
@@ -122,6 +127,18 @@ public class CartActivity extends AppCompatActivity {
             }
             holder.productName.setText(arrayList.get(position));
             holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(arrayList.get(position)));
+            holder.deleteItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println(arrayList.get(position));
+                    AppGlobals.removeOrderFromHashMap(arrayList.get(position));
+                    finalItems.remove(arrayList.get(position));
+                    totalAmountTextView.setText("");
+                    allValues = null;
+                    notifyDataSetChanged();
+                    initializeAllData();
+                }
+            });
             return convertView;
         }
     }
