@@ -1,7 +1,12 @@
 package com.byteshaft.order_booker.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
@@ -24,6 +29,8 @@ public class ProductsDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_detail);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         addPriceDetailsToHashMap();
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
         prepareListData();
@@ -43,7 +50,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
                                 listDataHeader.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
                         .show();
-                return false;
+                return true;
             }
         });
 
@@ -164,5 +171,25 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(0), sandwichies); // Header, Child data
         listDataChild.put(listDataHeader.get(1), freshJuices);
         listDataChild.put(listDataHeader.get(2), fruitCocktails);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.product_details_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent upIntent = new Intent(this, ProductsActivity.class);
+        switch (item.getItemId()) {
+            case R.id.action_checkOut:
+
+
+            case android.R.id.home:
+                NavUtils.navigateUpTo(this, upIntent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

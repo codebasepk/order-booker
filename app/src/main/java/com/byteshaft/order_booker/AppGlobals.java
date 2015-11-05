@@ -8,6 +8,8 @@ import android.provider.Settings;
 import com.parse.Parse;
 import com.parse.ParseInstallation;
 
+import java.util.HashMap;
+
 public class AppGlobals extends Application{
 
     private static Context sContext;
@@ -19,6 +21,7 @@ public class AppGlobals extends Application{
     public static String sAndroid_id;
     private static boolean sSnacksSession = false;
     private static boolean sSuperMarketSession = false;
+    private static HashMap<String, String> orderHashMap;
 
     @Override
     public void onCreate() {
@@ -54,5 +57,20 @@ public class AppGlobals extends Application{
 
     public static boolean getSuperMarketSessionStatus() {
         return sSuperMarketSession;
+    }
+
+    public static void initializeOrderHashMap() {
+        orderHashMap =  new HashMap<>();
+    }
+    public static void addOrderToHashMap(String key, String value) {
+        orderHashMap.put(key, value);
+    }
+
+    public static void removeOrderFromHashMap(String key) {
+        orderHashMap.remove(key);
+    }
+
+    public static HashMap<String , String> getFinalOrdersHashMap() {
+        return orderHashMap;
     }
 }
