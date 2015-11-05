@@ -13,13 +13,13 @@
 
         <TextView
             android:id="@+id/item_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:text="Total Items"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="#474747"
-            android:textSize="14sp"
             android:layout_marginTop="4dp"
             android:layout_marginLeft="10dp"/>
 
@@ -69,16 +69,17 @@
 
         <Button
             android:id="@+id/check_out"
+            android:background="@drawable/button_theme"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="6dp"
             android:layout_marginTop="4dp"
-            android:background="#A2A2A2"
             android:padding="2dp"
-            android:text="Checkout >>"
+            android:text="Checkout!!"
+            android:typeface="serif"
             android:textSize="16dp" />
 
     </RelativeLayout>
