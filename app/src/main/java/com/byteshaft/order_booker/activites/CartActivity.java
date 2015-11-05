@@ -47,7 +47,7 @@ public class CartActivity extends AppCompatActivity {
         totalAmountTextView = (TextView) findViewById(R.id.total_amount);
         totalAmountTextView.setTypeface(AppGlobals.typeface);
         listView = (ListView) findViewById(R.id.list_view_cart);
-        viewLine = (View) findViewById(R.id.viewLine);
+        viewLine = findViewById(R.id.viewLine);
         initializeAllData();
     }
 
@@ -156,7 +156,4 @@ public class CartActivity extends AppCompatActivity {
         public TextView productPrice;
         public TextView qtyText;
     }
-
-
-
 }
