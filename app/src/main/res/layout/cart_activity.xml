@@ -9,17 +9,17 @@
     <RelativeLayout
         android:id="@+id/cart_layout"
         android:layout_width="fill_parent"
-        android:layout_height="45dp" >
+        android:layout_height="60dp" >
 
         <TextView
             android:id="@+id/item_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:text="Total Items"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="#474747"
-            android:textSize="14sp"
             android:layout_marginTop="4dp"
             android:layout_marginLeft="10dp"/>
 
@@ -34,60 +34,36 @@
             android:layout_marginTop="4dp"
             android:layout_marginLeft="5dp"/>
 
-        <TextView
-            android:id="@+id/shipping_text"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/item_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#474747"
-            android:textSize="14dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="10dp"/>
-
-        <TextView
-            android:id="@+id/shipping_amount"
-            android:layout_toRightOf="@+id/shipping_text"
-            android:layout_alignTop="@+id/shipping_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#474747"
-            android:textSize="14dp"
-            android:layout_marginLeft="5dp"/>
-
 
         <TextView
             android:id="@+id/total_amount"
-            android:layout_toLeftOf="@+id/check_out"
-            android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_below="@+id/item_text"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/check_out"
+            android:background="@drawable/button_theme"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="6dp"
             android:layout_marginTop="4dp"
-            android:background="#A2A2A2"
             android:padding="2dp"
-            android:text="Checkout >>"
+            android:text="Checkout!!"
+            android:typeface="serif"
             android:textSize="16dp" />
 
     </RelativeLayout>
-
-
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="5dp"
         android:background="#BABABA" />

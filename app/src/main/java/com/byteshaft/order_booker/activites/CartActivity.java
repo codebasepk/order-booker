@@ -78,7 +78,7 @@ public class CartActivity extends AppCompatActivity {
             int val =  Integer.valueOf(value.replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", ""));
             amount = amount+val;
         }
-        totalAmountTextView.setText(String.valueOf(amount)+ " L.L");
+        totalAmountTextView.setText("Total amount: "+String.valueOf(amount)+ " L.L");
     }
     public void alertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -98,11 +98,11 @@ public class CartActivity extends AppCompatActivity {
 
     class CartAdapter extends ArrayAdapter<String> {
 
-        private int layout;
+        private ArrayList<String> arrayList;
 
         public CartAdapter(Context context, int resource, ArrayList<String> items) {
             super(context, resource, items);
-            layout = resource;
+            this.arrayList = items;
 
         }
 
@@ -120,8 +120,8 @@ public class CartActivity extends AppCompatActivity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.productName.setText(finalItems.get(position));
-            holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(finalItems.get(position)));
+            holder.productName.setText(arrayList.get(position));
+            holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(arrayList.get(position)));
             return convertView;
         }
     }
