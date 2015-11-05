@@ -184,8 +184,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
         Intent upIntent = new Intent(this, ProductsActivity.class);
         switch (item.getItemId()) {
             case R.id.action_checkOut:
+                startActivity(new Intent(getApplicationContext(), CartActivity.class));
 
-
+                break;
             case android.R.id.home:
                 NavUtils.navigateUpTo(this, upIntent);
                 return true;

@@ -32,7 +32,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this.listDataChild = listChildData;
         this.priceMap = price;
         typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(),"fonts/BradBunR.ttf");
-        AppGlobals.initializeOrderHashMap();
     }
 
     @Override
@@ -103,6 +102,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setText(childText);
         priceTextView.setText("price: " + priceMap.get(childText));
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
+        HashMap<String, String> ordersMap = AppGlobals.getFinalOrdersHashMap();
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -110,15 +110,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     System.out.println(listDataChild.get(listDataHeader.get(groupPosition)).get(
                             childPosition));
                     AppGlobals.addOrderToHashMap(listDataChild.get(listDataHeader.
-                            get(groupPosition)).get(childPosition),
+                                    get(groupPosition)).get(childPosition),
                             priceMap.get(listDataChild.get(listDataHeader.get(groupPosition))
                                     .get(childPosition)));
+                    System.out.println(AppGlobals.getFinalOrdersHashMap());
                 } else {
                     AppGlobals.removeOrderFromHashMap(listDataChild.get(listDataHeader.
                             get(groupPosition)).get(childPosition));
+                    System.out.println(AppGlobals.getFinalOrdersHashMap());
                 }
             }
         });
+        System.out.println(ordersMap.containsKey(childText));
+        if (ordersMap.containsKey(childText)) {
+            checkBox.setChecked(true);
+        } else {
+            checkBox.setChecked(false);
+        }
         return convertView;
     }
 
