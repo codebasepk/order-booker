@@ -2,7 +2,6 @@ package com.byteshaft.order_booker.activites;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.content_main);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        Typeface typeFace = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/BradBunR.ttf");
         mNameTextView = (TextView) findViewById(R.id.name_text_view);
         mAddressTextView = (TextView) findViewById(R.id.address_text_view);
         mAddress = (EditText) findViewById(R.id.address_et);
@@ -43,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         mContinueButton = (Button) findViewById(R.id.continue_button);
         mPhoneNumber = (EditText) findViewById(R.id.mobile_editText);
         mobileNumberTextView = (TextView) findViewById(R.id.mobile_text_view);
-        mNameTextView.setTypeface(typeFace);
-        mAddressTextView.setTypeface(typeFace);
-        mContinueButton.setTypeface(typeFace);
-        mobileNumberTextView.setTypeface(typeFace);
+        mNameTextView.setTypeface(AppGlobals.typeface);
+        mAddressTextView.setTypeface(AppGlobals.typeface);
+        mContinueButton.setTypeface(AppGlobals.typeface);
+        mobileNumberTextView.setTypeface(AppGlobals.typeface);
         mHelpers = new Helpers();
         mContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override

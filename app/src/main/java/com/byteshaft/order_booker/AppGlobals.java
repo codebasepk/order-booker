@@ -3,6 +3,7 @@ package com.byteshaft.order_booker;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.provider.Settings;
 
 import com.parse.Parse;
@@ -22,6 +23,7 @@ public class AppGlobals extends Application{
     private static boolean sSnacksSession = false;
     private static boolean sSuperMarketSession = false;
     private static HashMap<String, String> orderHashMap;
+    public static Typeface typeface;
 
     @Override
     public void onCreate() {
@@ -33,6 +35,7 @@ public class AppGlobals extends Application{
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
         installation.put("user", sAndroid_id.trim());
         installation.saveInBackground();
+        typeface = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/BradBunR.ttf");
     }
 
     public static Context getContext() {
