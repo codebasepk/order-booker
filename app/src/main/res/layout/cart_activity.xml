@@ -41,8 +41,9 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:layout_below="@+id/item_text"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/item_text"
+            android:layout_alignStart="@+id/item_text" />
 
         <Button
             android:id="@+id/check_out"
