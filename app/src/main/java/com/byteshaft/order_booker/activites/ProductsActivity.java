@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
 
 
@@ -37,6 +38,7 @@ public class ProductsActivity extends AppCompatActivity {
                                     int position, long id) {
 //                 start activity
                 startActivity(new Intent(getApplicationContext(), ProductsDetailActivity.class));
+                AppGlobals.initializeOrderHashMap();
 
             }
         });
