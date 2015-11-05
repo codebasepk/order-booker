@@ -14,25 +14,20 @@ import java.util.List;
 
 public class ProductsDetailActivity extends AppCompatActivity {
 
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    private ExpandableListAdapter listAdapter;
+    private ExpandableListView expListView;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_detail);
-
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-
         prepareListData();
-
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
-
         // Listview on child click listener
-
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
@@ -55,9 +50,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Expanded",
-                        Toast.LENGTH_SHORT).show();
+                // do nothing when expand
             }
         });
 
@@ -66,17 +59,14 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Collapsed",
-                        Toast.LENGTH_SHORT).show();
-
+                // do nothing when collapse
             }
         });
     }
 
     private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
 
         // Adding child data
         listDataHeader.add("Sandwiches");
@@ -84,7 +74,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataHeader.add("Fruit cocktails");
 
         // Adding child data
-        List<String> sandwichies = new ArrayList<String>();
+        List<String> sandwichies = new ArrayList<>();
         sandwichies.add("Roast beef");
         sandwichies.add("Ham & cheese");
         sandwichies.add("Tuna");
