@@ -94,7 +94,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_items, null);
         }
-
         TextView textListChild = (TextView) convertView.findViewById(R.id.product_name);
         TextView priceTextView = (TextView) convertView.findViewById(R.id.price);
         textListChild.setTypeface(typeFace);
@@ -106,23 +105,26 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                System.out.println(listDataHeader.get(groupPosition));
                 if (buttonView.isChecked()) {
-                    System.out.println(listDataChild.get(listDataHeader.get(groupPosition)).get(
+                    System.out.println(listDataHeader.get(groupPosition)+"_"+listDataChild.get(listDataHeader.get(groupPosition)).get(
                             childPosition));
-                    AppGlobals.addOrderToHashMap(listDataChild.get(listDataHeader.
-                                    get(groupPosition)).get(childPosition),
-                            priceMap.get(listDataChild.get(listDataHeader.get(groupPosition))
+                    AppGlobals.addOrderToHashMap(listDataHeader.get(groupPosition)
+                                    +"_"+listDataChild.get(listDataHeader.get(groupPosition))
+                                    .get(childPosition),priceMap.get(
+                            listDataChild.get(listDataHeader.get(groupPosition))
                                     .get(childPosition)));
                     System.out.println(AppGlobals.getFinalOrdersHashMap());
                 } else {
-                    AppGlobals.removeOrderFromHashMap(listDataChild.get(listDataHeader.
-                            get(groupPosition)).get(childPosition));
+                    AppGlobals.removeOrderFromHashMap(listDataHeader.get(groupPosition)
+                            +"_"+listDataChild.get(listDataHeader.get(groupPosition))
+                            .get(childPosition));
                     System.out.println(AppGlobals.getFinalOrdersHashMap());
                 }
             }
         });
         System.out.println(ordersMap.containsKey(childText));
-        if (ordersMap.containsKey(childText)) {
+        if (ordersMap.containsKey(listDataHeader.get(groupPosition)+"_"+childText) ) {
             checkBox.setChecked(true);
         } else {
             checkBox.setChecked(false);
