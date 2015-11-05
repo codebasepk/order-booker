@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.byteshaft.order_booker.AppGlobals;
@@ -19,14 +21,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listDataChild;
-    Typeface typeFace;
+    private Typeface typeFace;
+    private HashMap<String, String> priceMap;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, List<String>> listChildData,
+                                 HashMap<String, String> price) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listChildData;
+        this.priceMap = price;
         typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(),"fonts/BradBunR.ttf");
+        AppGlobals.initializeOrderHashMap();
     }
 
     @Override
@@ -74,7 +80,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_group, null);
         }
-
         TextView lblListHeader = (TextView) convertView.findViewById(R.id.sub_category);
         lblListHeader.setTypeface(typeFace);
         lblListHeader.setText(headerTitle);
@@ -82,7 +87,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, final ViewGroup parent) {
         final String childText = (String) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
@@ -96,7 +101,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        priceTextView.setText("price: 3000LL");
+        priceTextView.setText("price: " + priceMap.get(childText));
+        CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (buttonView.isChecked()) {
+                    System.out.println(listDataChild.get(listDataHeader.get(groupPosition)).get(
+                            childPosition));
+                    AppGlobals.addOrderToHashMap(listDataChild.get(listDataHeader.
+                            get(groupPosition)).get(childPosition),
+                            priceMap.get(listDataChild.get(listDataHeader.get(groupPosition))
+                                    .get(childPosition)));
+                } else {
+                    AppGlobals.removeOrderFromHashMap(listDataChild.get(listDataHeader.
+                            get(groupPosition)).get(childPosition));
+                }
+            }
+        });
         return convertView;
     }
 
