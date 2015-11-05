@@ -32,6 +32,7 @@ public class CartActivity extends AppCompatActivity {
     private ListView listView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +43,10 @@ public class CartActivity extends AppCompatActivity {
         allValues = new ArrayList<>();
         getProductsFromHashMap();
         itemCount = (TextView) findViewById(R.id.item_count);
+        itemCount.setTypeface(AppGlobals.typeface);
         cartLayout = (RelativeLayout) findViewById(R.id.cart_layout);
         totalAmountTextView = (TextView) findViewById(R.id.total_amount);
+        totalAmountTextView.setTypeface(AppGlobals.typeface);
         listView = (ListView) findViewById(R.id.list_view_cart);
         initializeAllData();
     }
@@ -115,7 +118,11 @@ public class CartActivity extends AppCompatActivity {
                 holder = new ViewHolder();
                 holder.deleteItem = (ImageButton) convertView.findViewById(R.id.delete);
                 holder.productName = (TextView) convertView.findViewById(R.id.product_name);
+                holder.productName.setTypeface(AppGlobals.typeface);
                 holder.productPrice = (TextView) convertView.findViewById(R.id.product_price);
+                holder.productPrice.setTypeface(AppGlobals.typeface);
+                holder.qtyText = (TextView) convertView.findViewById(R.id.quantity_text);
+                holder.qtyText.setTypeface(AppGlobals.typeface);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
@@ -130,6 +137,7 @@ public class CartActivity extends AppCompatActivity {
         public ImageButton deleteItem;
         public TextView productName;
         public TextView productPrice;
+        public TextView qtyText;
     }
 
 
