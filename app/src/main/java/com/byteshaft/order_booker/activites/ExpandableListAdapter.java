@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
 
 import java.util.HashMap;
@@ -15,36 +16,38 @@ import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private Context _context;
-    private List<String> _listDataHeader;
-    private HashMap<String, List<String>> _listDataChild;
+    private Context context;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listDataChild;
+    Typeface typeFace;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
                                  HashMap<String, List<String>> listChildData) {
-        this._context = context;
-        this._listDataHeader = listDataHeader;
-        this._listDataChild = listChildData;
+        this.context = context;
+        this.listDataHeader = listDataHeader;
+        this.listDataChild = listChildData;
+        typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(),"fonts/BradBunR.ttf");
     }
 
     @Override
     public int getGroupCount() {
-        return this._listDataHeader.size();
+        return this.listDataHeader.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+        return this.listDataChild.get(this.listDataHeader.get(groupPosition))
                 .size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return this._listDataHeader.get(groupPosition);
+        return this.listDataHeader.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+        return this.listDataChild.get(this.listDataHeader.get(groupPosition))
                 .get(childPosition);
     }
 
@@ -67,16 +70,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         String headerTitle = (String) getGroup(groupPosition);
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_group, null);
         }
 
-        TextView lblListHeader = (TextView) convertView
-                .findViewById(R.id.lblListHeader);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
+        TextView lblListHeader = (TextView) convertView.findViewById(R.id.sub_category);
+        lblListHeader.setTypeface(typeFace);
         lblListHeader.setText(headerTitle);
-
         return convertView;
     }
 
@@ -85,15 +86,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         final String childText = (String) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_items, null);
+            convertView = layoutInflater.inflate(R.layout.list_items, null);
         }
 
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
-
-        txtListChild.setText(childText);
+        TextView textListChild = (TextView) convertView.findViewById(R.id.product_name);
+        TextView priceTextView = (TextView) convertView.findViewById(R.id.price);
+        textListChild.setTypeface(typeFace);
+        priceTextView.setTypeface(typeFace);
+        textListChild.setText(childText);
+        priceTextView.setText("price: 3000LL");
         return convertView;
     }
 
