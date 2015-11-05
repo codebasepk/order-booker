@@ -99,6 +99,7 @@
         android:id="@+id/spinner1"
         android:layout_width="50dp"
         android:layout_height="40dp"
+        android:entries="@array/quantity"
         android:layout_below="@+id/qty_text"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
