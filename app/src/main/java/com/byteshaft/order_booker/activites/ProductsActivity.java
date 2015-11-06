@@ -38,7 +38,7 @@ public class ProductsActivity extends AppCompatActivity {
                                     int position, long id) {
 //                 start activity
                 startActivity(new Intent(getApplicationContext(), ProductsDetailActivity.class));
-                AppGlobals.initializeOrderHashMap();
+                AppGlobals.initializeHashMap();
 
             }
         });

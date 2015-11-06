@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -23,7 +24,7 @@ import com.byteshaft.order_booker.R;
 
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView itemCount;
     private RelativeLayout cartLayout;
@@ -33,6 +34,7 @@ public class CartActivity extends AppCompatActivity {
     private int amount;
     private ListView listView;
     private View viewLine;
+    private Button mCheckOutButton;
 
 
     @Override
@@ -50,6 +52,8 @@ public class CartActivity extends AppCompatActivity {
         totalAmountTextView.setTypeface(AppGlobals.typeface);
         listView = (ListView) findViewById(R.id.list_view_cart);
         viewLine = findViewById(R.id.viewLine);
+        mCheckOutButton = (Button) findViewById(R.id.check_out);
+        mCheckOutButton.setOnClickListener(this);
         initializeAllData();
     }
 
@@ -91,7 +95,15 @@ public class CartActivity extends AppCompatActivity {
             viewLine.setVisibility(View.VISIBLE);
         }
         for (String key : AppGlobals.getFinalOrdersHashMap().keySet()) {
-            allValues.add(AppGlobals.getFinalOrdersHashMap().get(key));
+            if (AppGlobals.getQuantityHashMap().containsKey(key)) {
+                int value = Integer.valueOf(AppGlobals.getFinalOrdersHashMap().get(key).
+                        replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", "")) *
+                        Integer.valueOf(AppGlobals.getQuantityHashMap().get(key));
+                allValues.add(String.valueOf(value));
+                System.out.println(value);
+            } else {
+                allValues.add(AppGlobals.getFinalOrdersHashMap().get(key));
+            }
         }
         System.out.println(allValues);
         for(String value: allValues) {
@@ -116,10 +128,21 @@ public class CartActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.check_out:
+
+                break;
+        }
+    }
+
     class CartAdapter extends ArrayAdapter<String> {
 
         private ArrayList<String> arrayList;
         private int layoutResource;
+        private ViewHolder holder;
+        private View mView;
 
         public CartAdapter(Context context, int resource, ArrayList<String> items) {
             super(context, resource, items);
@@ -129,7 +152,7 @@ public class CartActivity extends AppCompatActivity {
 
         @Override
         public View getView(final int position, View convertView, final ViewGroup parent) {
-            ViewHolder holder;
+
             if (convertView == null) {
                 LayoutInflater inflater = getLayoutInflater();
                 convertView = inflater.inflate(layoutResource, parent, false);
@@ -139,18 +162,28 @@ public class CartActivity extends AppCompatActivity {
                 holder.productName.setTypeface(AppGlobals.typeface);
                 holder.productPrice = (TextView) convertView.findViewById(R.id.product_price);
                 holder.productPrice.setTypeface(AppGlobals.typeface);
-                holder.qtyText = (TextView) convertView.findViewById(R.id.quantity_text);
-                holder.qtyText.setTypeface(AppGlobals.typeface);
+                holder.quantityTextView = (TextView) convertView.findViewById(R.id.quantity_text_view);
+                holder.quantityTextView.setTypeface(AppGlobals.typeface);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
+            mView = convertView;
             holder.productName.setText(arrayList.get(position).replace("_", "->"));
             holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(arrayList.get(position)));
+            if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
+                holder.quantityTextView
+                        .setText("Quantity: " + AppGlobals.getQuantityHashMap().get(arrayList.get(position)));
+            } else {
+                holder.quantityTextView.setText("Quantity: 1");
+            }
             holder.deleteItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println(arrayList.get(position));
+                    System.out.println(AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position)));
+                    if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
+                        AppGlobals.removeQuantityFromHashMap(arrayList.get(position));
+                    }
                     AppGlobals.removeOrderFromHashMap(arrayList.get(position));
                     finalItems.remove(arrayList.get(position));
                     totalAmountTextView.setText("");
@@ -167,6 +200,6 @@ public class CartActivity extends AppCompatActivity {
         public ImageButton deleteItem;
         public TextView productName;
         public TextView productPrice;
-        public TextView qtyText;
+        public TextView quantityTextView;
     }
 }

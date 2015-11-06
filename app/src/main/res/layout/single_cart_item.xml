@@ -26,25 +26,6 @@
         android:layout_toLeftOf="@+id/delete"
         android:textSize="20dp" />
 
-
-    <TextView
-        android:id="@+id/quantity_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quantity"
-        android:textSize="14sp"
-        android:textColor="#757575"
-        android:layout_alignTop="@+id/product_price"
-        android:layout_centerHorizontal="true" />
-
-    <Spinner
-        android:id="@+id/quantity_spinner"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:entries="@array/quantity"
-        android:layout_below="@+id/quantity_text"
-        android:layout_alignRight="@+id/quantity_text"
-        android:layout_alignEnd="@+id/quantity_text" />
     <TextView
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
@@ -54,5 +35,14 @@
         android:layout_marginTop="10dp"
         android:textColor="#191919"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/quantity_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:layout_alignBottom="@+id/product_price"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

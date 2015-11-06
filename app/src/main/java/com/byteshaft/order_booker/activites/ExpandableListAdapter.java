@@ -5,9 +5,11 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.byteshaft.order_booker.AppGlobals;
@@ -88,7 +90,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, final ViewGroup parent) {
         final String childText = (String) getChild(groupPosition, childPosition);
-
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -96,38 +97,68 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
         TextView textListChild = (TextView) convertView.findViewById(R.id.product_name);
         TextView priceTextView = (TextView) convertView.findViewById(R.id.price);
+        Spinner spinner = (Spinner) convertView.findViewById(R.id.quantity_spinner);
+        spinner.setSelection(0);
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
         priceTextView.setText("price: " + priceMap.get(childText));
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
-        HashMap<String, String> ordersMap = AppGlobals.getFinalOrdersHashMap();
+        HashMap<String, String> orderMap = AppGlobals.getFinalOrdersHashMap();
+        HashMap<String, Integer> quantityMap = AppGlobals.getQuantityHashMap();
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 System.out.println(listDataHeader.get(groupPosition));
                 if (buttonView.isChecked()) {
-                    System.out.println(listDataHeader.get(groupPosition)+"_"+listDataChild.get(listDataHeader.get(groupPosition)).get(
+                    System.out.println(listDataHeader.get(groupPosition) + "_" + listDataChild.get(listDataHeader.get(groupPosition)).get(
                             childPosition));
                     AppGlobals.addOrderToHashMap(listDataHeader.get(groupPosition)
-                                    +"_"+listDataChild.get(listDataHeader.get(groupPosition))
-                                    .get(childPosition),priceMap.get(
+                            + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                            .get(childPosition), priceMap.get(
                             listDataChild.get(listDataHeader.get(groupPosition))
                                     .get(childPosition)));
                     System.out.println(AppGlobals.getFinalOrdersHashMap());
                 } else {
                     AppGlobals.removeOrderFromHashMap(listDataHeader.get(groupPosition)
-                            +"_"+listDataChild.get(listDataHeader.get(groupPosition))
+                            + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                            .get(childPosition));
+                    AppGlobals.removeQuantityFromHashMap(listDataHeader.get(groupPosition)
+                            + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition));
                     System.out.println(AppGlobals.getFinalOrdersHashMap());
                 }
             }
         });
-        System.out.println(ordersMap.containsKey(childText));
-        if (ordersMap.containsKey(listDataHeader.get(groupPosition)+"_"+childText) ) {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (Integer.valueOf(parent.getItemAtPosition(position).toString()) > 1) {
+                    AppGlobals.addQuantityToHashMap(listDataHeader.get(groupPosition) + "_" + listDataChild.get(listDataHeader.get(groupPosition)).get(
+                            childPosition), Integer.valueOf(parent.getItemAtPosition(position).toString()));
+                    System.out.println(AppGlobals.getQuantityHashMap());
+                } else if (Integer.valueOf(parent.getItemAtPosition(position).toString()) ==1
+                        && AppGlobals.getQuantityHashMap().containsKey(listDataHeader.get(groupPosition) + "_" + listDataChild.get(listDataHeader.get(groupPosition)).get(
+                        childPosition))) {
+                    AppGlobals.removeQuantityFromHashMap(listDataHeader.get(groupPosition) + "_" + listDataChild.get(listDataHeader.get(groupPosition)).get(
+                            childPosition));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        if (orderMap.containsKey(listDataHeader.get(groupPosition) + "_" + childText)) {
             checkBox.setChecked(true);
         } else {
             checkBox.setChecked(false);
+        }
+
+        if (quantityMap.containsKey(listDataHeader.get(groupPosition) + "_" + childText)) {
+            spinner.setSelection((AppGlobals.getQuantityHashMap().
+                    get(listDataHeader.get(groupPosition) + "_" + childText)-1));
         }
         return convertView;
     }
