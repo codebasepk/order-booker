@@ -24,6 +24,7 @@ public class AppGlobals extends Application{
     private static boolean sSuperMarketSession = false;
     private static HashMap<String, String> orderHashMap;
     public static Typeface typeface;
+    private static HashMap<String, Integer> quantityHashMap;
 
     @Override
     public void onCreate() {
@@ -62,8 +63,9 @@ public class AppGlobals extends Application{
         return sSuperMarketSession;
     }
 
-    public static void initializeOrderHashMap() {
+    public static void initializeHashMap() {
         orderHashMap =  new HashMap<>();
+        quantityHashMap = new HashMap<>();
     }
     public static void addOrderToHashMap(String key, String value) {
         orderHashMap.put(key, value);
@@ -75,5 +77,17 @@ public class AppGlobals extends Application{
 
     public static HashMap<String , String> getFinalOrdersHashMap() {
         return orderHashMap;
+    }
+
+    public static void addQuantityToHashMap(String key, int value) {
+        quantityHashMap.put(key, value);
+    }
+
+    public static void removeQuantityFromHashMap(String key) {
+        quantityHashMap.remove(key);
+    }
+
+    public static HashMap<String, Integer> getQuantityHashMap() {
+        return quantityHashMap;
     }
 }

@@ -1,6 +1,7 @@
 package com.byteshaft.order_booker.activites;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -145,7 +146,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                 } else if (dateSelected || selectedNow) {
                     System.out.println(deliveryTime);
                     String[] array = new String[] {orderProduct, from, deliveryTime};
-                    new CheckInternet().execute(array);
+                    new CheckInternet(OrderActivity.this).execute(array);
                     return true;
                 }
 
@@ -231,10 +232,17 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
 
     class CheckInternet extends AsyncTask<String, String, String> {
 
+        Activity mActivity;
+
+        public CheckInternet(Activity activity) {
+            this.mActivity = activity;
+
+        }
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mProgressDialog = new ProgressDialog(OrderActivity.this);
+            mProgressDialog = new ProgressDialog(mActivity);
             mProgressDialog.setMessage("Processing");
             mProgressDialog.setIndeterminate(false);
             mProgressDialog.setCancelable(false);
