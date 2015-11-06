@@ -25,6 +25,7 @@ public class AppGlobals extends Application{
     private static HashMap<String, String> orderHashMap;
     public static Typeface typeface;
     private static HashMap<String, Integer> quantityHashMap;
+    private static String currentSelectedStore = "";
 
     @Override
     public void onCreate() {
@@ -90,4 +91,13 @@ public class AppGlobals extends Application{
     public static HashMap<String, Integer> getQuantityHashMap() {
         return quantityHashMap;
     }
+
+    public static void setCurrentSelectedStore(String store) {
+        currentSelectedStore = store;
+    }
+
+    public static String getCurrentSelectedStore() {
+        return currentSelectedStore;
+    }
 }
+

@@ -37,6 +37,7 @@ public class ProductsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 //                 start activity
+                AppGlobals.setCurrentSelectedStore("Adonis");
                 startActivity(new Intent(getApplicationContext(), ProductsDetailActivity.class));
                 AppGlobals.initializeHashMap();
 

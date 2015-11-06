@@ -132,6 +132,21 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.check_out:
+                int quantity;
+                StringBuilder stringBuilder = new StringBuilder();
+                for (String product : AppGlobals.getFinalOrdersHashMap().keySet()) {
+                    if (AppGlobals.getQuantityHashMap().containsKey(product)) {
+                        quantity = AppGlobals.getQuantityHashMap().get(product);
+                        stringBuilder.append(quantity+" "+product.replace("_", "->") + ",");
+                    } else {
+                        stringBuilder.append("1 "+product.replace("_", "->")+",");
+                    }
+
+                }
+                System.out.println(stringBuilder);
+                String[] array = new String[] {stringBuilder.toString(),
+                        AppGlobals.getCurrentSelectedStore(), ""};
+                new SendDataTask(CartActivity.this).execute(array);
 
                 break;
         }
@@ -142,7 +157,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         private ArrayList<String> arrayList;
         private int layoutResource;
         private ViewHolder holder;
-        private View mView;
 
         public CartAdapter(Context context, int resource, ArrayList<String> items) {
             super(context, resource, items);
@@ -168,7 +182,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            mView = convertView;
             holder.productName.setText(arrayList.get(position).replace("_", "->"));
             holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(arrayList.get(position)));
             if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
