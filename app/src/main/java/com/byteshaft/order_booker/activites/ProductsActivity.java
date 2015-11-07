@@ -40,7 +40,6 @@ public class ProductsActivity extends AppCompatActivity {
                 AppGlobals.setCurrentSelectedStore("Adonis");
                 startActivity(new Intent(getApplicationContext(), ProductsDetailActivity.class));
                 AppGlobals.initializeHashMap();
-
             }
         });
     }
