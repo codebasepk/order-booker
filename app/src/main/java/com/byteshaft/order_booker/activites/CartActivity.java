@@ -143,7 +143,9 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 String[] array = new String[] {stringBuilder.toString(),
                         AppGlobals.getCurrentSelectedStore(), ""};
-                new SendDataTask(CartActivity.this).execute(array);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("cart_data", array);
+                startActivity(intent);
                 break;
         }
     }

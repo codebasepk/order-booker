@@ -81,8 +81,11 @@ public class SendDataTask extends AsyncTask<String, String, String> {
             Toast.makeText(mActivity, "Internet not available", Toast.LENGTH_SHORT).show();
         } else {
             alertDialog();
+            AppGlobals.setSnacksSessionStatus(false);
+            AppGlobals.reInitializeHaspMapToClearThem();
         }
     }
+
     public void alertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mActivity);
         alertDialogBuilder.setTitle("Confirmation");

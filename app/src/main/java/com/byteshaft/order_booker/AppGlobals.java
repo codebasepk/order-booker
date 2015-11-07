@@ -99,5 +99,11 @@ public class AppGlobals extends Application{
     public static String getCurrentSelectedStore() {
         return currentSelectedStore;
     }
+
+    public static void reInitializeHaspMapToClearThem() {
+        quantityHashMap = new HashMap<>();
+        orderHashMap = new HashMap<>();
+
+    }
 }
 
