@@ -80,7 +80,7 @@
             android:layout_marginRight="6dp"
             android:layout_marginTop="4dp"
             android:padding="2dp"
-            android:text="Checkout!!"
+            android:text="Buy!! ➤"
             android:typeface="serif"
             android:textSize="16dp" />
 
