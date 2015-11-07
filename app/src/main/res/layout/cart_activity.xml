@@ -34,6 +34,7 @@
         android:id="@+id/cart_layout"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
+        android:background="#d3d3d3"
         android:layout_alignParentBottom="true">
 
         <TextView
@@ -83,7 +84,5 @@
             android:text="Buy!! ➤"
             android:typeface="serif"
             android:textSize="16sp" />
-
     </RelativeLayout>
-
 </RelativeLayout>
