@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent upIntent = new Intent(this, MainActivity.class);
+        Intent upIntent = new Intent(this, PreMainActivity.class);
         Intent cartIntent = new Intent(this, CartActivity.class);
         switch (item.getItemId()) {
             case android.R.id.home:

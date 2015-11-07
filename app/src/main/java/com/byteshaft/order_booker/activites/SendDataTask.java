@@ -85,6 +85,7 @@ public class SendDataTask extends AsyncTask<String, String, String> {
             AppGlobals.reInitializeHaspMapToClearThem();
         }
     }
+
     public void alertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mActivity);
         alertDialogBuilder.setTitle("Confirmation");

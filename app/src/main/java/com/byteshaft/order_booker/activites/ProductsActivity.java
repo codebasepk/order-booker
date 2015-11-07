@@ -55,7 +55,6 @@ public class ProductsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 NavUtils.navigateUpTo(this, upIntent);
-                System.out.println("OK");
                 return true;
         }
         return super.onOptionsItemSelected(item);
