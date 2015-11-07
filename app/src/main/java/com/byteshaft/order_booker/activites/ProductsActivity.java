@@ -52,10 +52,11 @@ public class ProductsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent upIntent = new Intent(getApplicationContext(), OrderActivity.class);
+        Intent upIntent = new Intent(getApplicationContext(), PreMainActivity.class);
         switch (item.getItemId()) {
             case android.R.id.home:
                 NavUtils.navigateUpTo(this, upIntent);
+                System.out.println("OK");
                 return true;
         }
         return super.onOptionsItemSelected(item);

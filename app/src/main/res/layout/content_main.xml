@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_border"
         android:ems="12"
+        android:inputType="textPersonName"
         android:singleLine="false"
         android:id="@+id/name_et"
         android:padding="4dp"
@@ -46,7 +47,7 @@
         android:layout_alignStart="@+id/address_et" />
 
     <TextView
-        android:text="Address"
+        android:text="Address(in details)"
         android:textColor="#ED1C24"
         android:textSize="25sp"
         android:id="@+id/address_text_view"
@@ -93,7 +94,6 @@
         android:layout_below="@+id/mobile_text_view" />
 
     <Button
-        android:text="Continue"
         android:textColor="@android:color/white"
         android:background="@color/red"
         android:textStyle="bold"
@@ -111,6 +111,7 @@
         android:layout_height="150dp"
         android:background="@drawable/bike"
         android:id="@+id/imageView2"
+        android:layout_alignLeft="@+id/imageView"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/mobile_editText"
         android:layout_alignEnd="@+id/mobile_editText" />
