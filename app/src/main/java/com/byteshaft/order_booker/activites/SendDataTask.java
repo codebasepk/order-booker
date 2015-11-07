@@ -17,9 +17,7 @@ import com.parse.ParseQuery;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by s9iper1 on 11/6/15.
- */
+
 public class SendDataTask extends AsyncTask<String, String, String> {
 
     private Activity mActivity;
