@@ -86,6 +86,7 @@
         android:layout_height="180dp"
         android:background="@drawable/bike"
         android:id="@+id/imageView2"
+        android:layout_below="@+id/custom_super_market_button"
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
