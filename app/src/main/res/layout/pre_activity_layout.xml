@@ -17,10 +17,11 @@
         android:clickable="true"
         android:id="@+id/snack_custom_button"
         android:background="@drawable/button_theme"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="14dp"
         android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/custom_super_market_button"
         android:layout_alignStart="@+id/custom_super_market_button">
@@ -29,7 +30,7 @@
             android:layout_alignParentLeft="true"
             android:textColor="@android:color/white"
             android:text="Snacks"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -38,8 +39,8 @@
             android:text="Restaurants"
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
-            android:layout_marginTop="20dp"
-            android:textSize="22sp"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
             android:layout_below="@id/snacks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -49,9 +50,10 @@
         android:clickable="true"
         android:id="@+id/custom_super_market_button"
         android:background="@drawable/button_theme"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
         android:padding="10dp"
         android:layout_below="@+id/snack_custom_button"
         android:layout_centerHorizontal="true">
@@ -59,7 +61,7 @@
             android:id="@+id/super_market"
             android:layout_alignParentLeft="true"
             android:text="Supermarket"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textColor="@android:color/white"
             android:layout_centerVertical="true"
             android:src="@android:drawable/ic_input_add"
@@ -68,7 +70,7 @@
         <TextView
             android:id="@+id/others"
             android:text="Others"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textColor="@android:color/white"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
@@ -79,8 +81,8 @@
     </RelativeLayout>
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_width="220dp"
+        android:layout_height="170dp"
         android:background="@drawable/bike"
         android:id="@+id/imageView2"
         android:layout_alignParentBottom="true"
