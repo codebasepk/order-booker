@@ -100,12 +100,10 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                         replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", "")) *
                         Integer.valueOf(AppGlobals.getQuantityHashMap().get(key));
                 allValues.add(String.valueOf(value));
-                System.out.println(value);
             } else {
                 allValues.add(AppGlobals.getFinalOrdersHashMap().get(key));
             }
         }
-        System.out.println(allValues);
         for(String value: allValues) {
             int val =  Integer.valueOf(value.replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", ""));
             amount = amount+val;
@@ -143,11 +141,9 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                     }
 
                 }
-                System.out.println(stringBuilder);
                 String[] array = new String[] {stringBuilder.toString(),
                         AppGlobals.getCurrentSelectedStore(), ""};
                 new SendDataTask(CartActivity.this).execute(array);
-
                 break;
         }
     }
@@ -166,7 +162,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public View getView(final int position, View convertView, final ViewGroup parent) {
-
             if (convertView == null) {
                 LayoutInflater inflater = getLayoutInflater();
                 convertView = inflater.inflate(layoutResource, parent, false);
@@ -178,12 +173,25 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 holder.productPrice.setTypeface(AppGlobals.typeface);
                 holder.quantityTextView = (TextView) convertView.findViewById(R.id.quantity_text_view);
                 holder.quantityTextView.setTypeface(AppGlobals.typeface);
+                holder.itemTotalAmount = (TextView) convertView.findViewById(R.id.item_amount);
+                holder.itemTotalAmount.setTypeface(AppGlobals.typeface);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
             holder.productName.setText(arrayList.get(position).replace("_", "->"));
             holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(arrayList.get(position)));
+            if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
+                int singleItemAmount = Integer.valueOf(AppGlobals.getFinalOrdersHashMap()
+                        .get(arrayList.get(position)).
+                                replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", ""));
+                holder.itemTotalAmount.setText("Total: "+ (singleItemAmount * AppGlobals.getQuantityHashMap()
+                        .get(arrayList.get(position)))+ "L.L");
+            } else {
+                holder.itemTotalAmount.setText("Total: " + (AppGlobals.getFinalOrdersHashMap()
+                        .get(arrayList.get(position))));
+
+            }
             if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
                 holder.quantityTextView
                         .setText("Quantity: " + AppGlobals.getQuantityHashMap().get(arrayList.get(position)));
@@ -214,5 +222,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         public TextView productName;
         public TextView productPrice;
         public TextView quantityTextView;
+        public TextView itemTotalAmount;
     }
 }

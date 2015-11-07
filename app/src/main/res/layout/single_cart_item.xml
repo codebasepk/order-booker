@@ -24,14 +24,14 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/delete"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_name"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:textColor="#191919"
         android:textSize="20sp" />
@@ -42,7 +42,33 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textColor="#757575"
-        android:layout_alignBottom="@+id/product_price"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBottom="@+id/view2"
+        android:layout_alignLeft="@+id/product_name"
+        android:layout_alignStart="@+id/product_name"
+        android:layout_marginLeft="79dp"
+        android:layout_marginStart="79dp" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_amount"
+        android:layout_below="@+id/product_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/quantity_text_view"
+        android:background="#E6E6E6" />
+
+
+    <TextView
+        android:id="@+id/item_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_name"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/view2"
+        android:textColor="#191919"
+        android:textSize="16sp" />
 
 </RelativeLayout>

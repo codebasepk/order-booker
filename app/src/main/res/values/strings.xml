@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">YALLA JEYE!!</string>
     <string name="action_done">confirm</string>
+    <string name="total">Total: </string>
+    <string name="currency"> L.L</string>
 </resources>

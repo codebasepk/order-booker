@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
                             mPhoneNumber.getText().toString(), mAddress.getText().toString());
                     if (AppGlobals.getSnacksSessionStatus() &&
                             !AppGlobals.getSuperMarketSessionStatus()) {
-                        startActivity(intent);
+                        startActivity(new Intent(getApplicationContext(), ProductsActivity.class));
                     } else if (AppGlobals.getSuperMarketSessionStatus() &&
                             !AppGlobals.getSnacksSessionStatus()) {
-                        startActivity(new Intent(getApplicationContext(), ProductsActivity.class));
+                        startActivity(intent);
 
                     }
 
