@@ -63,7 +63,7 @@ public class ProductsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent upIntent = new Intent(getApplicationContext(), PreMainActivity.class);
-        startActivity(upIntent);
+        Intent intent = new Intent(getApplicationContext(), PreMainActivity.class);
+        startActivity(intent);
     }
 }
