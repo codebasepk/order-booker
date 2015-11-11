@@ -28,6 +28,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activites.PreMainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,11 +36,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activites.MainActivity" />
-        <activity android:name=".activites.OrderActivity" />
-        <activity android:name=".activites.ProductsActivity" />
-        <activity android:name=".activites.CartActivity"/>
-        <service android:name="com.parse.PushService" />
+        <activity android:name=".activites.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.OrderActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.ProductsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activites.CartActivity" android:screenOrientation="portrait"/>
+        <service android:name="com.parse.PushService"  />
         <!-- com.parse.ParsePushBroadcastReceiver for default notification -->
         <receiver
             android:name="com.parse.ParsePushBroadcastReceiver"
