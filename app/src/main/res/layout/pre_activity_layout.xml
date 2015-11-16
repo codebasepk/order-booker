@@ -5,9 +5,9 @@
     android:background="#FFFFFF" >
 
     <ImageView
-        android:layout_marginTop="3dp"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
+        android:layout_marginTop="3dip"
+        android:layout_width="120dip"
+        android:layout_height="100dip"
         android:background="@drawable/background_design"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
@@ -17,11 +17,11 @@
         android:clickable="true"
         android:id="@+id/snack_custom_button"
         android:background="@drawable/button_theme"
-        android:layout_width="150dp"
+        android:layout_width="150dip"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="10dip"
         android:layout_centerVertical="true"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="14dip"
         android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/custom_super_market_button"
         android:layout_alignStart="@+id/custom_super_market_button">
@@ -40,7 +40,7 @@
             android:text="Restaurants"
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="15dip"
             android:textSize="25sp"
             android:layout_below="@id/snacks"
             android:layout_width="wrap_content"
@@ -51,11 +51,11 @@
         android:clickable="true"
         android:id="@+id/custom_super_market_button"
         android:background="@drawable/button_theme"
-        android:layout_width="150dp"
+        android:layout_width="150dip"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
+        android:layout_marginTop="20dip"
+        android:padding="10dip"
         android:layout_below="@+id/snack_custom_button"
         android:layout_centerHorizontal="true">
         <TextView
@@ -73,7 +73,7 @@
             android:text="Others"
             android:textSize="25sp"
             android:textColor="@android:color/white"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="20dip"
             android:layout_alignParentRight="true"
             android:textAppearance="?android:attr/textAppearanceButton"
             android:layout_below="@id/super_market"
@@ -82,12 +82,11 @@
     </RelativeLayout>
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/bike"
         android:id="@+id/imageView2"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/custom_super_market_button"
         android:layout_alignRight="@+id/custom_super_market_button"
         android:layout_alignEnd="@+id/custom_super_market_button"
         android:layout_alignLeft="@+id/imageView"
