@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
 
 import java.util.ArrayList;
@@ -37,12 +39,11 @@ public class ProductsDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_detail);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        addPriceDetailsToHashMap();
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        prepareListDataForAdonis();
-        listAdapter = new ExpandableListAdapter(this, listDataHeaderForAdonis, listDataChildForAdonis, priceHashMap);
-        expListView.setAdapter(listAdapter);
+        expListView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
         // Listview on child click listener
+        loadSpecificData(AppGlobals.getCurrentSelectedStore());
+        System.out.println(AppGlobals.getCurrentSelectedStore());
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
@@ -77,6 +78,33 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 // do nothing when collapse
             }
         });
+    }
+
+    private void loadSpecificData(String restaurant) {
+        switch (restaurant) {
+            case "Adonis":
+                addPriceDetailsToHashMap();
+                prepareListDataForAdonis();
+                listAdapter = new ExpandableListAdapter(this, listDataHeaderForAdonis,
+                        listDataChildForAdonis, priceHashMap);
+                expListView.setAdapter(listAdapter);
+                break;
+            case "latour":
+                addPriceDetailsToHashMapForLatour();
+                prepareListDataForLatour();
+                listAdapter = new ExpandableListAdapter(listDataHeaderForLatour,
+                        listDataChildForLatour, newPriceHashMap, getApplicationContext());
+                expListView.setAdapter(listAdapter);
+                break;
+            case "dip N dip":
+                break;
+            case "Subz":
+                break;
+            case "massad":
+                break;
+            case "ricaro_snack":
+                break;
+        }
     }
 
     private void addPriceDetailsToHashMap() {
@@ -120,6 +148,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
     }
 
     private void addPriceDetailsToHashMapForLatour() {
+        newPriceHashMap = new HashMap<>();
         newPriceHashMap.put("Pizza  Marguerita",new String[] {"7000", "9000", "(Tomato sauce, Mozzarella cheese, oregano)"});
         newPriceHashMap.put("Pizza 3 Fromages", new String[]{"7500", "10000", "(Tomato sauce, 3 cheese mix)" });
         newPriceHashMap.put("Pizza Vegetarian", new String[]{"8500", "11000", "(Tomato sauce, artichokes, corn, mushrooms, olives, green pepper, cheese)"});
@@ -209,8 +238,6 @@ public class ProductsDetailActivity extends AppCompatActivity {
         pizza.add("Pizza  Jambon / Dinde");
         pizza.add("Pizza   Pepperoni");
         pizza.add("Pizza   Mexichicken");
-
-
         listDataChildForLatour.put(listDataHeaderForLatour.get(0), pizza);
     }
 
