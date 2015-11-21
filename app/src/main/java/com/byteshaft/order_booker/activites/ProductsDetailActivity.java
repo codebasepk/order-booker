@@ -158,7 +158,46 @@ public class ProductsDetailActivity extends AppCompatActivity {
         newPriceHashMap.put("Chicken Breast", new String[]{"15000"});
         newPriceHashMap.put("Chicken Escalope", new String[]{"16000"});
         newPriceHashMap.put("Chicken Fungi", new String[]{"17000"});
-        newPriceHashMap.put("", new String[]{});
+
+        // Mana’ish
+        newPriceHashMap.put("Zaatar", new String[]{"1000"});
+        newPriceHashMap.put("Zaatar light", new String[]{"1500"});
+        newPriceHashMap.put("Zaatar & Labneh", new String[]{"2000"});
+        newPriceHashMap.put("Zaatar & Cheese", new String[]{"3000"});
+        newPriceHashMap.put("Cheese", new String[]{"3000"});
+        newPriceHashMap.put("Spinach", new String[]{"2500"});
+        newPriceHashMap.put("Keshek", new String[]{"2000"});
+        newPriceHashMap.put("Akkawi", new String[]{"3000"});
+        newPriceHashMap.put("Halloum", new String[]{"3000"});
+        newPriceHashMap.put("Bulgari", new String[]{"3000"});
+        newPriceHashMap.put("Bulgari harra", new String[]{"3000"});
+        newPriceHashMap.put("Cheese Mix", new String[]{"4000"});
+        newPriceHashMap.put("Labneh", new String[]{"3000"});
+        newPriceHashMap.put("Lahme & Kawarma", new String[]{"4000"});
+        newPriceHashMap.put("Lahme  b3ajin", new String[]{"3000"});
+        newPriceHashMap.put("Lahme b3ajin & Cheese", new String[]{"4000"});
+        newPriceHashMap.put("Pesto Cheese", new String[]{"3500"});
+        newPriceHashMap.put("Feta Mix", new String[]{"3500"});
+        newPriceHashMap.put("Turkey & Cheese", new String[] {"4000"});
+        newPriceHashMap.put("Ham & Cheese", new String[] {"4000"});
+        newPriceHashMap.put("Salami & Cheese", new String[] {"4000"});
+        newPriceHashMap.put("Hotdog & Cheese", new String[] {"4000"});
+        newPriceHashMap.put("La Tour Special", new String[] {"4000"});
+        newPriceHashMap.put("Soujouk & Cheese", new String[] {"5000"});
+        newPriceHashMap.put("Halloum Bacon", new String[] {"5000"});
+        newPriceHashMap.put("Chocoba", new String[] {"5000"});
+
+        // Drinks
+        newPriceHashMap.put("Pepsi", new String[] {"1000"});
+        newPriceHashMap.put("7up", new String[] {"1000"});
+        newPriceHashMap.put("Water Small", new String[] {"500"});
+
+        /////////////////////////// Latour End ////////////////////////////////
+
+        newPriceHashMap.put("", new String[] {""});
+
+
+
 
 
     }
@@ -276,10 +315,46 @@ public class ProductsDetailActivity extends AppCompatActivity {
         platters.add("Chicken Escalope");
         platters.add("Chicken Fungi");
 
+        /// Mana’ish from Latour
+        List<String> manaish = new ArrayList<>();
+
+        manaish.add("Zaatar");
+        manaish.add("Zaatar light");
+        manaish.add("Zaatar & Labneh");
+        manaish.add("Cheese");
+        manaish.add("Spinach");
+        manaish.add("Keshek");
+        manaish.add("Akkawi");
+        manaish.add("Halloum");
+        manaish.add("Bulgari");
+        manaish.add("Bulgari harra");
+        manaish.add("Cheese Mix");
+        manaish.add("Labneh");
+        manaish.add("Lahme & Kawarma");
+        manaish.add("Lahme  b3ajin");
+        manaish.add("Lahme b3ajin & Cheese");
+        manaish.add("Pesto Cheese");
+        manaish.add("Feta Mix");
+        manaish.add("Turkey & Cheese");
+        manaish.add("Ham & Cheese");
+        manaish.add("Salami & Cheese");
+        manaish.add("Hotdog & Cheese");
+        manaish.add("La Tour Special");
+        manaish.add("Soujouk & Cheese");
+        manaish.add("Halloum Bacon");
+        manaish.add("Chocoba");
+
+        //// Drinks
+        List<String> drinks = new ArrayList<>();
+        drinks.add("Pepsi");
+        drinks.add("7up");
+        drinks.add("Water");
 
         listDataChildForLatour.put(listDataHeaderForLatour.get(0), pizza);
         listDataChildForLatour.put(listDataHeaderForLatour.get(1), pastaFiesta);
         listDataChildForLatour.put(listDataHeaderForLatour.get(2), hotSandwchies);
+        listDataChildForLatour.put(listDataHeaderForLatour.get(3), manaish);
+        listDataChildForLatour.put(listDataHeaderForLatour.get(4), drinks);
     }
 
     @Override
