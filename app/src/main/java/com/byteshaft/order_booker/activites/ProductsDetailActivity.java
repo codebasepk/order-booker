@@ -36,6 +36,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private List<String> listDataHeaderForMassaad;
     private HashMap<String, List<String>> listDataChildForMassaad;
 
+    // for Subz
+    private List<String> listDataHeaderForSubz;
+    private HashMap<String, List<String>> listDataChildForSubz;
+
     private HashMap<String, String> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
 
@@ -272,7 +276,53 @@ public class ProductsDetailActivity extends AppCompatActivity {
         newPriceHashMap.put("Laymounada", new String[] {"4000"});
         newPriceHashMap.put("May kbiré", new String[] {"2000"});
         newPriceHashMap.put("May zghiré", new String[] {"1000"});
-        newPriceHashMap.put("3iran  ", new String[] {"2000"});
+        newPriceHashMap.put("3iran", new String[] {"2000"});
+
+        ///////////////////////// Massaad Ended //////////////////////
+
+
+        ///////////////////////// SUBZ Started //////////////////////
+
+        newPriceHashMap.put("Chicken Caesar", new String[] {"9000", "", "(Chicken, Iceberg, croutons, parmesan cheese)"});
+        newPriceHashMap.put("Chef Salad", new String[] {"8000", "", "(Ham & cheese, chicken, iceberg, cherry tomato, corn)"});
+        newPriceHashMap.put("Crab Salad", new String[] {"8000", "", "(Crab sticks, iceberg, pineapple, carrots, corn)"});
+        newPriceHashMap.put("Tuna Pasta Salad", new String[] {"8000", "", "(Tuna, olives, pasta, fresh mushroom, cherry tomato, corn, iceberg)"});
+        newPriceHashMap.put("Subz Salad", new String[] {"9000", "", "(Iceberg, cucumber, fresh mushroom, cherry tomato, thym, black olives, feta cheese, dried grapes walnuts)"});
+
+        // burgers
+        newPriceHashMap.put("Classic burger", new String[] {"5000", "", "(Beef patty, coleslaw, tomato, onion, French fries, ketchup, mustard)"});
+        newPriceHashMap.put("Subz Burger", new String[] {"6000", "", "(Beef patty, mushroom, onion, cheese, our home made special sauce)"});
+        newPriceHashMap.put("Chicken Burger", new String[] {"5500", "", "(Chicken patty, iceberg, pickles, French fries, garlic mayo)"});
+
+        /// SUBz SPECIAL  :
+
+        newPriceHashMap.put("Fajitas", new String[] {"6500", "", "(Chicken marinated, mushroom, onion, green pepper, mayo, mozzarella, iceberg)"});
+        newPriceHashMap.put("Philadelphia", new String[] {"6500", "", "(Steak marinated, mushroom, onion, green pepper, mozzarella, mayo sauce)"});
+        newPriceHashMap.put("Francisco", new String[] {"6000", "", "(Marinated chicken, mozzarella, corn, pickles, iceberg, soya sauce, mayo)"});
+        newPriceHashMap.put("Chicken Sub", new String[] {"6000", "", "(Marinated chicken,  mozzarella, pickles, iceberg, garlic mayo)"});
+        newPriceHashMap.put("Mexican Chicken", new String[] {"6500", "", "(Marinated chicken, cheddar cheese, green & red pepper,  corn, onion, spicy, home made sauce,mozzarella)"});
+        newPriceHashMap.put("Chicken Escalope", new String[] {"6000", "", "(Breaded fried chicken, coleslaw, French fries, pickles, garlic)"});
+        newPriceHashMap.put("Torpedo", new String[] {"6500", "", "(Marinated chicken, mushroom, onion, cheese, iceberg, pickles, fries, garlic mayo)"});
+        newPriceHashMap.put("Subz Steak", new String[] {"6500", "", "(Marinated steak, hot paste, onion, mushroom, cheese, home made sauce)"});
+        newPriceHashMap.put("Submarine", new String[] {"6500", "", "(Ham & cheese, salami, iceberg, pickles, tomato, mayo)"});
+        newPriceHashMap.put("Taouk", new String[] {"5500", "", "(Chicken, garlic, pickles, French fries, coleslaw)"});
+        newPriceHashMap.put("Crispy", new String[] {"6500", "", "(Breaded chicken, pickles, lettuce, fries, turkey, cheese, home made sauce)"});
+        newPriceHashMap.put("Potato", new String[] {"3000", "", ""});
+        newPriceHashMap.put("Crispy Plat", new String[] {"8000", "", "(4 pieces crispy chicken, coleslaw, fries)"});
+
+        // SUBZ FRIES :
+        newPriceHashMap.put("French Fries", new String[] {"4000"});
+        newPriceHashMap.put("Wedges", new String[] {"5000"});
+        newPriceHashMap.put("Twister", new String[] {"Twister"});
+
+        // drinks
+        newPriceHashMap.put("Pepsi", new String[] {"1000"});
+        newPriceHashMap.put("Seven Up", new String[] {"1000"});
+        newPriceHashMap.put("Mirinda", new String[] {"1000"});
+        newPriceHashMap.put("Water Small", new String[] {"500"});
+        newPriceHashMap.put("Water Big", new String[] {"1000"});
+        newPriceHashMap.put("Beer Almaza", new String[] {"2000"});
+        newPriceHashMap.put("Ice Tea", new String[] {"1500"});
 
     }
 
@@ -516,17 +566,74 @@ public class ProductsDetailActivity extends AppCompatActivity {
         softDrinks.add("May zghiré");
         softDrinks.add("3iran");
 
-
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(0), salatat);
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(1), mou2abbalet);
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(2), sandwishet);
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(3), s7oun);
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(3), softDrinks);
 
-
     }
 
-    @Override
+    private void preparedListDataForSubz() {
+
+        listDataHeaderForSubz = new ArrayList<>();
+        listDataChildForSubz = new HashMap<>();
+
+        // salads
+        List<String> salads = new ArrayList<>();
+        salads.add("Chicken Caesar");
+        salads.add("Chef Salad");
+        salads.add("Crab Salad");
+        salads.add("Tuna Pasta Salad");
+        salads.add("Subz Salad");
+
+
+        // Burgers
+        List<String> burgers = new ArrayList<>();
+        burgers.add("Classic burger");
+        burgers.add("Subz Burger");
+        burgers.add("Chicken Burger");
+
+        // SUBz SPECIAL
+        List<String> subzSpecial = new ArrayList<>();
+        subzSpecial.add("Fajitas");
+        subzSpecial.add("Philadelphia");
+        subzSpecial.add("Francisco");
+        subzSpecial.add("Chicken Sub");
+        subzSpecial.add("Mexican Chicken");
+        subzSpecial.add("Chicken Escalope");
+        subzSpecial.add("Torpedo");
+        subzSpecial.add("Subz  Steak");
+        subzSpecial.add("Submarine");
+        subzSpecial.add("Taouk");
+        subzSpecial.add("Crispy");
+        subzSpecial.add("Potato");
+        subzSpecial.add("Crispy Plat");
+
+        /// SUBZ FRIES
+        List<String> subsFries = new ArrayList<>();
+        subsFries.add("French Fries");
+        subsFries.add("Wedges");
+        subsFries.add("Twister");
+
+        // Drinks
+        List<String> drinks = new ArrayList<>();
+        drinks.add("Pepsi");
+        drinks.add("Seven Up");
+        drinks.add("Mirinda");
+        drinks.add("Water Small");
+        drinks.add("Water Big");
+        drinks.add("Beer Almaza");
+        drinks.add("Ice Tea");
+
+        listDataChildForSubz.put(listDataHeaderForSubz.get(0), salads);
+        listDataChildForSubz.put(listDataHeaderForSubz.get(1), burgers);
+        listDataChildForSubz.put(listDataHeaderForSubz.get(2), subzSpecial);
+        listDataChildForSubz.put(listDataHeaderForSubz.get(3), subsFries);
+        listDataChildForSubz.put(listDataHeaderForSubz.get(3), drinks);
+    }
+
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.product_details_menu, menu);
         return true;
