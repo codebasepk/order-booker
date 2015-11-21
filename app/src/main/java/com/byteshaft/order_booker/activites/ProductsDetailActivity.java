@@ -28,6 +28,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private List<String> listDataHeaderForLatour;
     private HashMap<String, List<String>> listDataChildForLatour;
 
+    // for Ricaardo
+    private List<String> listDataHeaderForRicaardo;
+    private HashMap<String, List<String>> listDataChildForRicaardo;
+
     private HashMap<String, String> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
 
@@ -192,8 +196,34 @@ public class ProductsDetailActivity extends AppCompatActivity {
         newPriceHashMap.put("7up", new String[] {"1000"});
         newPriceHashMap.put("Water Small", new String[] {"500"});
 
-        /////////////////////////// Latour End ////////////////////////////////
+        /////////////////////////// Latour Ended ////////////////////////////////
 
+        ////////////////////// Ricaardo Started ///////////////////////////////
+        // distinguishing the same itesm using the word  "r" from the hotel Ricaardo
+        // so they don't mach with the other hotels items
+
+        newPriceHashMap.put("Philadelphia r", new String[] {"6000", "", "(Steak, mushroom, onions, cheese, sauce)"});
+        newPriceHashMap.put("Spanish Steak r", new String[] {"6000", "", "(Steak, onions, cheese, special sauce)"});
+        newPriceHashMap.put("Francisco r", new String[] {"(Chicken,corn,lettuce,tomato,sauce)"});
+        newPriceHashMap.put("Hamburger r", new String[] {"5000", "7000", "(Meat,lettuce,tomato,fries,sauce. Add: Bacon, Cheese )"});
+        newPriceHashMap.put("Shrimp r", new String[] {"7000"});
+        newPriceHashMap.put("Calamari r", new String[] {"6000", "", "(Calamari, lettuce, sauce)"});
+        newPriceHashMap.put("Roast Beef r", new String[] {"6000", "", "(Meat, pickles, tomato, mayo sauce)"});
+        newPriceHashMap.put("Grilled chicken breast r", new String[] {""});
+        newPriceHashMap.put("Canarias r", new String[] {"6000", "", "(Chicken, mushroom, smoked bacon, cheese)"});
+        newPriceHashMap.put("Mexican chicken r", new String[] {"6000", "", "(Chicken, mushroom, corn, green pepper, tomato, coriander, onion, garlic, fries, sauce)"});
+        newPriceHashMap.put("Ricky r", new String[] {"6000", "", "(Chicken breast, fries, lettuce, corn, sauce)"});
+        newPriceHashMap.put("Fajita r", new String[] {"6000", "", "(Chicken breast, fries, lettuce, corn, sauce)"});
+
+        // drinks
+        newPriceHashMap.put("pepsi", new String[] {"1000"});
+        newPriceHashMap.put("Mirinda", new String[] {"1000"});
+        newPriceHashMap.put("Seven up", new String[] {"1000"});
+        newPriceHashMap.put("Water", new String[] {"500"});
+
+        ///////////////////////////Ricaardo Ended //////////////////////
+
+        newPriceHashMap.put("", new String[] {""});
         newPriceHashMap.put("", new String[] {""});
 
 
@@ -229,7 +259,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         sandwichies.add("+add cheese");
         sandwichies.add("+add ham&cheese");
 
-        List<String> freshJuices = new ArrayList<String>();
+        List<String> freshJuices = new ArrayList<>();
         freshJuices.add("Strawberry");
         freshJuices.add("Mixed cocktail");
         freshJuices.add("Pineapple");
@@ -355,6 +385,36 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForLatour.put(listDataHeaderForLatour.get(2), hotSandwchies);
         listDataChildForLatour.put(listDataHeaderForLatour.get(3), manaish);
         listDataChildForLatour.put(listDataHeaderForLatour.get(4), drinks);
+    }
+
+    private void preparedListDataForRicaardo() {
+
+        List<String> sandwiches = new ArrayList<>();
+        sandwiches.add("Philadelphia r");
+        sandwiches.add("Spanish Steak r");
+        sandwiches.add("Francisco r");
+        sandwiches.add("Hamburger r");
+        sandwiches.add("Shrimp r");
+        sandwiches.add("Calamari r");
+        sandwiches.add("Roast Beef r");
+        sandwiches.add("Grilled chicken breast r");
+        sandwiches.add("Canarias r");
+        sandwiches.add("Mexican chicken r");
+        sandwiches.add("Ricky r");
+        sandwiches.add("Fajita r");
+
+        //// Drinks
+        List<String> softDrinks = new ArrayList<>();
+        softDrinks.add("pepsi");
+        softDrinks.add("Mirinda");
+        softDrinks.add("Seven up");
+        softDrinks.add("Water");
+
+        listDataHeaderForRicaardo = new ArrayList<>();
+        listDataChildForRicaardo = new HashMap<>();
+        listDataChildForRicaardo.put(listDataHeaderForRicaardo.get(0), sandwiches);
+        listDataChildForRicaardo.put(listDataHeaderForRicaardo.get(1), softDrinks);
+
     }
 
     @Override
