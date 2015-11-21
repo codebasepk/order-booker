@@ -389,6 +389,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
     private void preparedListDataForRicaardo() {
 
+        listDataHeaderForRicaardo = new ArrayList<>();
+        listDataChildForRicaardo = new HashMap<>();
+
         List<String> sandwiches = new ArrayList<>();
         sandwiches.add("Philadelphia r");
         sandwiches.add("Spanish Steak r");
@@ -414,6 +417,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForRicaardo = new HashMap<>();
         listDataChildForRicaardo.put(listDataHeaderForRicaardo.get(0), sandwiches);
         listDataChildForRicaardo.put(listDataHeaderForRicaardo.get(1), softDrinks);
+
+    }
+
+    private void preparedListDataForMassaad() {
 
     }
 
