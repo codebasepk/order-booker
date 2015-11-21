@@ -122,6 +122,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataHeader.add("Fresh juices");
         listDataHeader.add("Fruit cocktails");
 
+
         // Adding child data
         List<String> sandwichies = new ArrayList<>();
         sandwichies.add("Roast beef");

@@ -8,18 +8,38 @@
         android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="title"
         android:textSize="17sp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
 
     <TextView
+        android:id="@+id/description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginRight="70dp"
+        android:text=" "
+        android:layout_below="@+id/product_name"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
+    <EditText
+        android:id="@+id/with_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="with out"
+        android:ems="8"
+        android:layout_below="@id/description"/>
+
+    <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="pirce"
         android:textSize="16sp"
         android:textStyle="italic"
-        android:layout_below="@+id/product_name"
+        android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -49,7 +69,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
         android:layout_marginRight="8dp"
-        android:layout_alignBottom="@+id/price"
+        android:layout_marginTop="2dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
