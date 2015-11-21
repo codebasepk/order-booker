@@ -21,9 +21,15 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
-    private List<String> listDataHeader;
-    private HashMap<String, List<String>> listDataChild;
+    // for Adonis
+    private List<String> listDataHeaderForAdonis;
+    private HashMap<String, List<String>> listDataChildForAdonis;
+    /// for Latour
+    private List<String> listDataHeaderForLatour;
+    private HashMap<String, List<String>> listDataChildForLatour;
+
     private HashMap<String, String> priceHashMap;
+    private HashMap<String, String[]> newPriceHashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +39,8 @@ public class ProductsDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         addPriceDetailsToHashMap();
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        prepareListData();
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild, priceHashMap);
+        prepareListDataForAdonis();
+        listAdapter = new ExpandableListAdapter(this, listDataHeaderForAdonis, listDataChildForAdonis, priceHashMap);
         expListView.setAdapter(listAdapter);
         // Listview on child click listener
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -44,10 +50,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
                                         int groupPosition, int childPosition, long id) {
                 Toast.makeText(
                         getApplicationContext(),
-                        listDataHeader.get(groupPosition)
+                        listDataHeaderForAdonis.get(groupPosition)
                                 + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
+                                + listDataChildForAdonis.get(
+                                listDataHeaderForAdonis.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
                         .show();
                 return true;
@@ -113,14 +119,27 @@ public class ProductsDetailActivity extends AppCompatActivity {
         priceHashMap.put("TRIO", "7000 L.L");
     }
 
-    private void prepareListData() {
-        listDataHeader = new ArrayList<>();
-        listDataChild = new HashMap<>();
+    private void addPriceDetailsToHashMapForLatour() {
+        newPriceHashMap.put("Pizza  Marguerita",new String[] {"7000", "9000", "(Tomato sauce, Mozzarella cheese, oregano)"});
+        newPriceHashMap.put("Pizza 3 Fromages", new String[]{"7500", "10000", "(Tomato sauce, 3 cheese mix)" });
+        newPriceHashMap.put("Pizza Vegetarian", new String[]{"8500", "11000", "(Tomato sauce, artichokes, corn, mushrooms, olives, green pepper, cheese)"});
+        newPriceHashMap.put("Pizza  Jambon / Dinde", new String[]{"9000", "12000", "(Tomato sauce, ham, mushroom, olives, cheese)"});
+        newPriceHashMap.put("Pizza   Pepperoni", new String[]{"9000", "12000", "(Tomato sauce, pepperoni, mushrooms, olives, cheese)"});
+        newPriceHashMap.put("Pizza   Mexichicken", new String[]{"10000", "14000", "(Mexican sauce, chicken, mushroom, cheese)"});
+//        newPriceHashMap.put("", new String[]{});
+//        newPriceHashMap.put("", new String[]{});
+//        newPriceHashMap.put("", new String[]{});
+//        newPriceHashMap.put("", new String[]{});
+    }
+
+    private void prepareListDataForAdonis() {
+        listDataHeaderForAdonis = new ArrayList<>();
+        listDataChildForAdonis = new HashMap<>();
 
         // Adding child data
-        listDataHeader.add("Sandwiches");
-        listDataHeader.add("Fresh juices");
-        listDataHeader.add("Fruit cocktails");
+        listDataHeaderForAdonis.add("Sandwiches");
+        listDataHeaderForAdonis.add("Fresh juices");
+        listDataHeaderForAdonis.add("Fruit cocktails");
 
 
         // Adding child data
@@ -167,9 +186,32 @@ public class ProductsDetailActivity extends AppCompatActivity {
         fruitCocktails.add("Avocado/mango");
         fruitCocktails.add("TRIO");
 
-        listDataChild.put(listDataHeader.get(0), sandwichies); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), freshJuices);
-        listDataChild.put(listDataHeader.get(2), fruitCocktails);
+        listDataChildForAdonis.put(listDataHeaderForAdonis.get(0), sandwichies); // Header, Child data
+        listDataChildForAdonis.put(listDataHeaderForAdonis.get(1), freshJuices);
+        listDataChildForAdonis.put(listDataHeaderForAdonis.get(2), fruitCocktails);
+    }
+
+    private void prepareListDataForLatour() {
+        listDataHeaderForLatour = new ArrayList<>();
+        listDataChildForLatour = new HashMap<>();
+
+        listDataHeaderForLatour.add("Pizza");
+        listDataHeaderForLatour.add("Pasta Fiesta");
+        listDataHeaderForLatour.add("Hot  Sandwishes");
+        listDataHeaderForLatour.add("Platters");
+        listDataHeaderForLatour.add("Mana’ish");
+        listDataHeaderForLatour.add("Drinks");
+
+        List<String> pizza = new ArrayList<>();
+        pizza.add("Pizza  Marguerita");
+        pizza.add("Pizza 3 Fromages");
+        pizza.add("Pizza Vegetarian");
+        pizza.add("Pizza  Jambon / Dinde");
+        pizza.add("Pizza   Pepperoni");
+        pizza.add("Pizza   Mexichicken");
+
+
+        listDataChildForLatour.put(listDataHeaderForLatour.get(0), pizza);
     }
 
     @Override
