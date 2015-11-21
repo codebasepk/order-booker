@@ -32,6 +32,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private List<String> listDataHeaderForRicaardo;
     private HashMap<String, List<String>> listDataChildForRicaardo;
 
+    // for Massaad
+    private List<String> listDataHeaderForMassaad;
+    private HashMap<String, List<String>> listDataChildForMassaad;
+
     private HashMap<String, String> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
 
@@ -223,12 +227,52 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         ///////////////////////////Ricaardo Ended //////////////////////
 
-        newPriceHashMap.put("", new String[] {""});
-        newPriceHashMap.put("", new String[] {""});
 
+        ///////////////////////// Massaad Started //////////////////////
 
+        newPriceHashMap.put("Salatat", new String[] {"7000"});
+        newPriceHashMap.put("Fattouch", new String[] {"7000"});
+        newPriceHashMap.put("Tabboulé", new String[] {"7000"});
 
+        /// Mou2abbalet
+        newPriceHashMap.put("7ommos", new String[] {"5000"});
+        newPriceHashMap.put("Mtabbal", new String[] {"5000"});
+        newPriceHashMap.put("Labné", new String[] {"5000"});
+        newPriceHashMap.put("Batata", new String[] {"5000"});
+        newPriceHashMap.put("Habra zened l 3abed", new String[] {"6000"});
 
+        // sandwishet
+        newPriceHashMap.put("Tawou2", new String[] {"5000"});
+        newPriceHashMap.put("La7em Mechwé", new String[] {"6000"});
+        newPriceHashMap.put("Kabab", new String[] {"5000"});
+        newPriceHashMap.put("Hamburger", new String[] {"6000"});
+        newPriceHashMap.put("Batata", new String[] {"3000"});
+
+        /// S7oun
+        newPriceHashMap.put("Law7et Tawou2", new String[] {"7000"});
+        newPriceHashMap.put("Law7et la7em mechwé", new String[] {"7000"});
+        newPriceHashMap.put("Law7et kabab", new String[] {"7000"});
+        newPriceHashMap.put("3arayess kafta", new String[] {"12000"});
+        newPriceHashMap.put("Hamburger", new String[] {"12000"});
+        newPriceHashMap.put("Sa7n tawou2", new String[] {"13000"});
+        newPriceHashMap.put("Sa7n la7em mechwé", new String[] {"15000"});
+        newPriceHashMap.put("Sa7n kabab", new String[] {"12000"});
+        newPriceHashMap.put("Sa7n machawé", new String[] {"15000"});
+        newPriceHashMap.put("Kilo machawé mechwé mchakkal", new String[] {"50000"});
+        newPriceHashMap.put("Kilo la7em mechwé", new String[] {"60000"});
+        newPriceHashMap.put("Kilo tawou2", new String[] {"35000"});
+        newPriceHashMap.put("Kilo kabab", new String[] {"45000"});
+
+        // soft drinks
+        newPriceHashMap.put("Pepsi", new String[] {"2000"});
+        newPriceHashMap.put("Mirinda", new String[] {"2000"});
+        newPriceHashMap.put("7up", new String[] {"2000"});
+        newPriceHashMap.put("3assir bourtoukal tabi3é", new String[] {"5000"});
+        newPriceHashMap.put("Perrier", new String[] {"5000"});
+        newPriceHashMap.put("Laymounada", new String[] {"4000"});
+        newPriceHashMap.put("May kbiré", new String[] {"2000"});
+        newPriceHashMap.put("May zghiré", new String[] {"1000"});
+        newPriceHashMap.put("3iran  ", new String[] {"2000"});
 
     }
 
@@ -413,14 +457,72 @@ public class ProductsDetailActivity extends AppCompatActivity {
         softDrinks.add("Seven up");
         softDrinks.add("Water");
 
-        listDataHeaderForRicaardo = new ArrayList<>();
-        listDataChildForRicaardo = new HashMap<>();
         listDataChildForRicaardo.put(listDataHeaderForRicaardo.get(0), sandwiches);
         listDataChildForRicaardo.put(listDataHeaderForRicaardo.get(1), softDrinks);
 
     }
 
     private void preparedListDataForMassaad() {
+
+        listDataHeaderForMassaad = new ArrayList<>();
+        listDataChildForMassaad = new HashMap<>();
+
+        List<String> salatat = new ArrayList<>();
+        salatat.add("Salatat");
+        salatat.add("Fattouch");
+        salatat.add("Tabboulé");
+
+        /// Mou2abbalet
+        List<String> mou2abbalet = new ArrayList<>();
+        mou2abbalet.add("7ommos");
+        mou2abbalet.add("Mtabbal");
+        mou2abbalet.add("Labné");
+        mou2abbalet.add("Batata");
+        mou2abbalet.add("Habra zened l 3abed");
+
+        // sandwishet
+        List<String> sandwishet = new ArrayList<>();
+        sandwishet.add("Tawou2");
+        sandwishet.add("La7em Mechwé");
+        sandwishet.add("Kabab");
+        sandwishet.add("Hamburger");
+        sandwishet.add("Batata");
+
+        /// S7oun
+        List<String> s7oun = new ArrayList<>();
+        s7oun.add("Law7et Tawou2");
+        s7oun.add("Law7et la7em mechwé");
+        s7oun.add("Law7et kabab");
+        s7oun.add("3arayess kafta");
+        s7oun.add("Hamburger");
+        s7oun.add("Sa7n tawou2");
+        s7oun.add("Sa7n la7em mechwé");
+        s7oun.add("Sa7n kabab");
+        s7oun.add("Sa7n machawé");
+        s7oun.add("Kilo machawé mechwé mchakkal");
+        s7oun.add("Kilo la7em mechwé");
+        s7oun.add("Kilo tawou2");
+        s7oun.add("Kilo kabab");
+
+        // softDrinks
+        List<String> softDrinks = new ArrayList<>();
+        softDrinks.add("Pepsi");
+        softDrinks.add("Mirinda");
+        softDrinks.add("7up");
+        softDrinks.add("3assir bourtoukal tabi3é");
+        softDrinks.add("Perrier");
+        softDrinks.add("Laymounada");
+        softDrinks.add("May kbiré");
+        softDrinks.add("May zghiré");
+        softDrinks.add("3iran");
+
+
+        listDataChildForMassaad.put(listDataHeaderForMassaad.get(0), salatat);
+        listDataChildForMassaad.put(listDataHeaderForMassaad.get(1), mou2abbalet);
+        listDataChildForMassaad.put(listDataHeaderForMassaad.get(2), sandwishet);
+        listDataChildForMassaad.put(listDataHeaderForMassaad.get(3), s7oun);
+        listDataChildForMassaad.put(listDataHeaderForMassaad.get(3), softDrinks);
+
 
     }
 
