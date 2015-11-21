@@ -120,7 +120,16 @@ public class ProductsDetailActivity extends AppCompatActivity {
     }
 
     private void addPriceDetailsToHashMapForLatour() {
-        newPriceHashMap.put("Pizza  Marguerita",new String[] {"7000","9000", "(Tomato sauce, Mozzarella cheese, oregano)"});
+        newPriceHashMap.put("Pizza  Marguerita",new String[] {"7000", "9000", "(Tomato sauce, Mozzarella cheese, oregano)"});
+        newPriceHashMap.put("Pizza 3 Fromages", new String[]{"7500", "10000", "(Tomato sauce, 3 cheese mix)" });
+        newPriceHashMap.put("Pizza Vegetarian", new String[]{"8500", "11000", "(Tomato sauce, artichokes, corn, mushrooms, olives, green pepper, cheese)"});
+        newPriceHashMap.put("Pizza  Jambon / Dinde", new String[]{"9000", "12000", "(Tomato sauce, ham, mushroom, olives, cheese)"});
+        newPriceHashMap.put("Pizza   Pepperoni", new String[]{"9000", "12000", "(Tomato sauce, pepperoni, mushrooms, olives, cheese)"});
+        newPriceHashMap.put("Pizza   Mexichicken", new String[]{"10000", "14000", "(Mexican sauce, chicken, mushroom, cheese)"});
+//        newPriceHashMap.put("", new String[]{});
+//        newPriceHashMap.put("", new String[]{});
+//        newPriceHashMap.put("", new String[]{});
+//        newPriceHashMap.put("", new String[]{});
     }
 
     private void prepareListDataForAdonis() {
@@ -183,7 +192,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
     }
 
     private void prepareListDataForLatour() {
-        listDataHeaderForAdonis = new ArrayList<>();
+        listDataHeaderForLatour = new ArrayList<>();
         listDataChildForLatour = new HashMap<>();
 
         listDataHeaderForLatour.add("Pizza");
@@ -195,8 +204,14 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         List<String> pizza = new ArrayList<>();
         pizza.add("Pizza  Marguerita");
+        pizza.add("Pizza 3 Fromages");
+        pizza.add("Pizza Vegetarian");
+        pizza.add("Pizza  Jambon / Dinde");
+        pizza.add("Pizza   Pepperoni");
+        pizza.add("Pizza   Mexichicken");
 
 
+        listDataChildForLatour.put(listDataHeaderForLatour.get(0), pizza);
     }
 
     @Override
