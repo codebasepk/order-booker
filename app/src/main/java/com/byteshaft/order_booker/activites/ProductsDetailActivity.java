@@ -267,10 +267,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
         // distinguishing the same itesm using the word  "r" from the hotel Ricaardo
         // so they don't mach with the other hotels items
         if (AppGlobals.getCurrentSelectedStore().equals("ricardo_snack")) {
-
             newPriceHashMap.put("Philadelphia", new String[]{"6000", "", "(Steak, mushroom, onions, cheese, sauce)"});
             newPriceHashMap.put("Spanish Steak", new String[]{"6000", "", "(Steak, onions, cheese, special sauce)"});
-            newPriceHashMap.put("Francisco", new String[]{"(Chicken,corn,lettuce,tomato,sauce)"});
+            newPriceHashMap.put("Francisco", new String[]{"6000", "","(Chicken,corn,lettuce,tomato,sauce)"});
             newPriceHashMap.put("Hamburger", new String[]{"5000", "7000", "(Meat,lettuce,tomato,fries,sauce. Add: Bacon, Cheese )"});
             newPriceHashMap.put("Shrimp", new String[]{"7000", "", ""});
             newPriceHashMap.put("Calamari", new String[]{"6000", "", "(Calamari, lettuce, sauce)"});
@@ -390,118 +389,120 @@ public class ProductsDetailActivity extends AppCompatActivity {
         ///////////////////////// SUBZ Ended ///////////////////////////////////////////////////////
 
         ///////////////////////// Dip n Dip Started //////////////////////
-        newPriceHashMap.put("Dip n dip crêpe", new String[]{"13000", "", "(strawberry, banana, pineapple, kiwi)"});
-        newPriceHashMap.put("Dip n dip crêpe with scoop", new String[]{"16000", "", "icecream(vanilla, chocolate or strawberry)"});
-        newPriceHashMap.put("Fettuccini  crêpe full", new String[]{"12500", "", "(crêpe, cut fettuccini style, with 1 scoop of your choice of ice cream, tapped with your choice of chocolate"});
-        newPriceHashMap.put("Fettuccini  crêpe small", new String[]{"11000", "", "(crêpe, cut fettuccini style, with 1 scoop of your choice of ice cream, tapped with your choice of chocolate"});
-        newPriceHashMap.put("Cinnamon crêpe pouch", new String[]{"10500", "", ""});
-        newPriceHashMap.put("Tripple chocolate crêpe", new String[]{"8,000", "", "(Folded crêpe, filled with chocolate and trapped with 3 kinds of chocolate (milk, dark, white)"});
-        newPriceHashMap.put("Cookies crêpe", new String[]{"10000", "", "(Folded crêpe, filled with cookies, and tapped with 3 kinds of chocolate(milk, dark, white)"});
-        newPriceHashMap.put("Mallow crêpe", new String[]{"10000", "", "(Folded crêpe, filled with marshmallows, and tapped with 3 kinds of chocolate (milk, dark , white)"});
-        newPriceHashMap.put("Brownies crêpe", new String[]{"10500", "", "(Folded crêpe, filled with brownies, and tapped with 3 kinds of chocolate (milk, dark, white)"});
-        newPriceHashMap.put("Krispy crêpe", new String[]{"10000", "", "(Folded crêpe, filled with ice cream of choice and rice krispies, and tapped with chocolate)"});
-        newPriceHashMap.put("Banana wrap", new String[]{"9000", "", "(A full banana wrapped with crêpe and tapped with chocolate and whipped cream"});
+        if (AppGlobals.getCurrentSelectedStore().equals("dip N dip")) {
+            newPriceHashMap.put("Dip n dip crêpe", new String[]{"13000", "", "(strawberry, banana, pineapple, kiwi)"});
+            newPriceHashMap.put("Dip n dip crêpe with scoop", new String[]{"16000", "", "icecream(vanilla, chocolate or strawberry)"});
+            newPriceHashMap.put("Fettuccini  crêpe full", new String[]{"12500", "", "(crêpe, cut fettuccini style, with 1 scoop of your choice of ice cream, tapped with your choice of chocolate"});
+            newPriceHashMap.put("Fettuccini  crêpe small", new String[]{"11000", "", "(crêpe, cut fettuccini style, with 1 scoop of your choice of ice cream, tapped with your choice of chocolate"});
+            newPriceHashMap.put("Cinnamon crêpe pouch", new String[]{"10500", "", ""});
+            newPriceHashMap.put("Tripple chocolate crêpe", new String[]{"8,000", "", "(Folded crêpe, filled with chocolate and trapped with 3 kinds of chocolate (milk, dark, white)"});
+            newPriceHashMap.put("Cookies crêpe", new String[]{"10000", "", "(Folded crêpe, filled with cookies, and tapped with 3 kinds of chocolate(milk, dark, white)"});
+            newPriceHashMap.put("Mallow crêpe", new String[]{"10000", "", "(Folded crêpe, filled with marshmallows, and tapped with 3 kinds of chocolate (milk, dark , white)"});
+            newPriceHashMap.put("Brownies crêpe", new String[]{"10500", "", "(Folded crêpe, filled with brownies, and tapped with 3 kinds of chocolate (milk, dark, white)"});
+            newPriceHashMap.put("Krispy crêpe", new String[]{"10000", "", "(Folded crêpe, filled with ice cream of choice and rice krispies, and tapped with chocolate)"});
+            newPriceHashMap.put("Banana wrap", new String[]{"9000", "", "(A full banana wrapped with crêpe and tapped with chocolate and whipped cream"});
 
-        // Waffle:
-        newPriceHashMap.put("Dip n dip waffle", new String[]{"13000", "", "(waffle with your choice of fruit " +
-                "(strawberry, banana, pineapple, kiwi) or a mix, all tapped with the great dip n dip real Belgian chocolate of your choice)"});
-        newPriceHashMap.put("Dip n dip waffle with ice cream", new String[]{"16000", "", "dip n dip waffle + icecream (vanilla, chocolate or strawberry)"});
-        newPriceHashMap.put("Chocolate waffle", new String[]{"9500", "", "(waffle tapped with your choice of chocolate)"});
-        newPriceHashMap.put("Waffle stick", new String[]{"8000", "", "(waffle on a stick dipped in your choice of chocolate)"});
+            // Waffle:
+            newPriceHashMap.put("Dip n dip waffle", new String[]{"13000", "", "(waffle with your choice of fruit " +
+                    "(strawberry, banana, pineapple, kiwi) or a mix, all tapped with the great dip n dip real Belgian chocolate of your choice)"});
+            newPriceHashMap.put("Dip n dip waffle with ice cream", new String[]{"16000", "", "dip n dip waffle + icecream (vanilla, chocolate or strawberry)"});
+            newPriceHashMap.put("Chocolate waffle", new String[]{"9500", "", "(waffle tapped with your choice of chocolate)"});
+            newPriceHashMap.put("Waffle stick", new String[]{"8000", "", "(waffle on a stick dipped in your choice of chocolate)"});
 
-        // Pancake:
-        newPriceHashMap.put("Pancake mini tower", new String[]{"8000", "", "(5 pieces of pancake tapped with chocolate)"});
+            // Pancake:
+            newPriceHashMap.put("Pancake mini tower", new String[]{"8000", "", "(5 pieces of pancake tapped with chocolate)"});
 
-        // Chocolate rich
-        newPriceHashMap.put("Fondant", new String[]{"9500", "", "(chocolate rich fondant baked fresh" +
-                " , prepared from our famous Belgian chocolate, served with icecream"});
-        newPriceHashMap.put("Molten cake", new String[]{"9500", "", "(same as fondant, more liquid, presented in porcelain bowl right from the oven, presented with icecream)"});
-        newPriceHashMap.put("Brownies", new String[]{"7500", "", "(Chocolate heavy brownie, served with ice cream, tapped with our amazing chocolate)"});
-        newPriceHashMap.put("Dip n dip pizza", new String[]{"9000", "", "(brownies slice trapped with cheesecake and you pick the toppings: strawberry, banana, pineapple, kiwi."});
-        newPriceHashMap.put("Chocolate mousse", new String[]{"7000", "", "(the richest chocolate mousse in town made with our famous Belgian chocolate)"});
-        newPriceHashMap.put("Trois chocolat mousse", new String[]{"7000", "", "(Three layers of white, milk, dark chocolate mousse)"});
-        newPriceHashMap.put("Succès", new String[]{"8000", "", "(very rich chocolate cake with biscuit," +
-                " just like the ones we used to have in home birthday parties, served in 2 slice"});
+            // Chocolate rich
+            newPriceHashMap.put("Fondant", new String[]{"9500", "", "(chocolate rich fondant baked fresh" +
+                    " , prepared from our famous Belgian chocolate, served with icecream"});
+            newPriceHashMap.put("Molten cake", new String[]{"9500", "", "(same as fondant, more liquid, presented in porcelain bowl right from the oven, presented with icecream)"});
+            newPriceHashMap.put("Brownies", new String[]{"7500", "", "(Chocolate heavy brownie, served with ice cream, tapped with our amazing chocolate)"});
+            newPriceHashMap.put("Dip n dip pizza", new String[]{"9000", "", "(brownies slice trapped with cheesecake and you pick the toppings: strawberry, banana, pineapple, kiwi."});
+            newPriceHashMap.put("Chocolate mousse", new String[]{"7000", "", "(the richest chocolate mousse in town made with our famous Belgian chocolate)"});
+            newPriceHashMap.put("Trois chocolat mousse", new String[]{"7000", "", "(Three layers of white, milk, dark chocolate mousse)"});
+            newPriceHashMap.put("Succès", new String[]{"8000", "", "(very rich chocolate cake with biscuit," +
+                    " just like the ones we used to have in home birthday parties, served in 2 slice"});
 
-        // Baked goods
-        newPriceHashMap.put("Mini muffin", new String[]{"7000", "", "(4 mini muffins presented with chocolate shot)"});
-        newPriceHashMap.put("Cookies", new String[]{"3500", "", "(2 cookies, dipped with our Belgian chocolate )"});
-        newPriceHashMap.put("Dip n Dip éclair pyramid", new String[]{"11500", "", "(11 pieces of mini éclair pyramid style tapped with chocolate)"});
-        newPriceHashMap.put("Éclair Kebab", new String[]{"6000", "", "(5 pieces of éclair on a stick dipped in chocolate)"});
-        newPriceHashMap.put("Profiterole", new String[]{"8000", "", "(Profiterole pastry filled with vanilla ice cream tapped with chocolate)"});
+            // Baked goods
+            newPriceHashMap.put("Mini muffin", new String[]{"7000", "", "(4 mini muffins presented with chocolate shot)"});
+            newPriceHashMap.put("Cookies", new String[]{"3500", "", "(2 cookies, dipped with our Belgian chocolate )"});
+            newPriceHashMap.put("Dip n Dip éclair pyramid", new String[]{"11500", "", "(11 pieces of mini éclair pyramid style tapped with chocolate)"});
+            newPriceHashMap.put("Éclair Kebab", new String[]{"6000", "", "(5 pieces of éclair on a stick dipped in chocolate)"});
+            newPriceHashMap.put("Profiterole", new String[]{"8000", "", "(Profiterole pastry filled with vanilla ice cream tapped with chocolate)"});
 
-        /// ice creams
-        newPriceHashMap.put("Scoop", new String[]{"3000", "", "(strawberry , chocolate, vanilla)"});
-        newPriceHashMap.put("scoop Tapped with chocolate", new String[]{"4000", "", ""});
-        newPriceHashMap.put("Crunchy ice cream", new String[]{"7500", "", "(A bowl full of ice cream tapped with chocolate and rice Crispies)"});
-
-
-        newPriceHashMap.put("Chocolate Shot", new String[]{"4000", "", ""});
-        newPriceHashMap.put("Chocolate 1kg", new String[]{"60000", "", "Chocolate for your home fountain (1kg)"});
-
-        // Fried yummies
-        newPriceHashMap.put("Pain Perdu", new String[]{"9000", "", "(Milk soaked fried toast offered with your choice of caramel and cinnamon or chocolate. With a scoop of icecream"});
-        newPriceHashMap.put("Cheese cake nuggets", new String[]{"9000", "", "(5 pieces of fried cheese cake nuggets offered with chocolate)"});
-
-        // stuff in a cup
-        newPriceHashMap.put("Dip Crispies", new String[]{"7000", "", "(A cup filled with cereal and chocolate, tapped with mini marshmallows " +
-                "available cereal : rice crispies, honey smacks, trix)"});
-        newPriceHashMap.put("Fruits In a cup", new String[]{"7500", "", "(Fruit salad, tapped with chocolate and whipped cream)"});
-        newPriceHashMap.put("Brownies in a cup", new String[]{"8500", "", "(Mashed brownies with ice cream and chocolate in a cup)"});
-
-        ///  Dip n Stick
-        newPriceHashMap.put("Dip Sticks 4 pieces", new String[]{"3500", "", "filled with - Strawberry, Kiwi, Marshmallow, Brownies, Pineapple, Banana"});
-        newPriceHashMap.put("Dip Sticks 8 pieces", new String[]{"6000", "", "filled with -Strawberry, Kiwi, Marshmallow, Brownies, Pineapple, Banana"});
-        newPriceHashMap.put("Dip stick platter", new String[]{"16500", "", "filled with 4 pieces of  7 of your choice from of the following items with chocolate fondue,"});
-
-        //Dip n dip mania
-        newPriceHashMap.put("Dip-able items (full plate)", new String[]{"3500", "", "(Strawberry, pineapple, kiwi, banana, marshmallow)"});
-        newPriceHashMap.put("Brownies, mini éclair", new String[]{"4000", "", ""});
-        newPriceHashMap.put("Ice cream (scoop)", new String[]{"3000", "", ""});
-        newPriceHashMap.put("Fondue", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Whipped cream", new String[]{"1000", "", ""});
+            /// ice creams
+            newPriceHashMap.put("Scoop", new String[]{"3000", "", "(strawberry , chocolate, vanilla)"});
+            newPriceHashMap.put("scoop Tapped with chocolate", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Crunchy ice cream", new String[]{"7500", "", "(A bowl full of ice cream tapped with chocolate and rice Crispies)"});
 
 
-        // COLD DRINKS :
-        newPriceHashMap.put("Dip n dip freezy", new String[]{"9500", "", "(The richest chocolate drink ever)"});
+            newPriceHashMap.put("Chocolate Shot", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Chocolate 1kg", new String[]{"60000", "", "Chocolate for your home fountain (1kg)"});
 
-        // Milk shakes :
-        newPriceHashMap.put("Chocolate milk shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Vanilla milk shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Strawberry  milk shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Coffee shake", new String[]{"9000", "", ""});
-        newPriceHashMap.put("Banana milk shake", new String[]{"7500", "", ""});
-        newPriceHashMap.put("After eight milk shake", new String[]{"7500", "", "(Mint flavored chocolate milk shake)"});
+            // Fried yummies
+            newPriceHashMap.put("Pain Perdu", new String[]{"9000", "", "(Milk soaked fried toast offered with your choice of caramel and cinnamon or chocolate. With a scoop of icecream"});
+            newPriceHashMap.put("Cheese cake nuggets", new String[]{"9000", "", "(5 pieces of fried cheese cake nuggets offered with chocolate)"});
 
-        // Frappe
-        newPriceHashMap.put("Mocha  frappe", new String[]{"7500", "", "(Chocolate, espresso in a cold icy creamy mixture)"});
-        newPriceHashMap.put("White mocha frappe", new String[]{"7500", "", "(White chocolate, espresso in a cold icy creamy mixture)"});
-        newPriceHashMap.put("Caramel frappe", new String[]{"7500", "", "(Caramel flavored frappe)"});
-        newPriceHashMap.put("Cookies  frappe", new String[]{"8000", "", "(Frappe blended with real cookies)"});
-        newPriceHashMap.put("Pink  frappe", new String[]{"7500", "", "(Frappe with  strawberry and raspberry flavors)"});
+            // stuff in a cup
+            newPriceHashMap.put("Dip Crispies", new String[]{"7000", "", "(A cup filled with cereal and chocolate, tapped with mini marshmallows " +
+                    "available cereal : rice crispies, honey smacks, trix)"});
+            newPriceHashMap.put("Fruits In a cup", new String[]{"7500", "", "(Fruit salad, tapped with chocolate and whipped cream)"});
+            newPriceHashMap.put("Brownies in a cup", new String[]{"8500", "", "(Mashed brownies with ice cream and chocolate in a cup)"});
 
-        // Smoothies :
-        newPriceHashMap.put("Creamy smoothies", new String[]{"8000", "", ""});
-        newPriceHashMap.put("Smoothie float", new String[]{"9000", "", ""});
-        newPriceHashMap.put("Oreo milk shake", new String[]{"8000", "", "(original Oreo cookies)"});
-        newPriceHashMap.put("Affogato", new String[]{"5000", "", "(A scoop of vanilla ice cream drowned in espresso with your favorite flavor -Caramel -Hazelnut -Cinnamon)"});
+            ///  Dip n Stick
+            newPriceHashMap.put("Dip Sticks 4 pieces", new String[]{"3500", "", "filled with - Strawberry, Kiwi, Marshmallow, Brownies, Pineapple, Banana"});
+            newPriceHashMap.put("Dip Sticks 8 pieces", new String[]{"6000", "", "filled with -Strawberry, Kiwi, Marshmallow, Brownies, Pineapple, Banana"});
+            newPriceHashMap.put("Dip stick platter", new String[]{"16500", "", "filled with 4 pieces of  7 of your choice from of the following items with chocolate fondue,"});
 
-        /// Ice tea shakes :
-        newPriceHashMap.put("Ice tea shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Lemon tea shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Mint tea shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Peach tea shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Raspberry  tea shake", new String[]{"7000", "", ""});
-        newPriceHashMap.put("Iced cappuccino", new String[]{"7000", "", ""});
+            //Dip n dip mania
+            newPriceHashMap.put("Dip-able items (full plate)", new String[]{"3500", "", "(Strawberry, pineapple, kiwi, banana, marshmallow)"});
+            newPriceHashMap.put("Brownies, mini éclair", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Ice cream (scoop)", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Fondue", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Whipped cream", new String[]{"1000", "", ""});
 
-        // Soft  drinks
-        newPriceHashMap.put("Ice tea", new String[]{"6000", "", "(- Peach   - Raspberry  - Lemon  - Mixed berry)"});
-        newPriceHashMap.put("Italian soda", new String[]{"5000", "", "(- Lemon  - Raspberry   - Cherry   - Strawberry   - Peach   - Blue curacao)"});
-        newPriceHashMap.put("Flavored cola", new String[]{"5000", "", "(- Vanilla    - Lemon    - Cherry )"});
-        newPriceHashMap.put("Pop", new String[]{"3000", "", "(- Pepsi   - Diet pepsi   - 7up   - Diet 7up)"});
-        newPriceHashMap.put("Perrier", new String[]{"3000", "", ""});
-        newPriceHashMap.put("Redbull", new String[]{"6000", "", ""});
-        newPriceHashMap.put("Spring water", new String[]{"1500", "", ""});
+
+            // COLD DRINKS :
+            newPriceHashMap.put("Dip n dip freezy", new String[]{"9500", "", "(The richest chocolate drink ever)"});
+
+            // Milk shakes :
+            newPriceHashMap.put("Chocolate milk shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Vanilla milk shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Strawberry  milk shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Coffee shake", new String[]{"9000", "", ""});
+            newPriceHashMap.put("Banana milk shake", new String[]{"7500", "", ""});
+            newPriceHashMap.put("After eight milk shake", new String[]{"7500", "", "(Mint flavored chocolate milk shake)"});
+
+            // Frappe
+            newPriceHashMap.put("Mocha  frappe", new String[]{"7500", "", "(Chocolate, espresso in a cold icy creamy mixture)"});
+            newPriceHashMap.put("White mocha frappe", new String[]{"7500", "", "(White chocolate, espresso in a cold icy creamy mixture)"});
+            newPriceHashMap.put("Caramel frappe", new String[]{"7500", "", "(Caramel flavored frappe)"});
+            newPriceHashMap.put("Cookies  frappe", new String[]{"8000", "", "(Frappe blended with real cookies)"});
+            newPriceHashMap.put("Pink  frappe", new String[]{"7500", "", "(Frappe with  strawberry and raspberry flavors)"});
+
+            // Smoothies :
+            newPriceHashMap.put("Creamy smoothies", new String[]{"8000", "", ""});
+            newPriceHashMap.put("Smoothie float", new String[]{"9000", "", ""});
+            newPriceHashMap.put("Oreo milk shake", new String[]{"8000", "", "(original Oreo cookies)"});
+            newPriceHashMap.put("Affogato", new String[]{"5000", "", "(A scoop of vanilla ice cream drowned in espresso with your favorite flavor -Caramel -Hazelnut -Cinnamon)"});
+
+            /// Ice tea shakes :
+            newPriceHashMap.put("Ice tea shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Lemon tea shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Mint tea shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Peach tea shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Raspberry  tea shake", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Iced cappuccino", new String[]{"7000", "", ""});
+
+            // Soft  drinks
+            newPriceHashMap.put("Ice tea", new String[]{"6000", "", "(- Peach   - Raspberry  - Lemon  - Mixed berry)"});
+            newPriceHashMap.put("Italian soda", new String[]{"5000", "", "(- Lemon  - Raspberry   - Cherry   - Strawberry   - Peach   - Blue curacao)"});
+            newPriceHashMap.put("Flavored cola", new String[]{"5000", "", "(- Vanilla    - Lemon    - Cherry )"});
+            newPriceHashMap.put("Pop", new String[]{"3000", "", "(- Pepsi   - Diet pepsi   - 7up   - Diet 7up)"});
+            newPriceHashMap.put("Perrier", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Redbull", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Spring water", new String[]{"1500", "", ""});
+        }
 
 
 
