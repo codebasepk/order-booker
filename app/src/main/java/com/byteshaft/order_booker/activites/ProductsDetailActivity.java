@@ -42,6 +42,12 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private List<String> listDataHeaderForSubz;
     private HashMap<String, List<String>> listDataChildForSubz;
 
+    // for Dip n Dip
+    private List<String> listDataHeaderForDipNdip;
+    private HashMap<String, List<String>> listDataChildForDipNdip;
+
+
+
     private HashMap<String, String> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
 
@@ -361,13 +367,187 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Beer Almaza", new String[]{"2000", "", ""});
             newPriceHashMap.put("Ice Tea", new String[]{"1500", "", ""});
         }
+
+        ///////////////////////// SUBZ Ended ///////////////////////////////////////////////////////
+
+        ///////////////////////// Dip n Dip Started //////////////////////
+
+    }
+
+    private void prepareListDataForDipnDip() {
+        listDataHeaderForDipNdip = new ArrayList<>();
+        listDataChildForDipNdip = new HashMap<>();
+
+        // Adding child data Headers
+        listDataHeaderForDipNdip.add("Crêpe");
+        listDataHeaderForDipNdip.add("Waffle");
+        listDataHeaderForDipNdip.add("Pancake");
+        listDataHeaderForDipNdip.add("Chocolate rich");
+        listDataHeaderForDipNdip.add("Baked goods");
+        listDataHeaderForDipNdip.add("Ice cream");
+        listDataHeaderForDipNdip.add("Chocolate shot");
+        listDataHeaderForDipNdip.add("Fried yummies");
+        listDataHeaderForDipNdip.add("Stuff in a cup");
+        listDataHeaderForDipNdip.add("Dip Sticks");
+        listDataHeaderForDipNdip.add("Dip n dip mania");
+        listDataHeaderForDipNdip.add("COLD DRINKS");
+        listDataHeaderForDipNdip.add("Milk shakes");
+        listDataHeaderForDipNdip.add("Frappe");
+        listDataHeaderForDipNdip.add("Smoothies");
+        listDataHeaderForDipNdip.add("Ice tea shakes");
+        listDataHeaderForDipNdip.add("Soft  drinks");
+
+        List<String> crepe = new ArrayList<>();
+        crepe.add("Dip n dip crêpe");
+        crepe.add("Add a scoop");
+        crepe.add("Fettuccini  crêpe full");
+        crepe.add("Fettuccini  crêpe small");
+        crepe.add("Cinnamon crêpe pouch");
+        crepe.add("Tripple chocolate crêpe");
+        crepe.add("Cookies crêpe");
+        crepe.add("Mallow crêpe");
+        crepe.add("Brownies crêpe");
+        crepe.add("Krispy crêpe");
+        crepe.add("Banana wrap");
+
+        /// Waffle
+        List<String> waffle = new ArrayList<>();
+        waffle.add("Dip n dip waffle");
+        waffle.add("Dip n dip waffle with ice cream");
+        waffle.add("Chocolate waffle");
+        waffle.add("Waffle stick");
+
+        // pancake
+        List<String> pancake = new ArrayList<>();
+        pancake.add("Pancake mini tower");
+
+        // Chocolate rich
+        List<String> chocolateRich = new ArrayList<>();
+        chocolateRich.add("Fondant");
+        chocolateRich.add("Molten cake");
+        chocolateRich.add("Brownies");
+        chocolateRich.add("Dip n dip pizza");
+        chocolateRich.add("Chocolate mousse");
+        chocolateRich.add("Trois chocolat mousse");
+        chocolateRich.add("Succès");
+
+        /// Baked goods:
+        List<String> bakedGoods = new ArrayList<>();
+
+        bakedGoods.add("Mini muffin");
+        bakedGoods.add("Cookies");
+        bakedGoods.add("Dip n Dip éclair pyramid");
+        bakedGoods.add("Éclair Kebab");
+        bakedGoods.add("Profiterole");
+
+        /// Ice cream:
+        List<String> iceCream = new ArrayList<>();
+        iceCream.add("Scoop");
+        iceCream.add("Crunchy ice cream");
+
+        /// Chocolate shot
+
+        List<String> chocolateShot = new ArrayList<>();
+        chocolateShot.add("Chocolate Shot");
+        chocolateShot.add("Chocolate 1kg");
+
+        //Fried yummies
+        List<String> friedYammies = new ArrayList<>();
+        friedYammies.add("Pain Perdu");
+        friedYammies.add("Cheese cake nuggets");
+
+        /// Stuff in a cup
+        List<String> stuffInAcup = new ArrayList<>();
+        stuffInAcup.add("Dip Crispies");
+        stuffInAcup.add("Fruits In a cup");
+        stuffInAcup.add("Brownies in a cup");
+
+        ////  DIp sticks
+        List<String> dipSticks = new ArrayList<>();
+        dipSticks.add("Dip Sticks 4 pieces");
+        dipSticks.add("Dip Sticks 8 pieces");
+        dipSticks.add("Dip stick platter");
+
+        // Dip n Dip Mania
+        List<String> dipNdipMania = new ArrayList<>();
+        dipNdipMania.add("Dip-able items (full plate)");
+        dipNdipMania.add("Brownies, mini éclair");
+        dipNdipMania.add("Ice cream (scoop)");
+        dipNdipMania.add("Fondue");
+        dipNdipMania.add("Whipped cream");
+
+        /// cold drinks
+        List<String> coldDrinks = new ArrayList<>();
+        coldDrinks.add("Dip n dip freezy");
+
+        /// MilkShakes
+        List<String> milkShakes = new ArrayList<>();
+        milkShakes.add("Chocolate milk shake");
+        milkShakes.add("Vanilla milk shake");
+        milkShakes.add("Strawberry  milk shake");
+        milkShakes.add("Coffee shake");
+        milkShakes.add("Banana milk shake");
+        milkShakes.add("After eight milk shake");
+
+        //// Frappe
+        List<String> frappe = new ArrayList<>();
+        frappe.add("Mocha frappe");
+        frappe.add("White mocha frappe");
+        frappe.add("Caramel frappe");
+        frappe.add("Cookies frappe");
+        frappe.add("Pink frappe");
+
+        /// Smoothies
+        List<String> smoothies = new ArrayList<>();
+        smoothies.add("Creamy smoothies");
+        smoothies.add("Smoothie float");
+        smoothies.add("Oreo milk shake");
+        smoothies.add("Affogato");
+
+        /// Ice tea shakes
+        List<String> iceTeaShakes = new ArrayList<>();
+        iceTeaShakes.add("Ice tea shake");
+        iceTeaShakes.add("Lemon tea shake");
+        iceTeaShakes.add("Mint tea shake");
+        iceTeaShakes.add("Peach tea shake");
+        iceTeaShakes.add("Raspberry  tea shake");
+        iceTeaShakes.add("Iced cappuccino");
+
+        // Soft  drinks
+        List<String> softDrinks = new ArrayList<>();
+        softDrinks.add("Ice tea");
+        softDrinks.add("Italian soda");
+        softDrinks.add("Flavored cola");
+        softDrinks.add("Pop");
+        softDrinks.add("Perrier");
+        softDrinks.add("Redbull");
+        softDrinks.add("Spring water");
+
+
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(0), crepe);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(1), waffle);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(2), pancake);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(3), chocolateRich);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(4), bakedGoods);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(5), iceCream);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(6), chocolateShot);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(7), friedYammies);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(8), stuffInAcup);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(9), dipSticks);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(10),dipNdipMania );
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(11), coldDrinks );
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(12), milkShakes );
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(13), frappe);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(14), smoothies);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(15), iceTeaShakes);
+        listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(16), softDrinks);
     }
 
     private void prepareListDataForAdonis() {
         listDataHeaderForAdonis = new ArrayList<>();
         listDataChildForAdonis = new HashMap<>();
 
-        // Adding child data
+        // Adding child data Headers
         listDataHeaderForAdonis.add("Sandwiches");
         listDataHeaderForAdonis.add("Fresh juices");
         listDataHeaderForAdonis.add("Fruit cocktails");
@@ -426,6 +606,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataHeaderForLatour = new ArrayList<>();
         listDataChildForLatour = new HashMap<>();
 
+        // headings
         listDataHeaderForLatour.add("Pizza");
         listDataHeaderForLatour.add("Pasta Fiesta");
         listDataHeaderForLatour.add("Hot Sandwishes");
@@ -525,19 +706,23 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataHeaderForRicaardo = new ArrayList<>();
         listDataChildForRicaardo = new HashMap<>();
 
+        // Headings
+        listDataHeaderForRicaardo.add("Sandwiches");
+        listDataHeaderForRicaardo.add("Soft Drinks");
+
         List<String> sandwiches = new ArrayList<>();
-        sandwiches.add("Philadelphia r");
-        sandwiches.add("Spanish Steak r");
-        sandwiches.add("Francisco r");
-        sandwiches.add("Hamburger r");
-        sandwiches.add("Shrimp r");
-        sandwiches.add("Calamari r");
-        sandwiches.add("Roast Beef r");
-        sandwiches.add("Grilled chicken breast r");
-        sandwiches.add("Canarias r");
-        sandwiches.add("Mexican chicken r");
-        sandwiches.add("Ricky r");
-        sandwiches.add("Fajita r");
+        sandwiches.add("Philadelphia");
+        sandwiches.add("Spanish Steak");
+        sandwiches.add("Francisco");
+        sandwiches.add("Hamburger");
+        sandwiches.add("Shrimp");
+        sandwiches.add("Calamari");
+        sandwiches.add("Roast Beef");
+        sandwiches.add("Grilled chicken breast");
+        sandwiches.add("Canarias");
+        sandwiches.add("Mexican chicken");
+        sandwiches.add("Ricky");
+        sandwiches.add("Fajita");
 
         //// Drinks
         List<String> softDrinks = new ArrayList<>();
@@ -555,6 +740,13 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         listDataHeaderForMassaad = new ArrayList<>();
         listDataChildForMassaad = new HashMap<>();
+
+        /// Headigs
+        listDataHeaderForMassaad.add("Salatat");
+        listDataHeaderForMassaad.add("Mou2abbalet");
+        listDataHeaderForMassaad.add("Sandwishet");
+        listDataHeaderForMassaad.add("S7oun");
+        listDataHeaderForMassaad.add("Soft Drinks");
 
         List<String> salatat = new ArrayList<>();
         salatat.add("Salatat");
@@ -609,7 +801,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(1), mou2abbalet);
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(2), sandwishet);
         listDataChildForMassaad.put(listDataHeaderForMassaad.get(3), s7oun);
-        listDataChildForMassaad.put(listDataHeaderForMassaad.get(3), softDrinks);
+        listDataChildForMassaad.put(listDataHeaderForMassaad.get(4), softDrinks);
 
     }
 
@@ -617,6 +809,14 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         listDataHeaderForSubz = new ArrayList<>();
         listDataChildForSubz = new HashMap<>();
+
+        /// Headigs
+        listDataHeaderForSubz.add("Salads");
+        listDataHeaderForSubz.add("Burgers");
+        listDataHeaderForSubz.add("SUBz SPECIAL");
+        listDataHeaderForSubz.add("SUBZ FRIES");
+        listDataHeaderForSubz.add("Drinks");
+
 
         // salads
         List<String> salads = new ArrayList<>();
