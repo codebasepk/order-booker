@@ -216,7 +216,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         } else {
             checkBox.setChecked(false);
         }
-
+        System.out.println(childText == null);
         if (quantityMap.containsKey(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.
                 get(groupPosition) + "_" + childText)) {
             spinner.setSelection((AppGlobals.getQuantityHashMap().

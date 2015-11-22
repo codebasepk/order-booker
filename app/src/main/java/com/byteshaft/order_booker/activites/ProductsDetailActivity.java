@@ -242,7 +242,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Cheese Mix", new String[]{"4000", "", ""});
             newPriceHashMap.put("Labneh", new String[]{"3000", "", ""});
             newPriceHashMap.put("Lahme & Kawarma", new String[]{"4000", "", ""});
-            newPriceHashMap.put("Lahme  b3ajin", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Lahme b3ajin", new String[]{"3000", "", ""});
             newPriceHashMap.put("Lahme b3ajin & Cheese", new String[]{"4000", "", ""});
             newPriceHashMap.put("Pesto Cheese", new String[]{"3500", "", ""});
             newPriceHashMap.put("Feta Mix", new String[]{"3500", "", ""});
