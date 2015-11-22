@@ -31,7 +31,6 @@ public class ProductsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_layout);
-        AppGlobals.initializeHashMap();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         CustomGrid adapter = new CustomGrid(ProductsActivity.this, imageId);

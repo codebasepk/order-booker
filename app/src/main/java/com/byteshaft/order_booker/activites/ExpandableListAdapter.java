@@ -107,7 +107,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         editText.setTypeface(typeFace);
         RadioGroup radioGroup = (RadioGroup) convertView.findViewById(R.id.radio_group);
         final String[] array = priceMap.get(childText);
-        if (!priceMap.get(childText)[2].trim().isEmpty()) {
+        if (!priceMap.get(childText)[1].trim().isEmpty()) {
             radioGroup.setVisibility(View.VISIBLE);
             AppGlobals.addPRToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
                     listDataHeader.get(groupPosition)
@@ -130,7 +130,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                         }
                         break;
                     case R.id.two_person:
-
                         AppGlobals.saveSecondPersonList(AppGlobals.getCurrentSelectedStore() + "_" +
                                 listDataHeader.get(groupPosition) + "_" +
                                 listDataChild.get(listDataHeader.get(groupPosition)).get(
@@ -144,7 +143,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        priceTextView.setText("price: " + array[0] + "PR," + array[1]);
+        priceTextView.setText("price: " + array[0] + "PR, " + array[1]);
         ingredients.setText(array[2]);
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
         HashMap<String, String> orderMap = AppGlobals.getFinalOrdersHashMap();
