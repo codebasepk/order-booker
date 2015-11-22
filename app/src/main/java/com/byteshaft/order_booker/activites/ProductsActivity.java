@@ -53,7 +53,7 @@ public class ProductsActivity extends AppCompatActivity {
             case 0:
                 return "Adonis";
             case 1:
-                return "latour";
+                    return "latour";
             case 2:
                 return "dip N dip";
             case 3:
