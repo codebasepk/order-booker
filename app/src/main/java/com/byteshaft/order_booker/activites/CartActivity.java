@@ -94,11 +94,26 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
             viewLine.setVisibility(View.VISIBLE);
         }
         for (String key : AppGlobals.getFinalOrdersHashMap().keySet()) {
-            if (AppGlobals.getQuantityHashMap().containsKey(key)) {
-                int value = Integer.valueOf(AppGlobals.getFinalOrdersHashMap().get(key).
-                        replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", "")) *
-                        Integer.valueOf(AppGlobals.getQuantityHashMap().get(key));
-                allValues.add(String.valueOf(value));
+            System.out.println(key);
+            System.out.println(AppGlobals.secondPersonFinalList().containsKey(key));
+
+            if (AppGlobals.getQuantityHashMap().containsKey(key) ||
+                    AppGlobals.secondPersonFinalList().containsKey(key)) {
+                if (AppGlobals.getFinalOrdersHashMap().containsKey(key)&&
+                        !AppGlobals.secondPersonFinalList().containsKey(key)) {
+                    int value = Integer.valueOf(AppGlobals.getFinalOrdersHashMap().get(key).
+                            replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", "")) *
+                            Integer.valueOf(AppGlobals.getQuantityHashMap().get(key));
+                    allValues.add(String.valueOf(value));
+                } else if (AppGlobals.secondPersonFinalList().containsKey(key) &&
+                        AppGlobals.getQuantityHashMap().containsKey(key)){
+                    int val = Integer.valueOf(AppGlobals.secondPersonFinalList().get(key)) *
+                            Integer.valueOf(AppGlobals.getQuantityHashMap().get(key));
+                    allValues.add(String.valueOf(val));
+                } else {
+                    int val = Integer.valueOf(AppGlobals.secondPersonFinalList().get(key));
+                    allValues.add(String.valueOf(val));
+                }
             } else {
                 allValues.add(AppGlobals.getFinalOrdersHashMap().get(key));
             }
@@ -150,7 +165,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     class CartAdapter extends ArrayAdapter<String> {
-
         private ArrayList<String> arrayList;
         private int layoutResource;
         private ViewHolder holder;
@@ -181,16 +195,25 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 holder = (ViewHolder) convertView.getTag();
             }
             holder.productName.setText(arrayList.get(position).replace("_", "->"));
-            holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap().get(arrayList.get(position)));
+            if (AppGlobals.getFinalOrdersHashMap().containsKey(arrayList.get(position)) &&
+                    !AppGlobals.secondPersonFinalList().containsKey(arrayList.get(position))) {
+                holder.productPrice.setText(AppGlobals.getFinalOrdersHashMap()
+                        .get(arrayList.get(position)) + "LL");
+            } else if (AppGlobals.secondPersonFinalList().containsKey(arrayList.get(position))){
+                holder.productPrice.setText(AppGlobals.secondPersonFinalList()
+                        .get(arrayList.get(position)) + "LL");
+            }
             if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
                 int singleItemAmount = Integer.valueOf(AppGlobals.getFinalOrdersHashMap()
                         .get(arrayList.get(position)).
                                 replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", ""));
-                holder.itemTotalAmount.setText("Total: "+ (singleItemAmount * AppGlobals.getQuantityHashMap()
+                holder.itemTotalAmount.setText("Total: "+ (Integer.valueOf(holder.productPrice.
+                        getText().toString().replaceAll("[a-zA-Z]", "").replace(".", ""))
+                        * AppGlobals.getQuantityHashMap()
                         .get(arrayList.get(position)))+ "L.L");
             } else {
-                holder.itemTotalAmount.setText("Total: " + (AppGlobals.getFinalOrdersHashMap()
-                        .get(arrayList.get(position))));
+                holder.itemTotalAmount.setText("Total: " +Integer.valueOf(holder.productPrice.
+                        getText().toString().replaceAll("[a-zA-Z]", "").replace(".", "")));
 
             }
             if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
@@ -205,6 +228,9 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                     System.out.println(AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position)));
                     if (AppGlobals.getQuantityHashMap().containsKey(arrayList.get(position))) {
                         AppGlobals.removeQuantityFromHashMap(arrayList.get(position));
+                    }
+                    if (AppGlobals.secondPersonFinalList().containsKey(arrayList.get(position))) {
+                        AppGlobals.removeSecondPersonList(arrayList.get(position));
                     }
                     AppGlobals.removeOrderFromHashMap(arrayList.get(position));
                     finalItems.remove(arrayList.get(position));
