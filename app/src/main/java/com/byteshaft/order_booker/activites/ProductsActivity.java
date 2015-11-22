@@ -61,7 +61,7 @@ public class ProductsActivity extends AppCompatActivity {
             case 4:
                 return "massad";
             case 5:
-                return "ricaro_snack";
+                return "ricardo_snack";
         }
         return "";
     }
