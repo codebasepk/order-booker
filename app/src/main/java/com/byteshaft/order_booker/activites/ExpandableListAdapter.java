@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -147,8 +148,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (AppGlobals.getCurrentSelectedStore().equals("Adonis")) {
             priceTextView.setText("price: " + priceMap.get(childText));
         } else if (AppGlobals.getCurrentSelectedStore().equals("latour")) {
-            priceTextView.setText("price: " + newPriceMap.get(childText)[0] + "PR," + newPriceMap.get(childText)[1]);
-            ingredients.setText(newPriceMap.get(childText)[2]);
+            System.out.println(newPriceMap);
+            String[] array = newPriceMap.get(childText);
+            System.out.println(childText);
+            System.out.println(Arrays.toString(array));
+            priceTextView.setText("price: " + array[0] + "PR," + array[1]);
+            ingredients.setText(array[2]);
         }
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
         HashMap<String, String> orderMap = AppGlobals.getFinalOrdersHashMap();
