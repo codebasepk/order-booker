@@ -474,11 +474,11 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("After eight milk shake", new String[]{"7500", "", "(Mint flavored chocolate milk shake)"});
 
             // Frappe
-            newPriceHashMap.put("Mocha  frappe", new String[]{"7500", "", "(Chocolate, espresso in a cold icy creamy mixture)"});
+            newPriceHashMap.put("Mocha frappe", new String[]{"7500", "", "(Chocolate, espresso in a cold icy creamy mixture)"});
             newPriceHashMap.put("White mocha frappe", new String[]{"7500", "", "(White chocolate, espresso in a cold icy creamy mixture)"});
             newPriceHashMap.put("Caramel frappe", new String[]{"7500", "", "(Caramel flavored frappe)"});
-            newPriceHashMap.put("Cookies  frappe", new String[]{"8000", "", "(Frappe blended with real cookies)"});
-            newPriceHashMap.put("Pink  frappe", new String[]{"7500", "", "(Frappe with  strawberry and raspberry flavors)"});
+            newPriceHashMap.put("Cookies frappe", new String[]{"8000", "", "(Frappe blended with real cookies)"});
+            newPriceHashMap.put("Pink frappe", new String[]{"7500", "", "(Frappe with  strawberry and raspberry flavors)"});
 
             // Smoothies :
             newPriceHashMap.put("Creamy smoothies", new String[]{"8000", "", ""});
