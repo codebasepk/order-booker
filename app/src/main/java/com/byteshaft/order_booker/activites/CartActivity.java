@@ -36,7 +36,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     private View viewLine;
     private Button mCheckOutButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

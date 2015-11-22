@@ -28,6 +28,7 @@ public class AppGlobals extends Application{
     private static String currentSelectedStore = "";
     private static HashMap<String, String> personHashMap;
     private static HashMap<String, String> withOutHashMap;
+    private static HashMap<String, String> secondPersonList;
 
     @Override
     public void onCreate() {
@@ -71,6 +72,7 @@ public class AppGlobals extends Application{
         quantityHashMap = new HashMap<>();
         personHashMap = new HashMap<>();
         withOutHashMap = new HashMap<>();
+        secondPersonList = new HashMap<>();
     }
     public static void addOrderToHashMap(String key, String value) {
         orderHashMap.put(key, value);
@@ -133,6 +135,18 @@ public class AppGlobals extends Application{
 
     public static HashMap<String, String> getWithOutHashMap() {
         return withOutHashMap;
+    }
+
+    public static void saveSecondPersonList(String key, String value) {
+        secondPersonList.put(key, value);
+    }
+
+    public static void removeSecondPersonList(String key) {
+        secondPersonList.remove(key);
+    }
+
+    public static HashMap<String, String> secondPersonFinalList() {
+        return secondPersonList;
     }
 }
 
