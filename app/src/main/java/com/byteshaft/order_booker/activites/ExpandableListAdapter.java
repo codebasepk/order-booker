@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -107,51 +106,35 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         final EditText editText = (EditText) convertView.findViewById(R.id.with_out);
         editText.setTypeface(typeFace);
         RadioGroup radioGroup = (RadioGroup) convertView.findViewById(R.id.radio_group);
-        if (AppGlobals.getCurrentSelectedStore().equals("latour")) {
+        final String[] array = priceMap.get(childText);
+        if (!priceMap.get(childText)[2].trim().isEmpty()) {
             radioGroup.setVisibility(View.VISIBLE);
+            AppGlobals.addPRToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
+                    listDataHeader.get(groupPosition)
+                    + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                    .get(childPosition), array[0]);
         }
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.one_person:
-                        System.out.println(AppGlobals.getPersonHashMap().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
-                                listDataHeader.get(groupPosition) + "_" +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                        childPosition)));
-                        if (AppGlobals.getPersonHashMap().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
-                                listDataHeader.get(groupPosition) + "_" +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(
+                        if (AppGlobals.secondPersonFinalList().containsKey(AppGlobals.
+                                getCurrentSelectedStore() + "_" +listDataHeader.get(groupPosition)
+                                + "_" +listDataChild.get(listDataHeader.get(groupPosition)).get(
                                         childPosition))) {
-                            AppGlobals.removePRFromHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
-                                    listDataHeader.get(groupPosition) + "_" +
-                                    listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                            childPosition));
+                            AppGlobals.removeSecondPersonList(AppGlobals.
+                                    getCurrentSelectedStore() + "_" +listDataHeader.get(groupPosition)
+                                    + "_" +listDataChild.get(listDataHeader.get(groupPosition)).get(
+                                    childPosition));
                         }
-                        AppGlobals.addPRToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
-                                listDataHeader.get(groupPosition) + "_" +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                        childPosition), "1PR");
-                        System.out.print(AppGlobals.getPersonHashMap());
                         break;
                     case R.id.two_person:
-                        System.out.println(AppGlobals.getPersonHashMap().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
+
+                        AppGlobals.saveSecondPersonList(AppGlobals.getCurrentSelectedStore() + "_" +
                                 listDataHeader.get(groupPosition) + "_" +
                                 listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                        childPosition)));
-                        if (AppGlobals.getPersonHashMap().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
-                                listDataHeader.get(groupPosition) + "_" +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                        childPosition))) {
-                            AppGlobals.removePRFromHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
-                                    listDataHeader.get(groupPosition) + "_" +
-                                    listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                            childPosition));
-                        }
-                        AppGlobals.addPRToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
-                                listDataHeader.get(groupPosition) + "_" +
-                                listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                        childPosition), "2PR");
+                                        childPosition), array[1]);
                         System.out.println(AppGlobals.getPersonHashMap());
                         break;
                 }
@@ -161,9 +144,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        String[] array = priceMap.get(childText);
-        System.out.println(childText);
-        System.out.println(Arrays.toString(array));
         priceTextView.setText("price: " + array[0] + "PR," + array[1]);
         ingredients.setText(array[2]);
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
@@ -183,7 +163,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                             listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition), editText.getText().toString());
-                    System.out.println(AppGlobals.getFinalOrdersHashMap());
                 } else {
                     AppGlobals.removeOrderFromHashMap(AppGlobals.getCurrentSelectedStore() + "_"
                             + listDataHeader.get(groupPosition)
@@ -244,17 +223,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             spinner.setSelection((AppGlobals.getQuantityHashMap().
                     get(listDataHeader.get(groupPosition) + "_" + childText) - 1));
         }
-        if (AppGlobals.getPersonHashMap().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
-                listDataHeader.get(groupPosition) + "_" + childText)) {
-            switch (AppGlobals.getPersonHashMap().get(AppGlobals.getCurrentSelectedStore() + "_" +
+
+        if (AppGlobals.secondPersonFinalList().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
                     listDataHeader.get(groupPosition) + "_" + childText)) {
-                case "1PR":
-                    radioGroup.check(R.id.one_person);
-                    break;
-                case "2PR":
                     radioGroup.check(R.id.two_person);
-                    break;
-            }
+        } else {
+            radioGroup.check(R.id.one_person);
         }
         return convertView;
     }

@@ -29,7 +29,6 @@ public class SendDataTask extends AsyncTask<String, String, String> {
     public SendDataTask(Activity activity) {
         this.mActivity = activity;
         mHelpers = new Helpers();
-
     }
 
     @Override
