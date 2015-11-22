@@ -230,7 +230,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             // Mana’ish
             newPriceHashMap.put("Zaatar", new String[]{"1000", "", ""});
             newPriceHashMap.put("Zaatar light", new String[]{"1500", "", ""});
-            newPriceHashMap.put("Zaatar & Labneh", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Zaatar and Labneh", new String[]{"2000", "", ""});
             newPriceHashMap.put("Zaatar & Cheese", new String[]{"3000", "", ""});
             newPriceHashMap.put("Cheese", new String[]{"3000", "", ""});
             newPriceHashMap.put("Spinach", new String[]{"2500", "", ""});
@@ -800,7 +800,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         manaish.add("Zaatar");
         manaish.add("Zaatar light");
-        manaish.add("Zaatar & Labneh");
+        manaish.add("Zaatar and Labneh");
         manaish.add("Cheese");
         manaish.add("Spinach");
         manaish.add("Keshek");
