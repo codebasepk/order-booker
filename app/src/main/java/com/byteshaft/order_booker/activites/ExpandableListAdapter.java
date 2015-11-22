@@ -36,7 +36,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this.listDataHeader = listDataHeader;
         this.listDataChild = listChildData;
         this.priceMap = price;
-        typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(),"fonts/BradBunR.ttf");
+        typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(), "fonts/BradBunR.ttf");
     }
 
     @Override
@@ -119,12 +119,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                                 listDataHeader.get(groupPosition) + "_" +
                                 listDataChild.get(listDataHeader.get(groupPosition)).get(
                                         childPosition), "1PR");
+                        System.out.print(AppGlobals.getPersonHashMap());
                         break;
                     case R.id.two_person:
                         AppGlobals.addPRToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
                                 listDataHeader.get(groupPosition) + "_" +
                                 listDataChild.get(listDataHeader.get(groupPosition)).get(
                                         childPosition), "2PR");
+                        System.out.println(AppGlobals.getPersonHashMap());
                 }
             }
         });
@@ -132,15 +134,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        if (AppGlobals.getCurrentSelectedStore().equals("Adonis")) {
-            priceTextView.setText("price: " + priceMap.get(childText)[0]);
-        } else if (AppGlobals.getCurrentSelectedStore().equals("latour")) {
-            String[] array = priceMap.get(childText);
-            System.out.println(childText);
-            System.out.println(Arrays.toString(array));
-            priceTextView.setText("price: " + array[0] + "PR," + array[1]);
-            ingredients.setText(array[2]);
-        }
+        String[] array = priceMap.get(childText);
+        System.out.println(childText);
+        System.out.println(Arrays.toString(array));
+        priceTextView.setText("price: " + array[0] + "PR," + array[1]);
+        ingredients.setText(array[2]);
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
         HashMap<String, String> orderMap = AppGlobals.getFinalOrdersHashMap();
         HashMap<String, Integer> quantityMap = AppGlobals.getQuantityHashMap();
@@ -151,7 +149,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     AppGlobals.addOrderToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
                             listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
-                            .get(childPosition),priceMap.get(
+                            .get(childPosition), priceMap.get(
                             listDataChild.get(listDataHeader.get(groupPosition))
                                     .get(childPosition))[0]);
                     AppGlobals.withOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
@@ -230,9 +228,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     radioGroup.check(R.id.two_person);
                     break;
             }
-            }
-            return convertView;
         }
+        return convertView;
+    }
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
