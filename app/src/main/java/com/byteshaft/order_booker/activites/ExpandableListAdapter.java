@@ -147,8 +147,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                System.out.println(listDataHeader == null);
-                System.out.println(listDataChild == null);
                 if (buttonView.isChecked()) {
                     AppGlobals.addOrderToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
                             listDataHeader.get(groupPosition)
