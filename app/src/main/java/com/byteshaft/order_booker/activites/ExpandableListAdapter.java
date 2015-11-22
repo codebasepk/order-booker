@@ -130,7 +130,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                         }
                         break;
                     case R.id.two_person:
-
                         AppGlobals.saveSecondPersonList(AppGlobals.getCurrentSelectedStore() + "_" +
                                 listDataHeader.get(groupPosition) + "_" +
                                 listDataChild.get(listDataHeader.get(groupPosition)).get(

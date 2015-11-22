@@ -54,6 +54,7 @@ public class PreMainActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.snack_custom_button:
                 AppGlobals.setSnacksSessionStatus(true);
                 startActivity(new Intent(getApplicationContext(), ProductsActivity.class));
+                AppGlobals.initializeHashMap();
                 break;
             case R.id.custom_super_market_button:
                 AppGlobals.setSuperMarketSessionStatus(true);
