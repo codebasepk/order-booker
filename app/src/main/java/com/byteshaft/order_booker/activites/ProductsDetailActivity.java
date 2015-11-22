@@ -1004,7 +1004,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForSubz.put(listDataHeaderForSubz.get(1), burgers);
         listDataChildForSubz.put(listDataHeaderForSubz.get(2), subzSpecial);
         listDataChildForSubz.put(listDataHeaderForSubz.get(3), subsFries);
-        listDataChildForSubz.put(listDataHeaderForSubz.get(3), drinks);
+        listDataChildForSubz.put(listDataHeaderForSubz.get(4), drinks);
     }
 
         @Override
