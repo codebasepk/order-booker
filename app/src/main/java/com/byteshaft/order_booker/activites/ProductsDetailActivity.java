@@ -115,6 +115,8 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 expListView.setAdapter(listAdapter);
                 break;
             case "dip N dip":
+                addPriceDetailsToHashMapForLatour();
+                prepareListDataForDipnDip();
                 break;
             case "Subz":
                 break;
@@ -697,8 +699,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForLatour.put(listDataHeaderForLatour.get(0), pizza);
         listDataChildForLatour.put(listDataHeaderForLatour.get(1), pastaFiesta);
         listDataChildForLatour.put(listDataHeaderForLatour.get(2), hotSandwchies);
-        listDataChildForLatour.put(listDataHeaderForLatour.get(3), manaish);
-        listDataChildForLatour.put(listDataHeaderForLatour.get(4), drinks);
+        listDataChildForLatour.put(listDataHeaderForLatour.get(3), platters);
+        listDataChildForLatour.put(listDataHeaderForLatour.get(4), manaish);
+        listDataChildForLatour.put(listDataHeaderForLatour.get(5), drinks);
     }
 
     private void preparedListDataForRicaardo() {
