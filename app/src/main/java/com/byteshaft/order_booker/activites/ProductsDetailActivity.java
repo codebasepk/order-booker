@@ -48,7 +48,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
 
 
-    private HashMap<String, String> priceHashMap;
+    private HashMap<String, String[]> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
 
     @Override
@@ -103,43 +103,43 @@ public class ProductsDetailActivity extends AppCompatActivity {
             case "Adonis":
                 addPriceDetailsToHashMap();
                 prepareListDataForAdonis();
-                listAdapter = new ExpandableListAdapter(this, listDataHeaderForAdonis,
+                listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForAdonis,
                         listDataChildForAdonis, priceHashMap);
                 expListView.setAdapter(listAdapter);
                 break;
             case "latour":
                 addPriceDetailsToHashMapForLatour();
                 prepareListDataForLatour();
-                listAdapter = new ExpandableListAdapter(listDataHeaderForLatour,
-                        listDataChildForLatour, newPriceHashMap, getApplicationContext());
+                listAdapter = new ExpandableListAdapter(getApplicationContext(),listDataHeaderForLatour,
+                        listDataChildForLatour, newPriceHashMap);
                 expListView.setAdapter(listAdapter);
                 break;
             case "dip N dip":
                 addPriceDetailsToHashMapForLatour();
                 prepareListDataForDipnDip();
-                listAdapter = new ExpandableListAdapter(listDataHeaderForDipNdip,
-                        listDataChildForDipNdip, newPriceHashMap, getApplicationContext());
+                listAdapter = new ExpandableListAdapter(getApplicationContext(),listDataHeaderForDipNdip,
+                        listDataChildForDipNdip, newPriceHashMap);
                 expListView.setAdapter(listAdapter);
                 break;
             case "Subz":
                 addPriceDetailsToHashMapForLatour();
                 preparedListDataForSubz();
-                listAdapter = new ExpandableListAdapter(listDataHeaderForSubz,
-                        listDataChildForSubz, newPriceHashMap, getApplicationContext());
+                listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForSubz,
+                        listDataChildForSubz, newPriceHashMap);
                 expListView.setAdapter(listAdapter);
                 break;
             case "massad":
                 addPriceDetailsToHashMapForLatour();
                 preparedListDataForMassaad();
-                listAdapter = new ExpandableListAdapter(listDataHeaderForMassaad, listDataChildForMassaad,
-                        newPriceHashMap, getApplicationContext());
+                listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForMassaad, listDataChildForMassaad,
+                        newPriceHashMap);
                 expListView.setAdapter(listAdapter);
                 break;
             case "ricardo_snack":
                 addPriceDetailsToHashMapForLatour();
                 preparedListDataForRicaardo();
-                listAdapter = new ExpandableListAdapter(listDataHeaderForRicaardo, listDataChildForRicaardo,
-                        newPriceHashMap, getApplicationContext());
+                listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForRicaardo, listDataChildForRicaardo,
+                        newPriceHashMap);
                 expListView.setAdapter(listAdapter);
                 break;
         }
@@ -147,42 +147,42 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
     private void addPriceDetailsToHashMap() {
         priceHashMap = new HashMap<>();
-        priceHashMap.put("Roast beef", "6000 L.L");
-        priceHashMap.put("Ham & cheese" ,"5000 L.L");
-        priceHashMap.put("Tuna", "5000 L.L");
-        priceHashMap.put("Frankfurter", "5000 L.L");
-        priceHashMap.put("Tawouk", "6000 L.L");
-        priceHashMap.put("Chicken sub", "7000 L.L");
-        priceHashMap.put("Soujok", "5000 L.L");
-        priceHashMap.put("Makanek", "6000 L.L");
-        priceHashMap.put("Sub Marine", "6000 L.L");
-        priceHashMap.put("Jumbo burger", "8000 L.L");
-        priceHashMap.put("Phili steak", "6000 L.L");
-        priceHashMap.put("Kachkawen", "4000 L.L");
-        priceHashMap.put("+add cheese", "1000 L.L");
-        priceHashMap.put("+add ham&cheese", "2000 L.L");
-        priceHashMap.put("Strawberry", "6000 L.L");
-        priceHashMap.put("Mixed cocktail", "6000 L.L");
-        priceHashMap.put("Pineapple", "7000 L.L");
-        priceHashMap.put("Mango", "7000 L.L");
-        priceHashMap.put("Guayava", "5000 L.L");
-        priceHashMap.put("Orange", "4000 L.L");
-        priceHashMap.put("Pomegrenade (winter)", "7000 L.L");
-        priceHashMap.put("Lemonade  (summer) ", "4000 L.L");
-        priceHashMap.put("Banana milk shake ", "4000 L.L");
-        priceHashMap.put("Strawbanana shake", "6000 L.L");
-        priceHashMap.put("Strawbanana milk shake", "5000 L.L");
-        priceHashMap.put("Melon", "4000 L.L");
-        priceHashMap.put("Apple", "5000 L.L");
-        priceHashMap.put("Carrot", "5000 L.L");
-        priceHashMap.put("Grapefruit", "5000 L.L");
-        priceHashMap.put("Strawberry", "7000 L.L");
-        priceHashMap.put("Mango", "7000 L.L");
-        priceHashMap.put("Strawberry/mango", "7000 L.L");
-        priceHashMap.put("Avocado", "8000 L.L");
-        priceHashMap.put("Avocado/strawberry", "7000 L.L");
-        priceHashMap.put("Avocado/mango", "7000 L.L");
-        priceHashMap.put("TRIO", "7000 L.L");
+        priceHashMap.put("Roast beef", new String[]{"6000", "", ""});
+        priceHashMap.put("Ham & cheese" ,new String[]{"5000", "", ""});
+        priceHashMap.put("Tuna", new String[]{"5000", "", ""});
+        priceHashMap.put("Frankfurter", new String[]{"5000", "", ""});
+        priceHashMap.put("Tawouk", new String[]{"6000", "", ""});
+        priceHashMap.put("Chicken sub", new String[]{"7000", "", ""});
+        priceHashMap.put("Soujok", new String[]{"5000", "", ""});
+        priceHashMap.put("Makanek", new String[]{"6000", "", ""});
+        priceHashMap.put("Sub Marine", new String[]{"6000", "", ""});
+        priceHashMap.put("Jumbo burger", new String[]{"8000", "", ""});
+        priceHashMap.put("Phili steak", new String[]{"6000", "", ""});
+        priceHashMap.put("Kachkawen", new String[]{"4000", "", ""});
+        priceHashMap.put("+add cheese", new String[]{"1000", "", ""});
+        priceHashMap.put("+add ham&cheese", new String[]{"2000", "", ""});
+        priceHashMap.put("Strawberry", new String[]{"6000", "", ""});
+        priceHashMap.put("Mixed cocktail", new String[]{"6000", "", ""});
+        priceHashMap.put("Pineapple", new String[]{"7000", "", ""});
+        priceHashMap.put("Mango", new String[]{"7000", "", ""});
+        priceHashMap.put("Guayava", new String[]{"5000", "", ""});
+        priceHashMap.put("Orange", new String[]{"4000", "", ""});
+        priceHashMap.put("Pomegrenade (winter)", new String[]{"7000", "", ""});
+        priceHashMap.put("Lemonade  (summer) ", new String[]{"4000", "", ""});
+        priceHashMap.put("Banana milk shake ", new String[]{"4000", "", ""});
+        priceHashMap.put("Strawbanana shake", new String[]{"6000", "", ""});
+        priceHashMap.put("Strawbanana milk shake", new String[]{"5000", "", ""});
+        priceHashMap.put("Melon", new String[]{"4000", "", ""});
+        priceHashMap.put("Apple", new String[]{"5000", "", ""});
+        priceHashMap.put("Carrot", new String[]{"5000", "", ""});
+        priceHashMap.put("Grapefruit", new String[]{"5000", "", ""});
+        priceHashMap.put("Strawberry", new String[]{"7000", "", ""});
+        priceHashMap.put("Mango", new String[]{"7000", "", ""});
+        priceHashMap.put("Strawberry/mango", new String[]{"7000", "", ""});
+        priceHashMap.put("Avocado", new String[]{"8000", "", ""});
+        priceHashMap.put("Avocado/strawberry", new String[]{"7000", "", ""});
+        priceHashMap.put("Avocado/mango", new String[]{"7000", "", ""});
+        priceHashMap.put("TRIO", new String[]{"7000", "", ""});
     }
 
     private void addPriceDetailsToHashMapForLatour() {
@@ -1004,7 +1004,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForSubz.put(listDataHeaderForSubz.get(1), burgers);
         listDataChildForSubz.put(listDataHeaderForSubz.get(2), subzSpecial);
         listDataChildForSubz.put(listDataHeaderForSubz.get(3), subsFries);
-        listDataChildForSubz.put(listDataHeaderForSubz.get(3), drinks);
+        listDataChildForSubz.put(listDataHeaderForSubz.get(4), drinks);
     }
 
         @Override

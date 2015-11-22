@@ -27,28 +27,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listDataChild;
     private Typeface typeFace;
-    private HashMap<String, String> priceMap;
-    private HashMap<String, String[]> newPriceMap;
-    private boolean pizza = false;
+    private HashMap<String, String[]> priceMap;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
                                  HashMap<String, List<String>> listChildData,
-                                 HashMap<String, String> price) {
+                                 HashMap<String, String[]> price) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listChildData;
         this.priceMap = price;
-        typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(),"fonts/BradBunR.ttf");
-    }
-
-    public ExpandableListAdapter(List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData,
-                                 HashMap<String, String[]> data, Context context1) {
-        this.listDataHeader = listDataHeader;
-        this.listDataChild = listChildData;
-        this.newPriceMap = data;
-        pizza = true;
-        this.context = context1;
         typeFace = Typeface.createFromAsset(AppGlobals.getContext().getAssets(),"fonts/BradBunR.ttf");
     }
 
@@ -146,10 +133,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
         if (AppGlobals.getCurrentSelectedStore().equals("Adonis")) {
-            priceTextView.setText("price: " + priceMap.get(childText));
+            priceTextView.setText("price: " + priceMap.get(childText)[0]);
         } else if (AppGlobals.getCurrentSelectedStore().equals("latour")) {
-            System.out.println(newPriceMap);
-            String[] array = newPriceMap.get(childText);
+            String[] array = priceMap.get(childText);
             System.out.println(childText);
             System.out.println(Arrays.toString(array));
             priceTextView.setText("price: " + array[0] + "PR," + array[1]);
@@ -164,16 +150,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 System.out.println(listDataHeader == null);
                 System.out.println(listDataChild == null);
                 if (buttonView.isChecked()) {
-                    System.out.println(AppGlobals.getCurrentSelectedStore() + "_" +
-                            listDataHeader.get(groupPosition) + "_" +
-                            listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                    childPosition));
                     AppGlobals.addOrderToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
                             listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
-                            .get(childPosition), priceMap.get(
+                            .get(childPosition),priceMap.get(
                             listDataChild.get(listDataHeader.get(groupPosition))
-                                    .get(childPosition)));
+                                    .get(childPosition))[0]);
                     AppGlobals.withOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
                             listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
