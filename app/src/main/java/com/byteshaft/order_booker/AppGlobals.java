@@ -26,6 +26,8 @@ public class AppGlobals extends Application{
     public static Typeface typeface;
     private static HashMap<String, Integer> quantityHashMap;
     private static String currentSelectedStore = "";
+    private static HashMap<String, String> personHashMap;
+    private static HashMap<String, String> withOutHashMap;
 
     @Override
     public void onCreate() {
@@ -67,6 +69,8 @@ public class AppGlobals extends Application{
     public static void initializeHashMap() {
         orderHashMap =  new HashMap<>();
         quantityHashMap = new HashMap<>();
+        personHashMap = new HashMap<>();
+        withOutHashMap = new HashMap<>();
     }
     public static void addOrderToHashMap(String key, String value) {
         orderHashMap.put(key, value);
@@ -103,7 +107,32 @@ public class AppGlobals extends Application{
     public static void reInitializeHaspMapToClearThem() {
         quantityHashMap = new HashMap<>();
         orderHashMap = new HashMap<>();
+        personHashMap = new HashMap<>();
+        withOutHashMap = new HashMap<>();
+    }
 
+    public static void addPRToHashMap(String key, String value) {
+        personHashMap.put(key, value);
+    }
+
+    public static void removePRFromHashMap(String key) {
+        personHashMap.remove(key);
+    }
+
+    public static HashMap<String, String> getPersonHashMap() {
+        return personHashMap;
+    }
+
+    public static void withOutHashMap(String key, String value) {
+        withOutHashMap.put(key, value);
+    }
+
+    public static void removeFromWithOutHashMap(String key) {
+        withOutHashMap.remove(key);
+    }
+
+    public static HashMap<String, String> getWithOutHashMap() {
+        return withOutHashMap;
     }
 }
 

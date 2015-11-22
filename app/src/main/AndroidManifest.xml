@@ -71,7 +71,7 @@
             android:name="com.parse.push.notification_icon"
             android:resource="@drawable/notification" />
 
-        <activity android:name=".activites.ProductsDetailActivity" >
+        <activity android:name=".activites.ProductsDetailActivity" android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

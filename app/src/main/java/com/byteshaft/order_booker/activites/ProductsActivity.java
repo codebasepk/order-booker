@@ -19,29 +19,51 @@ public class ProductsActivity extends AppCompatActivity {
 
     private GridView mGridView;
     private int[] imageId = {
-            R.drawable.sandwitchs
+            R.drawable.sandwitchs,
+            R.drawable.latour,
+            R.drawable.dip,
+            R.drawable.subz,
+            R.drawable.massaad,
+            R.drawable.ricardo_snack
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_layout);
+        AppGlobals.initializeHashMap();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         CustomGrid adapter = new CustomGrid(ProductsActivity.this, imageId);
         mGridView = (GridView) findViewById(R.id.grid);
         mGridView.setAdapter(adapter);
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-//                 start activity
-                AppGlobals.setCurrentSelectedStore("Adonis");
+                System.out.println(position);
+                AppGlobals.setCurrentSelectedStore(getItemNameFromPosition(position));
                 startActivity(new Intent(getApplicationContext(), ProductsDetailActivity.class));
-                AppGlobals.initializeHashMap();
             }
         });
+    }
+
+    private String getItemNameFromPosition(int position) {
+        switch (position) {
+            case 0:
+                return "Adonis";
+            case 1:
+                    return "latour";
+            case 2:
+                return "dip N dip";
+            case 3:
+                return "Subz";
+            case 4:
+                return "massad";
+            case 5:
+                return "ricaro_snack";
+        }
+        return "";
     }
 
     @Override

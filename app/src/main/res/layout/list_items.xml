@@ -29,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="with out"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
         android:ems="8"
         android:layout_below="@id/description"/>
 
@@ -48,7 +50,6 @@
         android:layout_height="wrap_content"
         android:text="Qty"
         android:textSize="14sp"
-        android:textColor="#757575"
         android:layout_above="@+id/price"
         android:layout_toLeftOf="@+id/checkBox"
         android:layout_toStartOf="@+id/checkBox"
@@ -72,5 +73,24 @@
         android:layout_marginTop="2dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        android:id="@+id/radio_group"
+        android:layout_toRightOf="@+id/with_out"
+        android:layout_below="@+id/quantity_spinner">
+        <RadioButton
+            android:id="@+id/one_person"
+            android:text="1PR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/two_person"
+            android:text="2PR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
 
 </RelativeLayout>

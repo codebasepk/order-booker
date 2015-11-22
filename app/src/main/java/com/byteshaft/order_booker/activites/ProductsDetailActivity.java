@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.byteshaft.order_booker.AppGlobals;
 import com.byteshaft.order_booker.R;
 
 import java.util.ArrayList;
@@ -55,12 +57,11 @@ public class ProductsDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_detail);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        addPriceDetailsToHashMap();
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-        prepareListDataForAdonis();
-        listAdapter = new ExpandableListAdapter(this, listDataHeaderForAdonis, listDataChildForAdonis, priceHashMap);
-        expListView.setAdapter(listAdapter);
+        expListView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
         // Listview on child click listener
+        loadSpecificData(AppGlobals.getCurrentSelectedStore());
+        System.out.println(AppGlobals.getCurrentSelectedStore());
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
@@ -95,6 +96,33 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 // do nothing when collapse
             }
         });
+    }
+
+    private void loadSpecificData(String restaurant) {
+        switch (restaurant) {
+            case "Adonis":
+                addPriceDetailsToHashMap();
+                prepareListDataForAdonis();
+                listAdapter = new ExpandableListAdapter(this, listDataHeaderForAdonis,
+                        listDataChildForAdonis, priceHashMap);
+                expListView.setAdapter(listAdapter);
+                break;
+            case "latour":
+                addPriceDetailsToHashMapForLatour();
+                prepareListDataForLatour();
+                listAdapter = new ExpandableListAdapter(listDataHeaderForLatour,
+                        listDataChildForLatour, newPriceHashMap, getApplicationContext());
+                expListView.setAdapter(listAdapter);
+                break;
+            case "dip N dip":
+                break;
+            case "Subz":
+                break;
+            case "massad":
+                break;
+            case "ricaro_snack":
+                break;
+        }
     }
 
     private void addPriceDetailsToHashMap() {
@@ -138,197 +166,207 @@ public class ProductsDetailActivity extends AppCompatActivity {
     }
 
     private void addPriceDetailsToHashMapForLatour() {
-        // Pizza
-        newPriceHashMap.put("Pizza Marguerita",new String[] {"7000", "9000", "(Tomato sauce, Mozzarella cheese, oregano)"});
-        newPriceHashMap.put("Pizza 3 Fromages", new String[]{"7500", "10000", "(Tomato sauce, 3 cheese mix)" });
-        newPriceHashMap.put("Pizza Vegetarian", new String[]{"8500", "11000", "(Tomato sauce, artichokes, corn, mushrooms, olives, green pepper, cheese)"});
-        newPriceHashMap.put("Pizza Jambon / Dinde", new String[]{"9000", "12000", "(Tomato sauce, ham, mushroom, olives, cheese)"});
-        newPriceHashMap.put("Pizza Pepperoni", new String[]{"9000", "12000", "(Tomato sauce, pepperoni, mushrooms, olives, cheese)"});
-        newPriceHashMap.put("Pizza Mexichicken", new String[]{"10000", "14000", "(Mexican sauce, chicken, mushroom, cheese)"});
+        newPriceHashMap = new HashMap<>();
+        if (AppGlobals.getCurrentSelectedStore().equals("latour")) {
+            newPriceHashMap.put("Pizza Marguerita", new String[]{"7000", "9000", "(Tomato sauce, Mozzarella cheese, oregano)"});
 
-        //  Pasta Fiesta
-        newPriceHashMap.put("Penne Arabiata", new String[]{"11000"});
-        newPriceHashMap.put("Chicken Pesto", new String[]{"14000"});
-        newPriceHashMap.put("Carbonara", new String[]{"14000"});
+            newPriceHashMap.put("Pizza 3 Fromages", new String[]{"7500", "10000", "(Tomato sauce, 3 cheese mix)"});
+            newPriceHashMap.put("Pizza Vegetarian", new String[]{"8500", "11000", "(Tomato sauce, artichokes, corn, mushrooms, olives, green pepper, cheese)"});
+            newPriceHashMap.put("Pizza Jambon / Dinde", new String[]{"9000", "12000", "(Tomato sauce, ham, mushroom, olives, cheese)"});
+            newPriceHashMap.put("Pizza Pepperoni", new String[]{"9000", "12000", "(Tomato sauce, pepperoni, mushrooms, olives, cheese)"});
+            newPriceHashMap.put("Pizza Mexichicken", new String[]{"10000", "14000", "(Mexican sauce, chicken, mushroom, cheese)"});
 
-        // Hot Sandwiches
-        newPriceHashMap.put("Tawook", new String[]{"4000", " ", "(Tawook, garlic spread, coleslaw, pickles, French fries)"});
-        newPriceHashMap.put("American Frankfurter", new String[]{"5000", " ", "(Hotdog, lettuce, corn, cocktail sauce, French fries)"});
-        newPriceHashMap.put("Hamburger", new String[]{"4500", " ", "(Grilled beef meat, lettuce, colseslaw, tomatoes, ketchup, mayo, French fries)"});
-        newPriceHashMap.put("Fish Burger", new String[]{});
-        newPriceHashMap.put("", new String[]{"5000", " ", "(Fish, lettuce, tartar sauce, pickles, French fries)"});
-        newPriceHashMap.put("Fish Filet", new String[]{"5000", " ", "(Grilled  hamour  filet, tartar sauce,  pickles)"});
-        newPriceHashMap.put("Chicken Burger", new String[]{"5500", "", "(Grilled chicken breast, garlic mayo spread, tomatoes, lettuce, pickles, French fries)"});
-        newPriceHashMap.put("Fajita", new String[]{"6500", " ", "(Marinated chicken, mushrooms, corn, green pepper, onions, melted cheese)" });
-        newPriceHashMap.put("Philadelphia", new String[]{"6500", "", "(Beef meat marinated, mushrooms, corn, green pepper, onions, melted cheese)"});
-        newPriceHashMap.put("Chicken La Tour", new String[]{"7500", "(Grilled chicken, lettuce, corn, mayo sauce)"});
-        newPriceHashMap.put("Beef Shawarma", new String[]{"7500", "", "(Marinated beef meat, beef shawarma sauce, parsley, onions, tomatoes, pickles, French fries)"});
-        newPriceHashMap.put("Chicken Shawarma", new String[]{"7500", "" , "(Chicken, shawarma sauce, lettuce, tomatoes, pickles, French fries)"});
-        newPriceHashMap.put("Chicken Submarine", new String[]{"8000", "", "(Chicken, mayo, lettuce, cheddar cheese, tomatoes, pickles, French fries)"});
-        newPriceHashMap.put("Chicken Club Sandwish", new String[]{"8500", "", "(Chicken, mayo spread, lettuce, bacon, eggs, cheddar  cheese, served with French  fries and coleslaw)"});
+            //  Pasta Fiesta
+            newPriceHashMap.put("Penne Arabiata", new String[]{"11000", "", ""});
+            newPriceHashMap.put("Chicken Pesto", new String[]{"14000", "", ""});
+            newPriceHashMap.put("Carbonara", new String[]{"14000", "", ""});
 
-       // Platters
-        newPriceHashMap.put("Tawook", new String[]{"12000"});
-        newPriceHashMap.put("Beef Shawarma", new String[]{"13000"});
-        newPriceHashMap.put("Chicken Shawarma", new String[]{"14000"});
-        newPriceHashMap.put("Fish & Chips", new String[]{"14000", "", ""});
-        newPriceHashMap.put("Grilled Hamour Filet", new String[]{"14000"});
-        newPriceHashMap.put("Chicken Breast", new String[]{"15000"});
-        newPriceHashMap.put("Chicken Escalope", new String[]{"16000"});
-        newPriceHashMap.put("Chicken Fungi", new String[]{"17000"});
+            // Hot Sandwiches
+            newPriceHashMap.put("Tawook", new String[]{"4000", " ", "(Tawook, garlic spread, coleslaw, pickles, French fries)"});
+            newPriceHashMap.put("American Frankfurter", new String[]{"5000", " ", "(Hotdog, lettuce, corn, cocktail sauce, French fries)"});
+            newPriceHashMap.put("Hamburger", new String[]{"4500", " ", "(Grilled beef meat, lettuce, colseslaw, tomatoes, ketchup, mayo, French fries)"});
+//        newPriceHashMap.put("Fish Burger", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Fish Burger", new String[]{"5000", " ", "(Fish, lettuce, tartar sauce, pickles, French fries)"});
+            newPriceHashMap.put("Fish Filet", new String[]{"5000", " ", "(Grilled  hamour  filet, tartar sauce,  pickles)"});
+            newPriceHashMap.put("Chicken Burger", new String[]{"5500", "", "(Grilled chicken breast, garlic mayo spread, tomatoes, lettuce, pickles, French fries)"});
+            newPriceHashMap.put("Fajita", new String[]{"6500", " ", "(Marinated chicken, mushrooms, corn, green pepper, onions, melted cheese)"});
+            newPriceHashMap.put("Philadelphia", new String[]{"6500", "", "(Beef meat marinated, mushrooms, corn, green pepper, onions, melted cheese)"});
+            newPriceHashMap.put("Chicken La Tour", new String[]{"7500", "", "(Grilled chicken, lettuce, corn, mayo sauce)"});
+            newPriceHashMap.put("Beef Shawarma", new String[]{"7500", "", "(Marinated beef meat, beef shawarma sauce, parsley, onions, tomatoes, pickles, French fries)"});
+            newPriceHashMap.put("Chicken Shawarma", new String[]{"7500", "", "(Chicken, shawarma sauce, lettuce, tomatoes, pickles, French fries)"});
+            newPriceHashMap.put("Chicken Submarine", new String[]{"8000", "", "(Chicken, mayo, lettuce, cheddar cheese, tomatoes, pickles, French fries)"});
+            newPriceHashMap.put("Chicken Club Sandwish", new String[]{"8500", "", "(Chicken, mayo spread, lettuce, bacon, eggs, cheddar  cheese, served with French  fries and coleslaw)"});
 
-        // Mana’ish
-        newPriceHashMap.put("Zaatar", new String[]{"1000"});
-        newPriceHashMap.put("Zaatar light", new String[]{"1500"});
-        newPriceHashMap.put("Zaatar & Labneh", new String[]{"2000"});
-        newPriceHashMap.put("Zaatar & Cheese", new String[]{"3000"});
-        newPriceHashMap.put("Cheese", new String[]{"3000"});
-        newPriceHashMap.put("Spinach", new String[]{"2500"});
-        newPriceHashMap.put("Keshek", new String[]{"2000"});
-        newPriceHashMap.put("Akkawi", new String[]{"3000"});
-        newPriceHashMap.put("Halloum", new String[]{"3000"});
-        newPriceHashMap.put("Bulgari", new String[]{"3000"});
-        newPriceHashMap.put("Bulgari harra", new String[]{"3000"});
-        newPriceHashMap.put("Cheese Mix", new String[]{"4000"});
-        newPriceHashMap.put("Labneh", new String[]{"3000"});
-        newPriceHashMap.put("Lahme & Kawarma", new String[]{"4000"});
-        newPriceHashMap.put("Lahme  b3ajin", new String[]{"3000"});
-        newPriceHashMap.put("Lahme b3ajin & Cheese", new String[]{"4000"});
-        newPriceHashMap.put("Pesto Cheese", new String[]{"3500"});
-        newPriceHashMap.put("Feta Mix", new String[]{"3500"});
-        newPriceHashMap.put("Turkey & Cheese", new String[] {"4000"});
-        newPriceHashMap.put("Ham & Cheese", new String[] {"4000"});
-        newPriceHashMap.put("Salami & Cheese", new String[] {"4000"});
-        newPriceHashMap.put("Hotdog & Cheese", new String[] {"4000"});
-        newPriceHashMap.put("La Tour Special", new String[] {"4000"});
-        newPriceHashMap.put("Soujouk & Cheese", new String[] {"5000"});
-        newPriceHashMap.put("Halloum Bacon", new String[] {"5000"});
-        newPriceHashMap.put("Chocoba", new String[] {"5000"});
+            // Platters
+            newPriceHashMap.put("Tawook", new String[]{"12000", "", ""});
+            newPriceHashMap.put("Beef Shawarma", new String[]{"13000", "", ""});
+            newPriceHashMap.put("Chicken Shawarma", new String[]{"14000", "", ""});
+            newPriceHashMap.put("Fish & Chips", new String[]{"", "", ""});
+            newPriceHashMap.put("Grilled Hamour Filet", new String[]{"14000", "", ""});
+            newPriceHashMap.put("Chicken Breast", new String[]{"15000", "", ""});
+            newPriceHashMap.put("Chicken Escalope", new String[]{"16000", "", ""});
+            newPriceHashMap.put("Chicken Fungi", new String[]{"17000", "", ""});
 
-        // Drinks
-        newPriceHashMap.put("Pepsi", new String[] {"1000"});
-        newPriceHashMap.put("7up", new String[] {"1000"});
-        newPriceHashMap.put("Water Small", new String[] {"500"});
+            // Mana’ish
+            newPriceHashMap.put("Zaatar", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Zaatar light", new String[]{"1500", "", ""});
+            newPriceHashMap.put("Zaatar & Labneh", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Zaatar & Cheese", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Cheese", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Spinach", new String[]{"2500", "", ""});
+            newPriceHashMap.put("Keshek", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Akkawi", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Halloum", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Bulgari", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Bulgari harra", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Cheese Mix", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Labneh", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Lahme & Kawarma", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Lahme  b3ajin", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Lahme b3ajin & Cheese", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Pesto Cheese", new String[]{"3500", "", ""});
+            newPriceHashMap.put("Feta Mix", new String[]{"3500", "", ""});
+            newPriceHashMap.put("Turkey & Cheese", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Ham & Cheese", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Salami & Cheese", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Hotdog & Cheese", new String[]{"4000", "", ""});
+            newPriceHashMap.put("La Tour Special", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Soujouk & Cheese", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Halloum Bacon", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Chocoba", new String[]{"5000", "", ""});
+
+            // Drinks
+            newPriceHashMap.put("pepsi", new String[]{"1000", "", ""});
+            newPriceHashMap.put("7up", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Water", new String[]{"500", "", ""});
+        }
 
         /////////////////////////// Latour Ended ////////////////////////////////
 
         ////////////////////// Ricaardo Started ///////////////////////////////
         // distinguishing the same itesm using the word  "r" from the hotel Ricaardo
         // so they don't mach with the other hotels items
+        if (AppGlobals.getCurrentSelectedStore().equals("ricaro_snack")) {
 
-        newPriceHashMap.put("Philadelphia r", new String[] {"6000", "", "(Steak, mushroom, onions, cheese, sauce)"});
-        newPriceHashMap.put("Spanish Steak r", new String[] {"6000", "", "(Steak, onions, cheese, special sauce)"});
-        newPriceHashMap.put("Francisco r", new String[] {"(Chicken,corn,lettuce,tomato,sauce)"});
-        newPriceHashMap.put("Hamburger r", new String[] {"5000", "7000", "(Meat,lettuce,tomato,fries,sauce. Add: Bacon, Cheese )"});
-        newPriceHashMap.put("Shrimp r", new String[] {"7000"});
-        newPriceHashMap.put("Calamari r", new String[] {"6000", "", "(Calamari, lettuce, sauce)"});
-        newPriceHashMap.put("Roast Beef r", new String[] {"6000", "", "(Meat, pickles, tomato, mayo sauce)"});
-        newPriceHashMap.put("Grilled chicken breast r", new String[] {""});
-        newPriceHashMap.put("Canarias r", new String[] {"6000", "", "(Chicken, mushroom, smoked bacon, cheese)"});
-        newPriceHashMap.put("Mexican chicken r", new String[] {"6000", "", "(Chicken, mushroom, corn, green pepper, tomato, coriander, onion, garlic, fries, sauce)"});
-        newPriceHashMap.put("Ricky r", new String[] {"6000", "", "(Chicken breast, fries, lettuce, corn, sauce)"});
-        newPriceHashMap.put("Fajita r", new String[] {"6000", "", "(Chicken breast, fries, lettuce, corn, sauce)"});
+            newPriceHashMap.put("Philadelphia", new String[]{"6000", "", "(Steak, mushroom, onions, cheese, sauce)"});
+            newPriceHashMap.put("Spanish Steak", new String[]{"6000", "", "(Steak, onions, cheese, special sauce)"});
+            newPriceHashMap.put("Francisco", new String[]{"(Chicken,corn,lettuce,tomato,sauce)"});
+            newPriceHashMap.put("Hamburger", new String[]{"5000", "7000", "(Meat,lettuce,tomato,fries,sauce. Add: Bacon, Cheese )"});
+            newPriceHashMap.put("Shrimp", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Calamari", new String[]{"6000", "", "(Calamari, lettuce, sauce)"});
+            newPriceHashMap.put("Roast Beef", new String[]{"6000", "", "(Meat, pickles, tomato, mayo sauce)"});
+            newPriceHashMap.put("Grilled chicken breast", new String[]{"5000", "", "chicken, garlic, pickles, lettuce, fries"});
+            newPriceHashMap.put("Canarias", new String[]{"6000", "", "(Chicken, mushroom, smoked bacon, cheese)"});
+            newPriceHashMap.put("Mexican chicken", new String[]{"6000", "", "(Chicken, mushroom, corn, green pepper, tomato, coriander, onion, garlic, fries, sauce)"});
+            newPriceHashMap.put("Ricky", new String[]{"6000", "", "(Chicken breast, fries, lettuce, corn, sauce)"});
+            newPriceHashMap.put("Fajita", new String[]{"6000", "", "(Chicken breast, fries, lettuce, corn, sauce)"});
 
-        // drinks
-        newPriceHashMap.put("pepsi", new String[] {"1000"});
-        newPriceHashMap.put("Mirinda", new String[] {"1000"});
-        newPriceHashMap.put("Seven up", new String[] {"1000"});
-        newPriceHashMap.put("Water", new String[] {"500"});
+            // drinks
+            newPriceHashMap.put("pepsi", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Mirinda", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Seven up", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Water", new String[]{"500", "", ""});
+        }
 
         ///////////////////////////Ricaardo Ended //////////////////////
 
 
         ///////////////////////// Massaad Started //////////////////////
+        if (AppGlobals.getCurrentSelectedStore().equals("massad")) {
 
-        newPriceHashMap.put("Salatat", new String[] {"7000"});
-        newPriceHashMap.put("Fattouch", new String[] {"7000"});
-        newPriceHashMap.put("Tabboulé", new String[] {"7000"});
+            newPriceHashMap.put("Salatat", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Fattouch", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Tabboulé", new String[]{"7000", "", ""});
 
-        /// Mou2abbalet
-        newPriceHashMap.put("7ommos", new String[] {"5000"});
-        newPriceHashMap.put("Mtabbal", new String[] {"5000"});
-        newPriceHashMap.put("Labné", new String[] {"5000"});
-        newPriceHashMap.put("Batata", new String[] {"5000"});
-        newPriceHashMap.put("Habra zened l 3abed", new String[] {"6000"});
+            /// Mou2abbalet
+            newPriceHashMap.put("7ommos", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Mtabbal", new String[]{"5000"});
+            newPriceHashMap.put("Labné", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Batata", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Habra zened l 3abed", new String[]{"6000", "", ""});
 
-        // sandwishet
-        newPriceHashMap.put("Tawou2", new String[] {"5000"});
-        newPriceHashMap.put("La7em Mechwé", new String[] {"6000"});
-        newPriceHashMap.put("Kabab", new String[] {"5000"});
-        newPriceHashMap.put("Hamburger", new String[] {"6000"});
-        newPriceHashMap.put("Batata", new String[] {"3000"});
+            // sandwishet
+            newPriceHashMap.put("Tawou2", new String[]{"5000", "", ""});
+            newPriceHashMap.put("La7em Mechwé", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Kabab", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Hamburger", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Batata", new String[]{"3000", "", ""});
 
-        /// S7oun
-        newPriceHashMap.put("Law7et Tawou2", new String[] {"7000"});
-        newPriceHashMap.put("Law7et la7em mechwé", new String[] {"7000"});
-        newPriceHashMap.put("Law7et kabab", new String[] {"7000"});
-        newPriceHashMap.put("3arayess kafta", new String[] {"12000"});
-        newPriceHashMap.put("Hamburger", new String[] {"12000"});
-        newPriceHashMap.put("Sa7n tawou2", new String[] {"13000"});
-        newPriceHashMap.put("Sa7n la7em mechwé", new String[] {"15000"});
-        newPriceHashMap.put("Sa7n kabab", new String[] {"12000"});
-        newPriceHashMap.put("Sa7n machawé", new String[] {"15000"});
-        newPriceHashMap.put("Kilo machawé mechwé mchakkal", new String[] {"50000"});
-        newPriceHashMap.put("Kilo la7em mechwé", new String[] {"60000"});
-        newPriceHashMap.put("Kilo tawou2", new String[] {"35000"});
-        newPriceHashMap.put("Kilo kabab", new String[] {"45000"});
+            /// S7oun
+            newPriceHashMap.put("Law7et Tawou2", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Law7et la7em mechwé", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Law7et kabab", new String[]{"7000"});
+            newPriceHashMap.put("3arayess kafta", new String[]{"12000", "", ""});
+            newPriceHashMap.put("Hamburger", new String[]{"12000", "", ""});
+            newPriceHashMap.put("Sa7n tawou2", new String[]{"13000", "", ""});
+            newPriceHashMap.put("Sa7n la7em mechwé", new String[]{"15000", "", ""});
+            newPriceHashMap.put("Sa7n kabab", new String[]{"12000", "", ""});
+            newPriceHashMap.put("Sa7n machawé", new String[]{"15000", "", ""});
+            newPriceHashMap.put("Kilo machawé mechwé mchakkal", new String[]{"50000", "", ""});
+            newPriceHashMap.put("Kilo la7em mechwé", new String[]{"60000", "", ""});
+            newPriceHashMap.put("Kilo tawou2", new String[]{"35000", "", ""});
+            newPriceHashMap.put("Kilo kabab", new String[]{"45000", "", ""});
 
-        // soft drinks
-        newPriceHashMap.put("Pepsi", new String[] {"2000"});
-        newPriceHashMap.put("Mirinda", new String[] {"2000"});
-        newPriceHashMap.put("7up", new String[] {"2000"});
-        newPriceHashMap.put("3assir bourtoukal tabi3é", new String[] {"5000"});
-        newPriceHashMap.put("Perrier", new String[] {"5000"});
-        newPriceHashMap.put("Laymounada", new String[] {"4000"});
-        newPriceHashMap.put("May kbiré", new String[] {"2000"});
-        newPriceHashMap.put("May zghiré", new String[] {"1000"});
-        newPriceHashMap.put("3iran", new String[] {"2000"});
+            // soft drinks
+            newPriceHashMap.put("Pepsi", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Mirinda", new String[]{"2000", "", ""});
+            newPriceHashMap.put("7up", new String[]{"2000", "", ""});
+            newPriceHashMap.put("3assir bourtoukal tabi3é", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Perrier", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Laymounada", new String[]{"4000", "", ""});
+            newPriceHashMap.put("May kbiré", new String[]{"2000", "", ""});
+            newPriceHashMap.put("May zghiré", new String[]{"1000", "", ""});
+            newPriceHashMap.put("3iran", new String[]{"2000", "", ""});
+        }
 
         ///////////////////////// Massaad Ended //////////////////////
 
 
         ///////////////////////// SUBZ Started //////////////////////
+        if (AppGlobals.getCurrentSelectedStore().equals("Subz")) {
 
-        newPriceHashMap.put("Chicken Caesar", new String[] {"9000", "", "(Chicken, Iceberg, croutons, parmesan cheese)"});
-        newPriceHashMap.put("Chef Salad", new String[] {"8000", "", "(Ham & cheese, chicken, iceberg, cherry tomato, corn)"});
-        newPriceHashMap.put("Crab Salad", new String[] {"8000", "", "(Crab sticks, iceberg, pineapple, carrots, corn)"});
-        newPriceHashMap.put("Tuna Pasta Salad", new String[] {"8000", "", "(Tuna, olives, pasta, fresh mushroom, cherry tomato, corn, iceberg)"});
-        newPriceHashMap.put("Subz Salad", new String[] {"9000", "", "(Iceberg, cucumber, fresh mushroom, cherry tomato, thym, black olives, feta cheese, dried grapes walnuts)"});
+            newPriceHashMap.put("Chicken Caesar", new String[]{"9000", "", "(Chicken, Iceberg, croutons, parmesan cheese)"});
+            newPriceHashMap.put("Chef Salad", new String[]{"8000", "", "(Ham & cheese, chicken, iceberg, cherry tomato, corn)"});
+            newPriceHashMap.put("Crab Salad", new String[]{"8000", "", "(Crab sticks, iceberg, pineapple, carrots, corn)"});
+            newPriceHashMap.put("Tuna Pasta Salad", new String[]{"8000", "", "(Tuna, olives, pasta, fresh mushroom, cherry tomato, corn, iceberg)"});
+            newPriceHashMap.put("Subz Salad", new String[]{"9000", "", "(Iceberg, cucumber, fresh mushroom, cherry tomato, thym, black olives, feta cheese, dried grapes walnuts)"});
 
-        // burgers
-        newPriceHashMap.put("Classic burger", new String[] {"5000", "", "(Beef patty, coleslaw, tomato, onion, French fries, ketchup, mustard)"});
-        newPriceHashMap.put("Subz Burger", new String[] {"6000", "", "(Beef patty, mushroom, onion, cheese, our home made special sauce)"});
-        newPriceHashMap.put("Chicken Burger", new String[] {"5500", "", "(Chicken patty, iceberg, pickles, French fries, garlic mayo)"});
+            // burgers
+            newPriceHashMap.put("Classic burger", new String[]{"5000", "", "(Beef patty, coleslaw, tomato, onion, French fries, ketchup, mustard)"});
+            newPriceHashMap.put("Subz Burger", new String[]{"6000", "", "(Beef patty, mushroom, onion, cheese, our home made special sauce)"});
+            newPriceHashMap.put("Chicken Burger", new String[]{"5500", "", "(Chicken patty, iceberg, pickles, French fries, garlic mayo)"});
 
-        /// SUBz SPECIAL  :
+            /// SUBz SPECIAL  :
 
-        newPriceHashMap.put("Fajitas", new String[] {"6500", "", "(Chicken marinated, mushroom, onion, green pepper, mayo, mozzarella, iceberg)"});
-        newPriceHashMap.put("Philadelphia", new String[] {"6500", "", "(Steak marinated, mushroom, onion, green pepper, mozzarella, mayo sauce)"});
-        newPriceHashMap.put("Francisco", new String[] {"6000", "", "(Marinated chicken, mozzarella, corn, pickles, iceberg, soya sauce, mayo)"});
-        newPriceHashMap.put("Chicken Sub", new String[] {"6000", "", "(Marinated chicken,  mozzarella, pickles, iceberg, garlic mayo)"});
-        newPriceHashMap.put("Mexican Chicken", new String[] {"6500", "", "(Marinated chicken, cheddar cheese, green & red pepper,  corn, onion, spicy, home made sauce,mozzarella)"});
-        newPriceHashMap.put("Chicken Escalope", new String[] {"6000", "", "(Breaded fried chicken, coleslaw, French fries, pickles, garlic)"});
-        newPriceHashMap.put("Torpedo", new String[] {"6500", "", "(Marinated chicken, mushroom, onion, cheese, iceberg, pickles, fries, garlic mayo)"});
-        newPriceHashMap.put("Subz Steak", new String[] {"6500", "", "(Marinated steak, hot paste, onion, mushroom, cheese, home made sauce)"});
-        newPriceHashMap.put("Submarine", new String[] {"6500", "", "(Ham & cheese, salami, iceberg, pickles, tomato, mayo)"});
-        newPriceHashMap.put("Taouk", new String[] {"5500", "", "(Chicken, garlic, pickles, French fries, coleslaw)"});
-        newPriceHashMap.put("Crispy", new String[] {"6500", "", "(Breaded chicken, pickles, lettuce, fries, turkey, cheese, home made sauce)"});
-        newPriceHashMap.put("Potato", new String[] {"3000", "", ""});
-        newPriceHashMap.put("Crispy Plat", new String[] {"8000", "", "(4 pieces crispy chicken, coleslaw, fries)"});
+            newPriceHashMap.put("Fajitas", new String[]{"6500", "", "(Chicken marinated, mushroom, onion, green pepper, mayo, mozzarella, iceberg)"});
+            newPriceHashMap.put("Philadelphia", new String[]{"6500", "", "(Steak marinated, mushroom, onion, green pepper, mozzarella, mayo sauce)"});
+            newPriceHashMap.put("Francisco", new String[]{"6000", "", "(Marinated chicken, mozzarella, corn, pickles, iceberg, soya sauce, mayo)"});
+            newPriceHashMap.put("Chicken Sub", new String[]{"6000", "", "(Marinated chicken,  mozzarella, pickles, iceberg, garlic mayo)"});
+            newPriceHashMap.put("Mexican Chicken", new String[]{"6500", "", "(Marinated chicken, cheddar cheese, green & red pepper,  corn, onion, spicy, home made sauce,mozzarella)"});
+            newPriceHashMap.put("Chicken Escalope", new String[]{"6000", "", "(Breaded fried chicken, coleslaw, French fries, pickles, garlic)"});
+            newPriceHashMap.put("Torpedo", new String[]{"6500", "", "(Marinated chicken, mushroom, onion, cheese, iceberg, pickles, fries, garlic mayo)"});
+            newPriceHashMap.put("Subz Steak", new String[]{"6500", "", "(Marinated steak, hot paste, onion, mushroom, cheese, home made sauce)"});
+            newPriceHashMap.put("Submarine", new String[]{"6500", "", "(Ham & cheese, salami, iceberg, pickles, tomato, mayo)"});
+            newPriceHashMap.put("Taouk", new String[]{"5500", "", "(Chicken, garlic, pickles, French fries, coleslaw)"});
+            newPriceHashMap.put("Crispy", new String[]{"6500", "", "(Breaded chicken, pickles, lettuce, fries, turkey, cheese, home made sauce)"});
+            newPriceHashMap.put("Potato", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Crispy Plat", new String[]{"8000", "", "(4 pieces crispy chicken, coleslaw, fries)"});
 
-        // SUBZ FRIES :
-        newPriceHashMap.put("French Fries", new String[] {"4000"});
-        newPriceHashMap.put("Wedges", new String[] {"5000"});
-        newPriceHashMap.put("Twister", new String[] {"Twister"});
+            // SUBZ FRIES :
+            newPriceHashMap.put("French Fries", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Wedges", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Twister", new String[]{"Twister", "", ""});
 
-        // drinks
-        newPriceHashMap.put("Pepsi", new String[] {"1000"});
-        newPriceHashMap.put("Seven Up", new String[] {"1000"});
-        newPriceHashMap.put("Mirinda", new String[] {"1000"});
-        newPriceHashMap.put("Water Small", new String[] {"500"});
-        newPriceHashMap.put("Water Big", new String[] {"1000"});
-        newPriceHashMap.put("Beer Almaza", new String[] {"2000"});
-        newPriceHashMap.put("Ice Tea", new String[] {"1500"});
+
+            // drinks
+            newPriceHashMap.put("Pepsi", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Seven Up", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Mirinda", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Water Small", new String[]{"500", "", ""});
+            newPriceHashMap.put("Water Big", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Beer Almaza", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Ice Tea", new String[]{"1500", "", ""});
+        }
 
         ///////////////////////// SUBZ Ended ///////////////////////////////////////////////////////
 
@@ -503,9 +541,6 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(14), smoothies);
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(15), iceTeaShakes);
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(16), softDrinks);
-
-
-
     }
 
     private void prepareListDataForAdonis() {
@@ -587,6 +622,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
         pizza.add("Pizza Jambon / Dinde");
         pizza.add("Pizza Pepperoni");
         pizza.add("Pizza Mexichicken");
+        pizza.add("Pizza Jambon / Dinde");
+        pizza.add("Pizza Pepperoni");
+        pizza.add("Pizza Mexichicken");
 
 
         // Pasta Fiesta from Latour
@@ -638,7 +676,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         manaish.add("Cheese Mix");
         manaish.add("Labneh");
         manaish.add("Lahme & Kawarma");
-        manaish.add("Lahme  b3ajin");
+        manaish.add("Lahme b3ajin");
         manaish.add("Lahme b3ajin & Cheese");
         manaish.add("Pesto Cheese");
         manaish.add("Feta Mix");
@@ -653,10 +691,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         //// Drinks
         List<String> drinks = new ArrayList<>();
-        drinks.add("Pepsi");
+        drinks.add("pepsi");
         drinks.add("7up");
         drinks.add("Water");
-
         listDataChildForLatour.put(listDataHeaderForLatour.get(0), pizza);
         listDataChildForLatour.put(listDataHeaderForLatour.get(1), pastaFiesta);
         listDataChildForLatour.put(listDataHeaderForLatour.get(2), hotSandwchies);
