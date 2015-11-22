@@ -117,12 +117,30 @@ public class ProductsDetailActivity extends AppCompatActivity {
             case "dip N dip":
                 addPriceDetailsToHashMapForLatour();
                 prepareListDataForDipnDip();
+                listAdapter = new ExpandableListAdapter(listDataHeaderForDipNdip,
+                        listDataChildForDipNdip, newPriceHashMap, getApplicationContext());
+                expListView.setAdapter(listAdapter);
                 break;
             case "Subz":
+                addPriceDetailsToHashMapForLatour();
+                preparedListDataForSubz();
+                listAdapter = new ExpandableListAdapter(listDataHeaderForSubz,
+                        listDataChildForSubz, newPriceHashMap, getApplicationContext());
+                expListView.setAdapter(listAdapter);
                 break;
             case "massad":
+                addPriceDetailsToHashMapForLatour();
+                preparedListDataForMassaad();
+                listAdapter = new ExpandableListAdapter(listDataHeaderForMassaad, listDataChildForMassaad,
+                        newPriceHashMap, getApplicationContext());
+                expListView.setAdapter(listAdapter);
                 break;
-            case "ricaro_snack":
+            case "ricardo_snack":
+                addPriceDetailsToHashMapForLatour();
+                preparedListDataForRicaardo();
+                listAdapter = new ExpandableListAdapter(listDataHeaderForRicaardo, listDataChildForRicaardo,
+                        newPriceHashMap, getApplicationContext());
+                expListView.setAdapter(listAdapter);
                 break;
         }
     }
@@ -248,7 +266,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         ////////////////////// Ricaardo Started ///////////////////////////////
         // distinguishing the same itesm using the word  "r" from the hotel Ricaardo
         // so they don't mach with the other hotels items
-        if (AppGlobals.getCurrentSelectedStore().equals("ricaro_snack")) {
+        if (AppGlobals.getCurrentSelectedStore().equals("ricardo_snack")) {
 
             newPriceHashMap.put("Philadelphia", new String[]{"6000", "", "(Steak, mushroom, onions, cheese, sauce)"});
             newPriceHashMap.put("Spanish Steak", new String[]{"6000", "", "(Steak, onions, cheese, special sauce)"});
@@ -369,7 +387,6 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Beer Almaza", new String[]{"2000", "", ""});
             newPriceHashMap.put("Ice Tea", new String[]{"1500", "", ""});
         }
-
         ///////////////////////// SUBZ Ended ///////////////////////////////////////////////////////
 
         ///////////////////////// Dip n Dip Started //////////////////////
