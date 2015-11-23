@@ -120,12 +120,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 switch (checkedId) {
                     case R.id.one_person:
                         if (AppGlobals.secondPersonFinalList().containsKey(AppGlobals.
-                                getCurrentSelectedStore() + "_" +listDataHeader.get(groupPosition)
-                                + "_" +listDataChild.get(listDataHeader.get(groupPosition)).get(
-                                        childPosition))) {
+                                getCurrentSelectedStore() + "_" + listDataHeader.get(groupPosition)
+                                + "_" + listDataChild.get(listDataHeader.get(groupPosition)).get(
+                                childPosition))) {
                             AppGlobals.removeSecondPersonList(AppGlobals.
-                                    getCurrentSelectedStore() + "_" +listDataHeader.get(groupPosition)
-                                    + "_" +listDataChild.get(listDataHeader.get(groupPosition)).get(
+                                    getCurrentSelectedStore() + "_" + listDataHeader.get(groupPosition)
+                                    + "_" + listDataChild.get(listDataHeader.get(groupPosition)).get(
                                     childPosition));
                         }
                         break;
@@ -143,7 +143,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        priceTextView.setText("price: " + array[0] + "PR, " + array[1]);
+        if (!array[0].trim().isEmpty() && array[1].trim().isEmpty()) {
+            priceTextView.setText("price: " + array[0] + "L.L, ");
+        } else {
+            priceTextView.setText("price: " + array[0] + "L.L, " + array[1] +"L.L");
+        }
+        priceTextView.setText("price: " + array[0] + "L.L, " + array[1] +"L.L");
         ingredients.setText(array[2]);
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
         HashMap<String, String> orderMap = AppGlobals.getFinalOrdersHashMap();
@@ -227,6 +232,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
             }
         });
+        System.out.println(childText);
         if (orderMap.containsKey(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.
                 get(groupPosition) + "_" + childText)) {
             checkBox.setChecked(true);

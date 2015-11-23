@@ -28,9 +28,12 @@
     <EditText
         android:id="@+id/with_out"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="with out"
-        android:textSize="14sp"
+        android:layout_height="30dp"
+        android:background="@android:drawable/edit_text"
+        android:textColorHint="@color/gray"
+        android:hint="without"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
         android:layout_marginLeft="10dp"
         android:ems="8"
         android:layout_below="@id/description"/>
