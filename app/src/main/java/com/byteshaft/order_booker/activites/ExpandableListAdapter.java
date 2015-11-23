@@ -162,6 +162,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                             listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition), editText.getText().toString());
+                    AppGlobals.withOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
+                            listDataHeader.get(groupPosition)
+                            + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                            .get(childPosition), editText.getText().toString());
                 } else {
                     AppGlobals.removeOrderFromHashMap(AppGlobals.getCurrentSelectedStore() + "_"
                             + listDataHeader.get(groupPosition)
@@ -171,16 +175,29 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                             + listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition));
-                    AppGlobals.removeQuantityFromHashMap(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.get(groupPosition)
+                    AppGlobals.removeQuantityFromHashMap(AppGlobals.getCurrentSelectedStore()
+                            + "_" + listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition));
-                    if (AppGlobals.getPersonHashMap().containsKey(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.get(groupPosition)
+                    if (AppGlobals.getPersonHashMap().containsKey(AppGlobals.getCurrentSelectedStore()
+                            + "_" + listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition))) {
-                        AppGlobals.removeFromWithOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.get(groupPosition)
+                        AppGlobals.removeFromWithOutHashMap(AppGlobals.getCurrentSelectedStore()
+                                + "_" + listDataHeader.get(groupPosition)
                                 + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                                 .get(childPosition));
                     }
+                    if (AppGlobals.getWithOutHashMap().containsKey(AppGlobals.getCurrentSelectedStore()
+                             + "_" + listDataHeader.get(groupPosition)
+                            + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                            .get(childPosition))) {
+                        AppGlobals.removeFromWithOutHashMap(AppGlobals.getCurrentSelectedStore()
+                                + "_" + listDataHeader.get(groupPosition)
+                                + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                                .get(childPosition));
+                    }
+
                     System.out.println(AppGlobals.getFinalOrdersHashMap());
                 }
             }
