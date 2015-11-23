@@ -227,6 +227,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
             }
         });
+        System.out.println(childText);
         if (orderMap.containsKey(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.
                 get(groupPosition) + "_" + childText)) {
             checkBox.setChecked(true);
