@@ -143,7 +143,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        priceTextView.setText("price: " + array[0] + "PR, " + array[1]);
+        priceTextView.setText("price: " + array[0] + "PR, " + array[1] +"PR");
         ingredients.setText(array[2]);
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
         HashMap<String, String> orderMap = AppGlobals.getFinalOrdersHashMap();

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.byteshaft.order_booker.AppGlobals;
@@ -19,7 +20,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class ProductsDetailActivity extends AppCompatActivity {
+
+    private RelativeLayout noteLayout;
+    private View separator;
 
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
@@ -57,6 +62,18 @@ public class ProductsDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_detail);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        separator = findViewById(R.id.separator_view);
+        noteLayout = (RelativeLayout) findViewById(R.id.note_layout);
+        
+        if (AppGlobals.getCurrentSelectedStore().equals("Adonis")) {
+            separator.setVisibility(View.VISIBLE);
+            noteLayout.setVisibility(View.VISIBLE);
+        } else {
+            separator.setVisibility(View.GONE);
+            noteLayout.setVisibility(View.GONE);
+        }
+
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
         expListView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
         // Listview on child click listener
