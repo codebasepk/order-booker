@@ -65,7 +65,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         separator = findViewById(R.id.separator_view);
         noteLayout = (RelativeLayout) findViewById(R.id.note_layout);
-        
+
         if (AppGlobals.getCurrentSelectedStore().equals("Adonis")) {
             separator.setVisibility(View.VISIBLE);
             noteLayout.setVisibility(View.VISIBLE);
@@ -316,7 +316,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
             /// Mou2abbalet
             newPriceHashMap.put("7ommos", new String[]{"5000", "", ""});
-            newPriceHashMap.put("Mtabbal", new String[]{"5000"});
+            newPriceHashMap.put("Mtabbal", new String[]{"5000" , "" , ""});
             newPriceHashMap.put("Labné", new String[]{"5000", "", ""});
             newPriceHashMap.put("Batata", new String[]{"5000", "", ""});
             newPriceHashMap.put("Habra zened l 3abed", new String[]{"6000", "", ""});
@@ -331,7 +331,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             /// S7oun
             newPriceHashMap.put("Law7et Tawou2", new String[]{"7000", "", ""});
             newPriceHashMap.put("Law7et la7em mechwé", new String[]{"7000", "", ""});
-            newPriceHashMap.put("Law7et kabab", new String[]{"7000"});
+            newPriceHashMap.put("Law7et kabab", new String[]{"7000", "", ""});
             newPriceHashMap.put("3arayess kafta", new String[]{"12000", "", ""});
             newPriceHashMap.put("Hamburger", new String[]{"12000", "", ""});
             newPriceHashMap.put("Sa7n tawou2", new String[]{"13000", "", ""});
@@ -995,7 +995,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         subzSpecial.add("Mexican Chicken");
         subzSpecial.add("Chicken Escalope");
         subzSpecial.add("Torpedo");
-        subzSpecial.add("Subz  Steak");
+        subzSpecial.add("Subz Steak");
         subzSpecial.add("Submarine");
         subzSpecial.add("Taouk");
         subzSpecial.add("Crispy");
