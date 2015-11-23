@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.byteshaft.order_booker.AppGlobals;
@@ -19,7 +20,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class ProductsDetailActivity extends AppCompatActivity {
+
+    private RelativeLayout noteLayout;
+    private View separator;
 
     private ExpandableListAdapter listAdapter;
     private ExpandableListView expListView;
@@ -57,6 +62,18 @@ public class ProductsDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_detail);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        separator = findViewById(R.id.separator_view);
+        noteLayout = (RelativeLayout) findViewById(R.id.note_layout);
+        
+        if (AppGlobals.getCurrentSelectedStore().equals("Adonis")) {
+            separator.setVisibility(View.VISIBLE);
+            noteLayout.setVisibility(View.VISIBLE);
+        } else {
+            separator.setVisibility(View.GONE);
+            noteLayout.setVisibility(View.GONE);
+        }
+
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
         expListView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
         // Listview on child click listener
@@ -230,7 +247,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             // Mana’ish
             newPriceHashMap.put("Zaatar", new String[]{"1000", "", ""});
             newPriceHashMap.put("Zaatar light", new String[]{"1500", "", ""});
-            newPriceHashMap.put("Zaatar & Labneh", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Zaatar and Labneh", new String[]{"2000", "", ""});
             newPriceHashMap.put("Zaatar & Cheese", new String[]{"3000", "", ""});
             newPriceHashMap.put("Cheese", new String[]{"3000", "", ""});
             newPriceHashMap.put("Spinach", new String[]{"2500", "", ""});
@@ -800,7 +817,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         manaish.add("Zaatar");
         manaish.add("Zaatar light");
-        manaish.add("Zaatar & Labneh");
+        manaish.add("Zaatar and Labneh");
         manaish.add("Cheese");
         manaish.add("Spinach");
         manaish.add("Keshek");
