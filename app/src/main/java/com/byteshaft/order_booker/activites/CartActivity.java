@@ -150,8 +150,14 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                     if (AppGlobals.getQuantityHashMap().containsKey(product)) {
                         quantity = AppGlobals.getQuantityHashMap().get(product);
                         stringBuilder.append(quantity+" "+product.replace("_", "->") + ",");
+                        if (AppGlobals.getWithOutHashMap().containsKey(product)) {
+                            stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                        }
                     } else {
                         stringBuilder.append("1 "+product.replace("_", "->")+",");
+                        if (AppGlobals.getWithOutHashMap().containsKey(product)) {
+                            stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                        }
                     }
 
                 }
