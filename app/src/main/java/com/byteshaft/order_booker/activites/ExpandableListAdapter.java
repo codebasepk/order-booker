@@ -45,7 +45,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        System.out.println(groupPosition);
         return listDataChild.get(listDataHeader.get(groupPosition))
                 .size();
     }
@@ -114,6 +113,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                     .get(childPosition), array[0]);
         }
+        if (priceMap.get(childText)[1].trim().isEmpty()) {
+            priceTextView.setText("price: " + array[0] + "L.L ");
+            radioGroup.setVisibility(View.GONE);
+        } else {
+            priceTextView.setText("price: " + array[0] + "L.L, " + array[1] + "L.L");
+        }
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -143,12 +148,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         textListChild.setTypeface(typeFace);
         priceTextView.setTypeface(typeFace);
         textListChild.setText(childText);
-        if (!array[0].trim().isEmpty() && array[1].trim().isEmpty()) {
-            priceTextView.setText("price: " + array[0] + "L.L, ");
-        } else {
-            priceTextView.setText("price: " + array[0] + "L.L, " + array[1] +"L.L");
-        }
-        priceTextView.setText("price: " + array[0] + "L.L, " + array[1] +"L.L");
         ingredients.setText(array[2]);
         CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
         HashMap<String, String> orderMap = AppGlobals.getFinalOrdersHashMap();
@@ -194,7 +193,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                                 .get(childPosition));
                     }
                     if (AppGlobals.getWithOutHashMap().containsKey(AppGlobals.getCurrentSelectedStore()
-                             + "_" + listDataHeader.get(groupPosition)
+                            + "_" + listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition))) {
                         AppGlobals.removeFromWithOutHashMap(AppGlobals.getCurrentSelectedStore()
@@ -215,7 +214,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                             listDataHeader.get(groupPosition) + "_" +
                             listDataChild.get(listDataHeader.get(groupPosition)).get(
                                     childPosition), Integer.valueOf(parent.getItemAtPosition(position).toString()));
-                    System.out.println(AppGlobals.getQuantityHashMap());
                 } else if (Integer.valueOf(parent.getItemAtPosition(position).toString()) == 1
                         && AppGlobals.getQuantityHashMap().containsKey(AppGlobals.
                         getCurrentSelectedStore() + "_" + listDataHeader.get(groupPosition) + "_" + listDataChild.get(listDataHeader.get(groupPosition)).get(
@@ -232,14 +230,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
             }
         });
-        System.out.println(childText);
         if (orderMap.containsKey(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.
                 get(groupPosition) + "_" + childText)) {
             checkBox.setChecked(true);
         } else {
             checkBox.setChecked(false);
         }
-        System.out.println(childText == null);
         if (quantityMap.containsKey(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.
                 get(groupPosition) + "_" + childText)) {
             spinner.setSelection((AppGlobals.getQuantityHashMap().
@@ -247,11 +243,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         if (AppGlobals.secondPersonFinalList().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
-                    listDataHeader.get(groupPosition) + "_" + childText)) {
+                listDataHeader.get(groupPosition) + "_" + childText)) {
                     radioGroup.check(R.id.two_person);
         } else {
             radioGroup.check(R.id.one_person);
         }
+
         return convertView;
     }
 
