@@ -148,15 +148,35 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 StringBuilder stringBuilder = new StringBuilder();
                 for (String product : AppGlobals.getFinalOrdersHashMap().keySet()) {
                     if (AppGlobals.getQuantityHashMap().containsKey(product)) {
+                        System.out.println("OK");
                         quantity = AppGlobals.getQuantityHashMap().get(product);
-                        stringBuilder.append(quantity+" "+product.replace("_", "->") + ",");
-                        if (AppGlobals.getWithOutHashMap().containsKey(product)) {
-                            stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                        if (AppGlobals.secondPersonFinalList().containsKey(product)) {
+                            stringBuilder.append(AppGlobals.secondPersonFinalList().get(product)
+                                    + " "+quantity+" "+product.replace("_", "->") + ",");
+                            if (AppGlobals.getWithOutHashMap().containsKey(product)) {
+                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                            }
+
+                        } else {
+                            stringBuilder.append(quantity+" "+product.replace("_", "->") + ",");
+                            if (AppGlobals.getWithOutHashMap().containsKey(product)) {
+                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                            }
+
                         }
                     } else {
-                        stringBuilder.append("1 "+product.replace("_", "->")+",");
-                        if (AppGlobals.getWithOutHashMap().containsKey(product)) {
-                            stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                        if (AppGlobals.secondPersonFinalList().containsKey(product)) {
+                            stringBuilder.append(AppGlobals.secondPersonFinalList().get(product)+" 1 "+product.replace("_", "->")+",");
+                            if (AppGlobals.getWithOutHashMap().containsKey(product)) {
+                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                            }
+
+                        } else {
+                            stringBuilder.append("1 "+product.replace("_", "->")+",");
+                            if (AppGlobals.getWithOutHashMap().containsKey(product)) {
+                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                            }
+
                         }
                     }
 

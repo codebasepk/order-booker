@@ -1,5 +1,6 @@
 package com.byteshaft.order_booker.activites;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -9,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -102,6 +105,28 @@ public class ProductsDetailActivity extends AppCompatActivity {
             @Override
             public void onGroupExpand(int groupPosition) {
                 // do nothing when expand
+                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (getWindow().getCurrentFocus() != null) {
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    getCurrentFocus().clearFocus();
+                }
+            }
+        });
+
+        expListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (getWindow().getCurrentFocus() != null) {
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    getCurrentFocus().clearFocus();
+                }
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
             }
         });
 
@@ -111,6 +136,11 @@ public class ProductsDetailActivity extends AppCompatActivity {
             @Override
             public void onGroupCollapse(int groupPosition) {
                 // do nothing when collapse
+                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (getWindow().getCurrentFocus() != null) {
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    getCurrentFocus().clearFocus();
+                }
             }
         });
     }
@@ -118,6 +148,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private void loadSpecificData(String restaurant) {
         switch (restaurant) {
             case "Adonis":
+                newPriceHashMap = new HashMap<>();
                 addPriceDetailsToHashMap();
                 prepareListDataForAdonis();
                 listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForAdonis,
@@ -125,6 +156,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 expListView.setAdapter(listAdapter);
                 break;
             case "latour":
+                newPriceHashMap = new HashMap<>();
                 addPriceDetailsToHashMapForLatour();
                 prepareListDataForLatour();
                 listAdapter = new ExpandableListAdapter(getApplicationContext(),listDataHeaderForLatour,
@@ -132,6 +164,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 expListView.setAdapter(listAdapter);
                 break;
             case "dip N dip":
+                newPriceHashMap = new HashMap<>();
                 addPriceDetailsToHashMapForLatour();
                 prepareListDataForDipnDip();
                 listAdapter = new ExpandableListAdapter(getApplicationContext(),listDataHeaderForDipNdip,
@@ -139,6 +172,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 expListView.setAdapter(listAdapter);
                 break;
             case "Subz":
+                newPriceHashMap = new HashMap<>();
                 addPriceDetailsToHashMapForLatour();
                 preparedListDataForSubz();
                 listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForSubz,
@@ -146,6 +180,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 expListView.setAdapter(listAdapter);
                 break;
             case "massad":
+                newPriceHashMap = new HashMap<>();
                 addPriceDetailsToHashMapForLatour();
                 preparedListDataForMassaad();
                 listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForMassaad, listDataChildForMassaad,
@@ -153,6 +188,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
                 expListView.setAdapter(listAdapter);
                 break;
             case "ricardo_snack":
+                newPriceHashMap = new HashMap<>();
                 addPriceDetailsToHashMapForLatour();
                 preparedListDataForRicaardo();
                 listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataHeaderForRicaardo, listDataChildForRicaardo,
@@ -203,7 +239,6 @@ public class ProductsDetailActivity extends AppCompatActivity {
     }
 
     private void addPriceDetailsToHashMapForLatour() {
-        newPriceHashMap = new HashMap<>();
         if (AppGlobals.getCurrentSelectedStore().equals("latour")) {
             newPriceHashMap.put("Pizza Marguerita", new String[]{"7000", "9000", "(Tomato sauce, Mozzarella cheese, oregano)"});
 
@@ -238,7 +273,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Tawook", new String[]{"12000", "", ""});
             newPriceHashMap.put("Beef Shawarma", new String[]{"13000", "", ""});
             newPriceHashMap.put("Chicken Shawarma", new String[]{"14000", "", ""});
-            newPriceHashMap.put("Fish & Chips", new String[]{"", "", ""});
+            newPriceHashMap.put("Fish & Chips", new String[]{"14000", "", ""});
             newPriceHashMap.put("Grilled Hamour Filet", new String[]{"14000", "", ""});
             newPriceHashMap.put("Chicken Breast", new String[]{"15000", "", ""});
             newPriceHashMap.put("Chicken Escalope", new String[]{"16000", "", ""});
@@ -391,7 +426,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             // SUBZ FRIES :
             newPriceHashMap.put("French Fries", new String[]{"4000", "", ""});
             newPriceHashMap.put("Wedges", new String[]{"5000", "", ""});
-            newPriceHashMap.put("Twister", new String[]{"Twister", "", ""});
+            newPriceHashMap.put("Twister", new String[]{"7000", "", ""});
 
 
             // drinks

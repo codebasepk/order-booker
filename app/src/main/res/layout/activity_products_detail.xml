@@ -7,6 +7,7 @@
 
     <ExpandableListView
         android:id="@+id/lvExp"
+        android:descendantFocusability="blocksDescendants"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_marginBottom="30dp" />
