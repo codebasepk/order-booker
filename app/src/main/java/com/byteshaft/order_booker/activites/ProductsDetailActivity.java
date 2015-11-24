@@ -1,5 +1,6 @@
 package com.byteshaft.order_booker.activites;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -9,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -102,6 +105,28 @@ public class ProductsDetailActivity extends AppCompatActivity {
             @Override
             public void onGroupExpand(int groupPosition) {
                 // do nothing when expand
+                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (getWindow().getCurrentFocus() != null) {
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    getCurrentFocus().clearFocus();
+                }
+            }
+        });
+
+        expListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (getWindow().getCurrentFocus() != null) {
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    getCurrentFocus().clearFocus();
+                }
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
             }
         });
 
@@ -111,6 +136,11 @@ public class ProductsDetailActivity extends AppCompatActivity {
             @Override
             public void onGroupCollapse(int groupPosition) {
                 // do nothing when collapse
+                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (getWindow().getCurrentFocus() != null) {
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    getCurrentFocus().clearFocus();
+                }
             }
         });
     }

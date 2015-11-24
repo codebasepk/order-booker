@@ -2,6 +2,8 @@ package com.byteshaft.order_booker.activites;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,6 +106,40 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         ingredients.setTypeface(typeFace);
         final EditText editText = (EditText) convertView.findViewById(R.id.with_out);
         editText.setTypeface(typeFace);
+        editText.setSelected(false);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                System.out.println("beforeTextChanged");
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                System.out.println("onTextChanged");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String value = s.toString();
+                AppGlobals.withOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
+                        listDataHeader.get(groupPosition)
+                        + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                        .get(childPosition), value);
+                System.out.println(AppGlobals.getWithOutHashMap());
+            }
+        });
+//        if (AppGlobals.getWithOutHashMap().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
+//                listDataHeader.get(groupPosition)
+//                + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+//                .get(childPosition))) {
+//            System.out.println("OK");
+//            editText.setText(AppGlobals.getWithOutHashMap().get(AppGlobals.getCurrentSelectedStore() + "_" +
+//                    listDataHeader.get(groupPosition)
+//                    + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+//                    .get(childPosition)));
+//        }
+
         RadioGroup radioGroup = (RadioGroup) convertView.findViewById(R.id.radio_group);
         final String[] array = priceMap.get(childText);
         if (!priceMap.get(childText)[1].trim().isEmpty()) {
@@ -162,15 +198,21 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                             .get(childPosition), priceMap.get(
                             listDataChild.get(listDataHeader.get(groupPosition))
                                     .get(childPosition))[0]);
-                    AppGlobals.withOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
-                            listDataHeader.get(groupPosition)
-                            + "_" + listDataChild.get(listDataHeader.get(groupPosition))
-                            .get(childPosition), editText.getText().toString());
+                    if (!editText.getText().toString().trim().isEmpty()) {
+                        AppGlobals.withOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
+                                listDataHeader.get(groupPosition)
+                                + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                                .get(childPosition), editText.getText().toString());
+                    }
                     AppGlobals.withOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
                             listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
                             .get(childPosition), editText.getText().toString());
                 } else {
+                    AppGlobals.removeFromWithOutHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
+                            listDataHeader.get(groupPosition)
+                            + "_" + listDataChild.get(listDataHeader.get(groupPosition))
+                            .get(childPosition));
                     AppGlobals.removeOrderFromHashMap(AppGlobals.getCurrentSelectedStore() + "_"
                             + listDataHeader.get(groupPosition)
                             + "_" + listDataChild.get(listDataHeader.get(groupPosition))
