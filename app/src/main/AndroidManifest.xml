@@ -41,7 +41,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activites.ProductsActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activites.CartActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activites.CartActivity" android:windowSoftInputMode="adjustPan" android:screenOrientation="portrait"/>
         <service android:name="com.parse.PushService"  />
         <!-- com.parse.ParsePushBroadcastReceiver for default notification -->
         <receiver
@@ -71,7 +71,7 @@
             android:name="com.parse.push.notification_icon"
             android:resource="@drawable/notification" />
 
-        <activity android:name=".activites.ProductsDetailActivity" android:windowSoftInputMode="adjustPan">
+        <activity android:name=".activites.ProductsDetailActivity">
         </activity>
     </application>
 
