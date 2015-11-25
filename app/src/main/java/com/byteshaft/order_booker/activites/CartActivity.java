@@ -133,7 +133,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 .setCancelable(false)
                 .setPositiveButton("continue", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(AppGlobals.getContext(), ProductsActivity.class);
+                        Intent intent = new Intent(AppGlobals.getContext(), PreMainActivity.class);
                         startActivity(intent);
                     }
                 });
