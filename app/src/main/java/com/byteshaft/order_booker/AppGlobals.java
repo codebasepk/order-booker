@@ -29,6 +29,7 @@ public class AppGlobals extends Application{
     private static HashMap<String, String> personHashMap;
     private static HashMap<String, String> withOutHashMap;
     private static HashMap<String, String> secondPersonList;
+    private static HashMap<String, String> defaultEditTextvalue;
 
     @Override
     public void onCreate() {
@@ -73,6 +74,7 @@ public class AppGlobals extends Application{
         personHashMap = new HashMap<>();
         withOutHashMap = new HashMap<>();
         secondPersonList = new HashMap<>();
+        defaultEditTextvalue = new HashMap<>();
     }
     public static void addOrderToHashMap(String key, String value) {
         orderHashMap.put(key, value);
@@ -111,6 +113,7 @@ public class AppGlobals extends Application{
         orderHashMap = new HashMap<>();
         personHashMap = new HashMap<>();
         withOutHashMap = new HashMap<>();
+        defaultEditTextvalue = new HashMap<>();
     }
 
     public static void addPRToHashMap(String key, String value) {
@@ -147,6 +150,14 @@ public class AppGlobals extends Application{
 
     public static HashMap<String, String> secondPersonFinalList() {
         return secondPersonList;
+    }
+
+    public static void defaultEditTextvalue(String key, String value) {
+        defaultEditTextvalue.put(key, value);
+    }
+
+    public static HashMap<String, String> getDefaultEditTextValue(String key) {
+        return defaultEditTextvalue;
     }
 }
 
