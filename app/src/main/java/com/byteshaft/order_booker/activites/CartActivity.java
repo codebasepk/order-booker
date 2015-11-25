@@ -279,7 +279,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         public TextView itemTotalAmount;
     }
 
-    private void showDialog(final String key) {
+    private void showDialogForWithout(final String key) {
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
         alert.setTitle("Without");
