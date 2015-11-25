@@ -73,8 +73,10 @@
         android:orientation="horizontal"
         android:visibility="invisible"
         android:id="@+id/radio_group"
-        android:layout_toRightOf="@+id/with_out"
-        android:layout_below="@+id/quantity_spinner">
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="2dp"
+        android:layout_below="@+id/description">
         <RadioButton
             android:id="@+id/one_person"
             android:text="1PR"

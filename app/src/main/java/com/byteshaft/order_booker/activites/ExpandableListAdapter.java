@@ -231,8 +231,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
         if (quantityMap.containsKey(AppGlobals.getCurrentSelectedStore() + "_" + listDataHeader.
                 get(groupPosition) + "_" + childText)) {
-            spinner.setSelection((AppGlobals.getQuantityHashMap().
-                    get(listDataHeader.get(groupPosition) + "_" + childText) - 1));
+            spinner.setSelection((AppGlobals.getQuantityHashMap().get(AppGlobals.getCurrentSelectedStore() + "_" +
+                    listDataHeader.get(groupPosition) + "_" +
+                    listDataChild.get(listDataHeader.get(groupPosition)).get(
+                            childPosition))) - 1);
         }
 
         if (AppGlobals.secondPersonFinalList().containsKey(AppGlobals.getCurrentSelectedStore() + "_" +
