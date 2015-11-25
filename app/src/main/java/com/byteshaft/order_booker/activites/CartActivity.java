@@ -153,29 +153,37 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                         quantity = AppGlobals.getQuantityHashMap().get(product);
                         if (AppGlobals.secondPersonFinalList().containsKey(product)) {
                             stringBuilder.append(AppGlobals.secondPersonFinalList().get(product)
-                                    + " "+quantity+" "+product.replace("_", "->") + ",");
+                                    + " "+quantity+" "+product.replace("_", "->"));
                             if (AppGlobals.getWithOutHashMap().containsKey(product)) {
-                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                                stringBuilder.append(" withOut " +AppGlobals.getWithOutHashMap().get(product) + ",");
+                            } else {
+                                stringBuilder.append(",");
                             }
 
                         } else {
-                            stringBuilder.append(quantity+" "+product.replace("_", "->") + ",");
+                            stringBuilder.append(quantity+" "+product.replace("_", "->"));
                             if (AppGlobals.getWithOutHashMap().containsKey(product)) {
-                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                                stringBuilder.append(" withOut " +AppGlobals.getWithOutHashMap().get(product) + ",");
+                            } else {
+                                stringBuilder.append(",");
                             }
 
                         }
                     } else {
                         if (AppGlobals.secondPersonFinalList().containsKey(product)) {
-                            stringBuilder.append(AppGlobals.secondPersonFinalList().get(product)+" 1 "+product.replace("_", "->")+",");
+                            stringBuilder.append(AppGlobals.secondPersonFinalList().get(product)+" 1 "+product.replace("_", "->"));
                             if (AppGlobals.getWithOutHashMap().containsKey(product)) {
-                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                                stringBuilder.append(" withOut " +AppGlobals.getWithOutHashMap().get(product)+",");
+                            } else {
+                                stringBuilder.append(",");
                             }
 
                         } else {
-                            stringBuilder.append("1 "+product.replace("_", "->")+",");
+                            stringBuilder.append("1 "+product.replace("_", "->"));
                             if (AppGlobals.getWithOutHashMap().containsKey(product)) {
-                                stringBuilder.append(AppGlobals.getWithOutHashMap().get(product));
+                                stringBuilder.append(" withOut " +AppGlobals.getWithOutHashMap().get(product)+",");
+                            } else {
+                                stringBuilder.append(",");
                             }
 
                         }
@@ -217,10 +225,18 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 holder.quantityTextView.setTypeface(AppGlobals.typeface);
                 holder.itemTotalAmount = (TextView) convertView.findViewById(R.id.item_amount);
                 holder.itemTotalAmount.setTypeface(AppGlobals.typeface);
+                holder.withOutButton = (Button) convertView.findViewById(R.id.withOut);
+                holder.withOutButton.setTypeface(AppGlobals.typeface);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
+            holder.withOutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDialogForWithout(arrayList.get(position), arrayList, position);
+                }
+            });
             holder.productName.setText(arrayList.get(position).replace("_", "->"));
             if (AppGlobals.getFinalOrdersHashMap().containsKey(arrayList.get(position)) &&
                     !AppGlobals.secondPersonFinalList().containsKey(arrayList.get(position))) {
@@ -277,13 +293,21 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         public TextView productPrice;
         public TextView quantityTextView;
         public TextView itemTotalAmount;
+        public Button withOutButton;
     }
 
-    private void showDialogForWithout(final String key) {
+    private void showDialogForWithout(final String key, final ArrayList<String> arrayList, final int position) {
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
         alert.setTitle("Without");
         alert.setView(input);
+        int textLength = 0;
+        if (AppGlobals.getWithOutHashMap().containsKey(arrayList.get(position))) {
+            input.setText(AppGlobals.getWithOutHashMap().get(arrayList.get(position)));
+            textLength = AppGlobals.getWithOutHashMap().get(arrayList.get(position)).length();
+
+        }
+        input.setSelection(textLength);
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String without = input.getText().toString().trim();
@@ -293,15 +317,12 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+                if (AppGlobals.getWithOutHashMap().containsKey(arrayList.get(position))) {
+                    AppGlobals.removeFromWithOutHashMap(arrayList.get(position));
+                }
                 dialog.cancel();
             }
         });
         alert.show();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
     }
 }
