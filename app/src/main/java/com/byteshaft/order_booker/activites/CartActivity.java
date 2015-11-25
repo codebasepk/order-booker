@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -122,7 +123,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
             int val =  Integer.valueOf(value.replaceAll("[a-zA-Z]", "").replace(".", "").replace(" ", ""));
             amount = amount+val;
         }
-        totalAmountTextView.setText("Total amount: "+String.valueOf(amount)+ " L.L");
+        totalAmountTextView.setText("Total amount: " + String.valueOf(amount) + " L.L");
     }
     public void alertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -276,5 +277,31 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         public TextView productPrice;
         public TextView quantityTextView;
         public TextView itemTotalAmount;
+    }
+
+    private void showDialog(final String key) {
+        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        final EditText input = new EditText(this);
+        alert.setTitle("Without");
+        alert.setView(input);
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String without = input.getText().toString().trim();
+                AppGlobals.withOutHashMap(key, without);
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.cancel();
+            }
+        });
+        alert.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }
