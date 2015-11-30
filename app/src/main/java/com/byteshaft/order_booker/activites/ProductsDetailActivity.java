@@ -53,7 +53,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private List<String> listDataHeaderForDipNdip;
     private HashMap<String, List<String>> listDataChildForDipNdip;
 
-
+    // for ShawarmaBar
+    private List<String> listDataHeaderForshawarmaBar;
+    private HashMap<String, List<String>> listDataChildForshawarmaBar;
 
     private HashMap<String, String[]> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
@@ -553,6 +555,29 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Perrier", new String[]{"3000", "", ""});
             newPriceHashMap.put("Redbull", new String[]{"6000", "", ""});
             newPriceHashMap.put("Spring water", new String[]{"1500", "", ""});
+
+
+            ///////////////////////// Shawarma Bar Started //////////////////////
+
+            newPriceHashMap.put("Chicky Shawarma", new String[]{"3500", "", "(Garlic, pickles, lettuce, fries)"});
+            newPriceHashMap.put("Juicy Beef Shawarma", new String[]{"4000", "", "(Tarator, tomato, parsley, pickles, onion, fries)"});
+            newPriceHashMap.put("Beef Shawarma Bar", new String[]{"4000", "", "(Tarator, tomato, parsley, pickles, onion and fries topped with our secret sauce)"});
+            newPriceHashMap.put("Shawarma Bites", new String[]{"13000", "", "(Beef or chicken  - 10 pcs)"});
+            newPriceHashMap.put("Shawarma Soujouk", new String[]{"4000", "", "(Tomato, parsley, pickles, onion and fries topped with our secret sauce)"});
+
+            /// Our special combo
+            newPriceHashMap.put("2 Sandwiches of your choice", new String[]{"9000", "", "(coleslow, fries,soft drink)"});
+            newPriceHashMap.put("Chicken", new String[]{"15000", "", "(500g of shawarma with vegetables)"});
+            newPriceHashMap.put("Beef", new String[]{"18000", "", "(500g of shawarma with vegetables)"});
+
+            /// Soft  drinks
+            newPriceHashMap.put("Pepsi", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Mirinda", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Seven up", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Water small", new String[]{"750", "", ""});
+
+
+
         }
 
 
@@ -727,6 +752,42 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(14), smoothies);
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(15), iceTeaShakes);
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(16), softDrinks);
+    }
+
+    private void prepareListDataForShawarmaBar() {
+        listDataHeaderForshawarmaBar = new ArrayList<>();
+        listDataChildForshawarmaBar = new HashMap<>();
+
+        // Adding child data Headers
+        listDataHeaderForshawarmaBar.add("Shawarma");
+        listDataHeaderForshawarmaBar.add("Our special combo");
+        listDataHeaderForshawarmaBar.add("Soft Drinks");
+
+
+        // Adding child data
+        List<String> shawarmas = new ArrayList<>();
+        shawarmas.add("Chicky Shawarma");
+        shawarmas.add("Juicy Beef Shawarma");
+        shawarmas.add("Beef Shawarma Bar");
+        shawarmas.add("Shawarma Bites");
+        shawarmas.add("Shawarma Soujouk");
+
+        List<String> specialCombo = new ArrayList<>();
+        shawarmas.add("2 Sandwiches of your choice");
+        shawarmas.add("Chicken");
+        shawarmas.add("Beef");
+
+
+        List<String> drinks = new ArrayList<>();
+        drinks.add("Pepsi");
+        drinks.add("Mirinda");
+        drinks.add("Seven up");
+        drinks.add("Water small");
+
+        listDataChildForAdonis.put(listDataHeaderForAdonis.get(0), shawarmas); // Header, Child data
+        listDataChildForAdonis.put(listDataHeaderForAdonis.get(1), specialCombo);
+        listDataChildForAdonis.put(listDataHeaderForAdonis.get(2), drinks);
+
     }
 
     private void prepareListDataForAdonis() {
