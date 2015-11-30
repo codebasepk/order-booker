@@ -43,7 +43,6 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.cart_activity);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        finalItems = new ArrayList<>();
         getProductsFromHashMap();
         itemCount = (TextView) findViewById(R.id.item_count);
         itemCount.setTypeface(AppGlobals.typeface);
@@ -77,8 +76,11 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getProductsFromHashMap() {
-        for ( String key : AppGlobals.getFinalOrdersHashMap().keySet() ) {
-            finalItems.add(key);
+        finalItems = new ArrayList<>();
+        if (!AppGlobals.getFinalOrdersHashMap().isEmpty()) {
+            for (String key : AppGlobals.getFinalOrdersHashMap().keySet()) {
+                finalItems.add(key);
+            }
         }
     }
 
