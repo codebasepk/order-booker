@@ -66,6 +66,11 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private HashMap<String, List<String>>  listDataChildForCroiassants;
 
 
+    //for Z Bureger House
+    private List<String> listDataHeaderForBurgerHouse;
+    private HashMap<String, List<String>>  listDataChildForBuregerHouse;
+
+
     private HashMap<String, String[]> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
 
@@ -797,20 +802,115 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Flavored Hot Chocolate", new String[]{"5000", "", "(Chocolate, milk, hazelnut  flavor)"});
             newPriceHashMap.put("Flavored Hot Chocolate", new String[]{"5000", "", "(Chocolate, milk,  vanilla  flavor)"});
             newPriceHashMap.put("Tea With Milk", new String[]{"4000", "", ""});
+
+
+            /////////////////////////////////////////// end croissants ////////////////////
+
+            /////////////////////////////////////////// Z burger house STARTED ////////////////
+
+            newPriceHashMap.put("Classic Sandwich", new String[]{"6000", "", "(Grilled beef patty with lettuce ,Tomato, sliced onions , pickles ketchup & mustard)"});
+            newPriceHashMap.put("Classic Combo", new String[]{"11000", "", "(Grilled beef patty with lettuce ,Tomato, sliced onions , pickles ketchup & mustard)"});
+            newPriceHashMap.put("Cheese burger Sandwich", new String[]{"6500", "", "(Grilled beef patty with cheddar cheese, Lettuce, Tomato , sliced onions ,pickles ,Ketchup & mustard )"});
+            newPriceHashMap.put("Cheese burger Combo:", new String[]{"11500", "", "(Grilled beef patty with cheddar cheese, Lettuce, Tomato , sliced onions ,pickles ,Ketchup & mustard )"});
+            newPriceHashMap.put("Biggy house burger Sandwich:", new String[]{"9000", "", "(double grilled beef patty with double cheddar cheese , lettuce , Tomato , onion , pickles & special Biggy house sauce)"});
+            newPriceHashMap.put("Biggy house burger Combo", new String[]{":14000", "", "(double grilled beef patty with double cheddar cheese , lettuce , Tomato , onion , pickles & special Biggy house sauce)"});
+            newPriceHashMap.put("BBq pepperoni Sandwich", new String[]{"8500", "", "(Grilled beef patty  with cheddar cheese , crispy pepperoni , fresh mushrooms , lettuce , tomato , pickles & bbq sauce)"});
+            newPriceHashMap.put("BBq pepperoni Combo", new String[]{"13500", "", "(Grilled beef patty  with cheddar cheese , crispy pepperoni , fresh mushrooms , lettuce , tomato , pickles & bbq sauce)"});
+            newPriceHashMap.put("Z Lebanese Burger Sandwich", new String[]{"6000", "", "(Grilled beef patty , coleslaw , tomato , pickles , onion, fries, grilled bread, Z sauce)"});
+            newPriceHashMap.put("Z Lebanese Burger Combo", new String[]{":11000", "", "(Grilled beef patty , coleslaw , tomato , pickles , onion, fries, grilled bread, Z sauce)"});
+            newPriceHashMap.put("Steak burger Sandwich", new String[]{"9000", "", "200G of grilled steak filet, lettuce, tomato, onions , Z sauce ,  Fresh Mushroom)"});
+            newPriceHashMap.put("Steak burger Combo", new String[]{"14000", "", "200G of grilled steak filet, lettuce, tomato, onions , Z sauce ,  Fresh Mushroom)"});
+            newPriceHashMap.put("Deluxe burger Sandwich", new String[]{"8000", "", "(Grilled beef patty with cheddar cheese, fried onion rings , lettuce , pickles and sweet onion rings )"});
+            newPriceHashMap.put("Deluxe burger Combo", new String[]{"13000", "", "(Grilled beef patty with cheddar cheese, fried onion rings , lettuce , pickles and sweet onion rings )"});
+            newPriceHashMap.put("Chili cheese burger Sandwich", new String[]{"7000", "", "(grilled beef patty with cheddar cheese , lettuce, grilled green pepper & onions, pickles & spicy sauce with caramelized onions )"});
+            newPriceHashMap.put("Chili cheese burger Combo", new String[]{"12000", "", "(grilled beef patty with cheddar cheese , lettuce, grilled green pepper & onions, pickles & spicy sauce with caramelized onions )"});
+            newPriceHashMap.put("Bacon house Sandwich", new String[]{"8500", "", "(Grilled beef patty with cheddar cheese , crispy bacon , avocado slices , Lettuce, Pickles  & Mild burger house sauce )"});
+            newPriceHashMap.put("Bacon house Combo", new String[]{"13500", "", "(Grilled beef patty with cheddar cheese , crispy bacon , avocado slices , Lettuce, Pickles  & Mild burger house sauce )"});
+            newPriceHashMap.put("Mozzarella beef burger Sandwich", new String[]{"9000", "", "(Grilled beef patty with breaded froed Mozzarella cheese , lettuce , tomato , pickles & burger house sauce )"});
+            newPriceHashMap.put("Mozzarella beef burger Combo", new String[]{"14000", "", "(Grilled beef patty with breaded froed Mozzarella cheese , lettuce , tomato , pickles & burger house sauce )"});
+            newPriceHashMap.put("Swiss mushroom Sandwich", new String[]{"8000", "", "(Grilled beef patty with melted Swiss cheese & creamy mushroom sauce )"});
+            newPriceHashMap.put("Swiss mushroom Combo", new String[]{"13000", "", "(Grilled beef patty with melted Swiss cheese & creamy mushroom sauce )"});
+            newPriceHashMap.put("Sushi burger Sandwich", new String[]{"9500", "", "(Avocado, crab , wasabi sauce , sweet corn ,rice , special sauce )"});
+            newPriceHashMap.put("Sushi burger Combo", new String[]{"14500", "", "(Avocado, crab , wasabi sauce , sweet corn ,rice , special sauce )"});
+            newPriceHashMap.put("Z angus house Sandwich", new String[]{"9000", "", "(180 G of angus beef , lettuce , pickles , Tomato , Z sauce )"});
+            newPriceHashMap.put("Z angus house Combo", new String[]{"14000", "", "(180 G of angus beef , lettuce , pickles , Tomato , Z sauce )"});
+            newPriceHashMap.put("Cheese at heart burger Sandwich", new String[]{"9000", "", "(180 G  Meat filled with cheese , Lettuce , tomato , pickles , cheddar slice , crispy nachos )"});
+            newPriceHashMap.put("Cheese at heart burger Combo", new String[]{"14000", "", "(180 G  Meat filled with cheese , Lettuce , tomato , pickles , cheddar slice , crispy nachos )"});
+            newPriceHashMap.put("Mexican house Sandwich", new String[]{"9000", "", "(180 G of Meat filled with Mexican spices & sauces , tomato , lettuce ,pickles )"});
+            newPriceHashMap.put("Mexican house Combo", new String[]{"14000", "", "(180 G of Meat filled with Mexican spices & sauces , tomato , lettuce ,pickles )"});
+            newPriceHashMap.put("Soujouk burger Sandwich", new String[]{"7500", "", "(120 G of grilled soujouk beef, lettuce , tomato, pickles , mayo, z sauce)"});
+            newPriceHashMap.put("Soujouk burger Combo", new String[]{"12500", "", "(120 G of grilled soujouk beef, lettuce , tomato, pickles , mayo, z sauce)"});
+            newPriceHashMap.put("Veggie burger Sandwich", new String[]{"6500", "", "(lettuce, tomato, onions, fried mozzarella veggie , pickles , veggie sauce)"});
+            newPriceHashMap.put("Veggie burger Combo", new String[]{"11500", "", "(lettuce, tomato, onions, fried mozzarella veggie , pickles , veggie sauce)"});
+            newPriceHashMap.put("Kids meal", new String[]{"9000", "", "(2 mini burgers beef or chicken , French fries , orange juice or soft drink )"});
+            newPriceHashMap.put("Minions", new String[]{"11000", "", "(3 mini burgers , French fries )"});
+
+            /// APPETIZERS
+            newPriceHashMap.put("Fries basket", new String[]{"4000", "", "(extra crispy French fries)"});
+            newPriceHashMap.put("Cheese fries basket", new String[]{"6000", "", "(extra crispy French fries with cheddar)"});
+            newPriceHashMap.put("curly fries  basket", new String[]{"6500", "", "(extra crispy French fries with cheddar)"});
+            newPriceHashMap.put("baked potatoes", new String[]{"7500", "", "(2 pieces  of baked potato served with sauces  and cheddar  cheese upon request )"});
+            newPriceHashMap.put("Potato wedges basket", new String[]{"6000", "", "(extra crispy wedges served  with dipping sauce as requested )"});
+            newPriceHashMap.put("Mozzarella sticks", new String[]{"6000", "", "(breaded mozzarella , served with fries & Z sauce)"});
+            newPriceHashMap.put("Cheddar balls", new String[]{"6000", "", "(Breaded cheddar , served with fries & z sauce )"});
+            newPriceHashMap.put("crispy crab or calamar", new String[]{"7500", "", "(fried crispy crab  or calamar served with fries and z sauce )"});
+            newPriceHashMap.put("chicken tenders", new String[]{"8500", "", "(marinated strips of 100% chicken breast served with optional sauce )"});
+            newPriceHashMap.put("chicken tenders grilled", new String[]{"8500", "", "(grilled strips 100% chicken breast served with optional sauce)"});
+            newPriceHashMap.put("Chicken tenders dipped", new String[]{"9500", "", "(dipped marinated strips of 100% chicken breast served with optional sauce)"});
+            newPriceHashMap.put("special crispy wings", new String[]{"9000", "", "(extra crispy wings  served with mixed or dipping sauces as requested sauces available : bbq- buffalo – blue cheese – honey mustard – thousand island – sweet chilli )"});
+            newPriceHashMap.put("appetizers combo", new String[]{"15000", "", "(cheddar balls, crispy wings, crispy crab, crispy calamar, mozzarella sticks, potato wedges , coleslaw)"});
+
+            //// SALADS:
+            newPriceHashMap.put("Season salad", new String[]{"8500", "", "(iceberg lettuce, rocca, grated carrots, sliced black olives, cucumber , tomato & sweet corn )"});
+            newPriceHashMap.put("Halloumi salad", new String[]{"9000", "", "(grilled halloum with iceberg  lettuce , rocca, cucumber, tomato, sliced black olive & fresh mint pesto )"});
+            newPriceHashMap.put("Greek salad", new String[]{"9000", "", "(iceberg lettuce , rocca , cucumber, tomato, sliced black olives , mint , green pepper & Feta cheese)"});
+            newPriceHashMap.put("Tuna Pasta", new String[]{"9500", "", "(fusilli pasta , tuna ,  grated carrots, sweet corn, fresh mushrooms, olives & tomato )"});
+            newPriceHashMap.put("Chef salad", new String[]{"10000", "", "(Smoked  ham with  emmental  cheese , iceberg  lettuce, cucumber, sweet  corn &  tomato)"});
+            newPriceHashMap.put("Steak Salad", new String[]{"11000", "", "(Iceberg  lettuce  &  rocca  topped  with  grilled beef  filet, grilled onions  & tomato)"});
+            newPriceHashMap.put("Crispy Chicken  Salad", new String[]{"10000", "", "(Crispy  chicken  breast, iceberg  lettuce, sweet  corn & tomato)"});
+            newPriceHashMap.put("Chicken Caesar", new String[]{"10000", "", "(Iceberg  lettuce  topped  with  grilled chicken, parmesan  cheese,  Caesar  dressing  &  croutons)"});
+            newPriceHashMap.put("Crab Salad", new String[]{"10500", "", "(Iceberg  lettuce, rocca, sweet corn, fresh mushrooms, fresh avocado, tomato & chredded crab )"});
+            newPriceHashMap.put("Rocca Salad", new String[]{"9000", "", "(Iceberg  lettuce,  fresh mushrooms, tomato, parmesan cheese, balsamic  sauce)"});
+            newPriceHashMap.put("Burger House Salad", new String[]{"11000", "", "(Iceberg  lettuce topped  with  grilled chicken , crispy bacon, shaved cheese, avocado, grated  carrots, sweet corn, fresh mushrooms & tomato)"});
+
+            /// BURGER  (FRESH CHICKEN)
+            newPriceHashMap.put("Chicken Breast Burger Sandwich", new String[]{"7000", "", "(Grilled chicken breast, lettuce, pickles, garlic, fries)"});
+            newPriceHashMap.put("Chicken Breast Burger Combo", new String[]{"12000", "", "(Grilled chicken breast, lettuce, pickles, garlic, fries)"});
+            newPriceHashMap.put("Med Burger Sandwich", new String[]{"7500", "", "(Marinated grilled  chicken breast in fresh coriander, fresh garlic, lettuce, pickles, med sauce)"});
+            newPriceHashMap.put("Med Burger Combo", new String[]{"12500", "", "(Marinated grilled  chicken breast in fresh coriander, fresh garlic, lettuce, pickles, med sauce)"});
+            newPriceHashMap.put("Crispy Chicken Burger Sandwich", new String[]{"13000", "", "(Crispy chicken patty with cheddar cheese, lettuce, pickles, biggy sauce)"});
+            newPriceHashMap.put("Crispy Chicken Burger Combo", new String[]{"8000", "", "(Crispy chicken patty with cheddar cheese, lettuce, pickles, biggy sauce)"});
+            newPriceHashMap.put("Crunchy Chicken Fillet Sandwich", new String[]{"8000", "", "(Crunchy  chicken  fillet, cheddar  cheese, lettuce, pickles, spicy bbq sauce)"});
+            newPriceHashMap.put("Crunchy Chicken Fillet Combo", new String[]{"13000", "", "(Crunchy  chicken  fillet, cheddar  cheese, lettuce, pickles, spicy bbq sauce)"});
+
+            //// FISH
+            newPriceHashMap.put("Crunchy Fishy Fish Sandwich", new String[]{"7000", "", "(Deep fried fish, cheddar cheese, lettuce, pickles, house tartar sauce)"});
+            newPriceHashMap.put("Crunchy Fishy Fish Combo", new String[]{"12000", "", "(Deep fried fish, cheddar cheese, lettuce, pickles, house tartar sauce)"});
+            newPriceHashMap.put("Fried Fishy Burger Sandwich", new String[]{"7000", "", "(Sauce tartar, lettuce, tomato, mustard, fried fish)"});
+            newPriceHashMap.put("Fried Fishy Burger Combo", new String[]{"12000", "", "(Sauce tartar, lettuce, tomato, mustard, fried fish)"});
+            newPriceHashMap.put("Grilled Fishy Burger Sandwich", new String[]{"6500", "", "(Lettuce, garlic, pickles, fried potato, grilled fish)"});
+            newPriceHashMap.put("Grilled Fishy Burger Combo", new String[]{"11500", "", "(Lettuce, garlic, pickles, fried potato, grilled fish)"});
+
+            ///////////////////////////////////  Z burger House End //////////////////////////////
+
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
+            newPriceHashMap.put("", new String[]{"", "", ""});
         }
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-//            newPriceHashMap.put("", new String[]{"", "", ""});
-
-
 
     }
 
@@ -984,6 +1084,106 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(16), softDrinks);
     }
 
+    private void prepareListDataForBurgerHouse() {
+
+        listDataHeaderForBurgerHouse = new ArrayList<>();
+        listDataChildForBuregerHouse = new HashMap<>();
+
+        listDataHeaderForBurgerHouse.add("The Authentic BURGER beef");
+        listDataHeaderForBurgerHouse.add("APPETIZERS");
+        listDataHeaderForBurgerHouse.add("SALADS");
+        listDataHeaderForBurgerHouse.add("FISH");
+
+        List<String> authenticBurgers = new ArrayList<>();
+        authenticBurgers.add("Classic Sandwich");
+        authenticBurgers.add("Classic Combo");
+        authenticBurgers.add("Cheese burger Sandwich");
+        authenticBurgers.add("Cheese burger Combo");
+        authenticBurgers.add("Biggy house burger Sandwich");
+        authenticBurgers.add("Biggy house burger Combo");
+        authenticBurgers.add("BBq pepperoni Sandwich");
+        authenticBurgers.add("BBq pepperoni Combo");
+        authenticBurgers.add("Z Lebanese Burger Sandwich");
+        authenticBurgers.add("Z Lebanese Burger Combo");
+        authenticBurgers.add("Steak burger Sandwich");
+        authenticBurgers.add("Steak burger Combo");
+        authenticBurgers.add("Deluxe burger Sandwich");
+        authenticBurgers.add("Deluxe burger Combo");
+        authenticBurgers.add("Chili cheese burger Sandwich");
+        authenticBurgers.add("Chili cheese burger Combo");
+        authenticBurgers.add("Bacon house Sandwich");
+        authenticBurgers.add("Bacon house Combo");
+        authenticBurgers.add("Mozzarella beef burger Sandwich");
+        authenticBurgers.add("Mozzarella beef burger Combo");
+        authenticBurgers.add("Swiss mushroom Sandwich");
+        authenticBurgers.add("Swiss mushroom Combo");
+        authenticBurgers.add("Sushi burger Sandwich");
+        authenticBurgers.add("Sushi burger Combo");
+        authenticBurgers.add("Z angus house Sandwich");
+        authenticBurgers.add("Z angus house Combo");
+        authenticBurgers.add("Cheese at heart burger Sandwich");
+        authenticBurgers.add("Cheese at heart burger Combo");
+        authenticBurgers.add("Mexican house Sandwich");
+        authenticBurgers.add("Mexican house Combo");
+        authenticBurgers.add("Soujouk burger Sandwich");
+        authenticBurgers.add("Soujouk burger Combo");
+        authenticBurgers.add("Veggie burger Sandwich");
+        authenticBurgers.add("Veggie burger Combo");
+        authenticBurgers.add("Kids meal");
+        authenticBurgers.add("Minions");
+
+        /// APPETIZERS
+        List<String> appitizers = new ArrayList<>();
+        appitizers.add("Fries basket");
+        appitizers.add("Cheese fries basket");
+        appitizers.add("curly fries  basket");
+        appitizers.add("baked potatoes");
+        appitizers.add("Potato wedges basket");
+        appitizers.add("Mozzarella sticks");
+        appitizers.add("Cheddar balls");
+        appitizers.add("crispy crab or calamar");
+        appitizers.add("chicken tenders");
+        appitizers.add("chicken tenders grilled");
+        appitizers.add("Chicken tenders dipped");
+        appitizers.add("special crispy wings");
+        appitizers.add("appetizers combo");
+
+        //// SALADS:
+        List<String> salads = new ArrayList<>();
+        salads.add("Season salad");
+        salads.add("Halloumi salad");
+        salads.add("Greek salad");
+        salads.add("Tuna Pasta");
+        salads.add("Chef salad");
+        salads.add("Steak Salad");
+        salads.add("Crispy Chicken  Salad");
+        salads.add("Chicken Caesar");
+        salads.add("Crab Salad");
+        salads.add("Rocca Salad");
+        salads.add("Burger House Salad");
+
+        /// BURGER  (FRESH CHICKEN)
+        List<String> freshChiksBurgers = new ArrayList<>();
+        freshChiksBurgers.add("Chicken Breast Burger Sandwich");
+        freshChiksBurgers.add("Chicken Breast Burger Combo");
+        freshChiksBurgers.add("Med Burger Sandwich");
+        freshChiksBurgers.add("Med Burger Combo");
+        freshChiksBurgers.add("Crispy Chicken Burger Sandwich");
+        freshChiksBurgers.add("Crispy Chicken Burger Combo");
+        freshChiksBurgers.add("Crunchy Chicken Fillet Sandwich");
+        freshChiksBurgers.add("Crunchy Chicken Fillet Combo");
+        freshChiksBurgers.add("Crunchy Fishy Fish Sandwich");
+        freshChiksBurgers.add("Crunchy Fishy Fish Combo");
+        freshChiksBurgers.add("Fried Fishy Burger Sandwich");
+        freshChiksBurgers.add("Fried Fishy Burger Combo");
+        freshChiksBurgers.add("Grilled Fishy Burger Sandwich");
+        freshChiksBurgers.add("Grilled Fishy Burger Combo");
+
+        listDataChildForBuregerHouse.put(listDataHeaderForBurgerHouse.get(0), authenticBurgers); // Header, Child data
+        listDataChildForBuregerHouse.put(listDataHeaderForBurgerHouse.get(1), appitizers);
+        listDataChildForBuregerHouse.put(listDataHeaderForBurgerHouse.get(2), salads);
+        listDataChildForBuregerHouse.put(listDataHeaderForBurgerHouse.get(3), freshChiksBurgers);
+    }
     private void prepareListDataForShawarmaBar() {
         listDataHeaderForshawarmaBar = new ArrayList<>();
         listDataChildForshawarmaBar = new HashMap<>();
