@@ -61,6 +61,20 @@ public class ProductsActivity extends AppCompatActivity {
                 return "massad";
             case 5:
                 return "ricardo_snack";
+            case 6:
+                return "burger_house";
+            case 7:
+                return "le_poulet";
+            case 8:
+                return "snack_charboul";
+            case 9:
+                return "dagher";
+            case 10:
+                return "croissant";
+            case 11:
+                return "pizzaria";
+            case 12:
+                return "shawarma";
         }
         return "";
     }
