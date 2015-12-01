@@ -61,6 +61,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private List<String> listDataHeaderForsnackCharboul;
     private HashMap<String, List<String>> listDataChildForsnackCharboul;
 
+    //for CROISSANTS
+    private List<String> listDataHeaderForCroissants;
+    private HashMap<String, List<String>>  listDataChildForCroiassants;
+
 
     private HashMap<String, String[]> priceHashMap;
     private HashMap<String, String[]> newPriceHashMap;
@@ -560,6 +564,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Perrier", new String[]{"3000", "", ""});
             newPriceHashMap.put("Redbull", new String[]{"6000", "", ""});
             newPriceHashMap.put("Spring water", new String[]{"1500", "", ""});
+        }
+
+        if (AppGlobals.getCurrentSelectedStore().equals("shawarma")) {
 
 
             ///////////////////////// Shawarma Bar Started //////////////////////
@@ -581,7 +588,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Seven up", new String[]{"1000", "", ""});
             newPriceHashMap.put("Water small", new String[]{"750", "", ""});
 
+
             ///////////////////////// Shawarma Bar End //////////////////////
+        }
+        if (AppGlobals.getCurrentSelectedStore().equals("snack_charboul")) {
 
             /////////////////////////  Snak charboul Started //////////////////////
 
@@ -649,18 +659,156 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Beer", new String[]{"2000", "", ""});
 
             /////////////////////////  Snak charboul End //////////////////////
-
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-
-
-
         }
+
+        if (AppGlobals.getCurrentSelectedStore().equals("croissant")) {
+
+            //////////////////////// start croissants  ///////////////////////
+
+            // croissants
+
+            newPriceHashMap.put("Chocolate", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Knéfé", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Zaatar", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Zaatar Special", new String[]{"3500", "", ""});
+            newPriceHashMap.put("Olive & Mint", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Olive & Mint Special", new String[]{"3500", "", ""});
+            newPriceHashMap.put("Spicy Cheese", new String[]{"3500", "", ""});
+            newPriceHashMap.put("Spicy Cheese Special", new String[]{"3500", "", ""});
+            newPriceHashMap.put("Cheese & Ham", new String[]{"3500", "", ""});
+            newPriceHashMap.put("Cheese & Ham Special", new String[]{"4000", "", ""});
+            newPriceHashMap.put("12  Small  Croissant   of any kind", new String[]{"10000", "", ""});
+
+            //cake & dozens
+            newPriceHashMap.put("Tarte", new String[]{"10000", "", ""});
+            newPriceHashMap.put("Éclair", new String[]{"10000", "", ""});
+            newPriceHashMap.put("Chocolate Cream", new String[]{"10000", "", ""});
+
+            // cake pieces
+            newPriceHashMap.put("Baba au Rhum", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Baba au Rhum Special", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Éclair", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Éclair Special", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Tarte aux Fruits", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Sablé Chocolat", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Sablé Jam", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Mille Feuilles", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Boule Chocolat Coco", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Boule Chocolat Almond", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Cheese Cake", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Swiss Roll", new String[]{"3000", "", ""});
+
+            //fresh juice
+            newPriceHashMap.put("Orange", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Grape Fruit", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Carrot", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Melon", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Avocado", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Apple", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Strawberry", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Lemonade", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Banana With Milk", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Kiwi, Strawberry & Lemon", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Polo", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Cocktail Pieces", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Cocktail Juice", new String[]{"6000", "", ""});
+
+            // cold beverages
+
+            newPriceHashMap.put("Pepsi", new String[]{"2000", "", ""});
+            newPriceHashMap.put("7-Up", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Mirinda", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Mexican Beer", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Beer", new String[]{"4000", "", ""});
+            newPriceHashMap.put("AMP Energy", new String[]{"2000", "", ""});
+            newPriceHashMap.put("H2OH", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Water (small)", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Water (big)", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Nuts", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Chips", new String[]{"2000", "", ""});
+
+            //fresh mocktails
+
+            newPriceHashMap.put("Strawberry Freez", new String[]{"6000", "", "(Strawberry puree, water, fresh strawberry, ice)"});
+            newPriceHashMap.put("Mango Freez", new String[]{"6000", "", "(Mango puree, water, fresh mango slice, ice)"});
+            newPriceHashMap.put("Mango Orange Freez", new String[]{"6000", "", "(Mango puree, orange juice, ice, bloody orange syrup)"});
+            newPriceHashMap.put("Peach Freez", new String[]{"6000", "", "(Peach  Puree, water, ice,  fresh peach  slice)"});
+            newPriceHashMap.put("Tropical Smoothie", new String[]{"6000", "", "(Peach puree, water, ice,  mango puree, strawberry puree)"});
+            newPriceHashMap.put("Survivor Smoothie", new String[]{"6000", "", "(Mango puree, water,  ice, pineapple slice,  passion  fruit puree,  coconut  puree)"});
+            newPriceHashMap.put("Hulk", new String[]{"6000", "", "(Apple puree, peach puree, lemon, kiwi   puree,  water, ice)"});
+            newPriceHashMap.put("Passion Fruit Reez", new String[]{"6000", "", "(Passion  puree,  water, ice)"});
+            newPriceHashMap.put("Be Cool", new String[]{"6000", "", "(Strawberry puree, passion  fruit  puree, banana  puree)"});
+            newPriceHashMap.put("Italian Lemonade", new String[]{"6000", "", "(Sweet & Sour mix, 7-up,  fresh lemon,  strawberry puree, basil  syrup, ice)"});
+            newPriceHashMap.put("Blue Hawaiian Lemonade", new String[]{"6000", "", "(Sweet  &  Sour  mix, 7-Up,  fresh lemon,  coconut puree, blue  curacao  syrup,  ice)"});
+            newPriceHashMap.put("Pink Lemonade", new String[]{"6000", "", "(Sweet & Sour mix,  7-Up, fresh lemon,  pink grapefruit  syrup,  grenadine  syrup, ice)"});
+            newPriceHashMap.put("Frozen Bloody Orange", new String[]{"6000", "", "(Fresh  orange  juice,  grapefruit  syrup,  bloody  orange  syrup, ice)"});
+            newPriceHashMap.put("Orange Mango Smoothie", new String[]{"6000", "", "(Mango puree, orange juice,  ice)"});
+            newPriceHashMap.put("Kiwi", new String[]{"6000", "", "(Kiwi  puree,  banana puree,  orange  juice,  ice)"});
+            newPriceHashMap.put("Bubble Gum", new String[]{"6000", "", "(Bubble  gum  syrup,  cranberry  juice,  lemon  juice, ice)"});
+            newPriceHashMap.put("Virgin Colada", new String[]{"6000", "", "(Coconut  puree,  pineapple  juice,  blue  curacao,  ice)"});
+
+
+            //frozen shake
+
+            newPriceHashMap.put("Coconut Shake", new String[]{"6000", "", "(coconut  puree, milk,  ice)"});
+            newPriceHashMap.put("Melon Shake", new String[]{"6000", "", "(Melon, milk, ice)"});
+            newPriceHashMap.put("Strawberry Shake", new String[]{"6000", "", "(Strawberry  puree, milk,  vanilla powder, ice)"});
+            newPriceHashMap.put("Vanilla Shake", new String[]{"6000", "", "(Vanilla  syrup,  vanilla  powder,  milk,  ice)"});
+            newPriceHashMap.put("Minted Iced Chocolate", new String[]{"6000", "", "(Organic   sweet  chocolate  powder,  dark  chocolate  sauce, green mint  syrup,  vanilla  powder,  ice)"});
+            newPriceHashMap.put("Choco Oreo Shake", new String[]{"6000", "", "(Milk,  chocolate  cookies  syrup, oreo  cookies,  white  chocolate powder, ice)"});
+            newPriceHashMap.put("Banana Berry Shake", new String[]{"6000", "", "(Milk,  red berries  puree, banana  puree, vanilla  powder,  fresh  banana, ice)"});
+            newPriceHashMap.put("Chocolate Milk Shake", new String[]{"6000", "", "(Milk, chocolate  flavor, dark  chocolate  powder, ice)"});
+            newPriceHashMap.put("Snickers Milk Shake", new String[]{"6000", "", "(Milk, dark  chocolate, peanut  butter,  mocha  powder,  caramel  sauce, ice)"});
+            newPriceHashMap.put("Black & White", new String[]{"6000", "", "(Milk  , one scoop vanilla ice cream , lemon slice, vanilla powder, chocolate sauce, coffee beans, pineapple  juice)"});
+            newPriceHashMap.put("Bubble Gum Shake", new String[]{"6000", "", "(Bubble  gum  ice  cream, bubble  gym  syrup,  milk, water, ice)"});
+
+            // icecream
+
+            newPriceHashMap.put("Chocolat Mou", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Chikita", new String[]{"6000", "", "(3 scoops  ice cream , fruit  salad, whipped  cream)"});
+            newPriceHashMap.put("Banana Split", new String[]{"6000", "", "(Banana  slices, fruits  slices,, whipped  cream, 3 scoops  ice cream)"});
+
+            // ICED   COFFEE   DRINKS
+
+            newPriceHashMap.put("Coffee Frappe", new String[]{"5000", "", "(Espresso, sugar, ice)"});
+            newPriceHashMap.put("Nescafe Frappe", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Cappuccino Frappe", new String[]{"5000", "", "(Espresso,  milk,  original  mocafé  powder, ice)"});
+            newPriceHashMap.put("Caramel Frappucino", new String[]{"5000", "", "(Milk, caramel   sauce,  original  mocafé  powder, ice)"});
+            newPriceHashMap.put("Toffee Banana Mocha", new String[]{"5000", "", "(Milk,  banana  puree,  toffee  nuts  syrup,  mocha  powder,  ice)"});
+            newPriceHashMap.put("Frozen Tiramisu", new String[]{"5000", "", "(Espresso, milk,   white  chocolate  powder,  tiramisu  syrup,  ice)"});
+            newPriceHashMap.put("After Eight Mocha", new String[]{"5000", "", "(Mint  syrup,  mocafé,  milk, ice)"});
+            newPriceHashMap.put("Long Island Frappe", new String[]{"5000", "", "(Coconut  syrup  or puree, mocafé, milk, ice)"});
+            newPriceHashMap.put("Belgian Fever", new String[]{"5000", "", "(Speculoos  syrup, mocafé, milk, ice)"});
+            newPriceHashMap.put("Crunchy", new String[]{"5000", "", "(Milk, vanilla  powder, cookies,  whipped  cream, ice)"});
+
+            // hot beverages
+
+            newPriceHashMap.put("Turkish Coffee", new String[]{"4000", "5000", "(2 cups)  4000 L.L\n  ( 3 cups )  5000 L.L\n"});
+            newPriceHashMap.put("Nescafe", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Doppio", new String[]{"4000", "", "(Espresso  double)"});
+            newPriceHashMap.put("Cappuccino", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Flavored Latté", new String[]{"5000", "", "(Espresso, milk,  dark  chocolate  sauce)"});
+            newPriceHashMap.put("Mochaccino", new String[]{"5000", "", "(Espresso, milk, dark  chocolate  sauce)"});
+            newPriceHashMap.put("Caramel Macchiato", new String[]{"5000", "", "(Espresso, milk, caramel  sauce)"});
+            newPriceHashMap.put("Tiramisu Latté", new String[]{"5000", "", "(Espresso, milk,  tiramisu  syrup)"});
+            newPriceHashMap.put("Chocolate Cookies Latté", new String[]{"5000", "", "(Espresso, milk,  chocolate  cookies  syrup)"});
+            newPriceHashMap.put("Belgian Latté", new String[]{"5000", "", "(Espresso, milk, caramel  sauce, cookies  syrup)"});
+            newPriceHashMap.put("Crusty Mocha", new String[]{"5000", "", "(Espresso, milk,  chocolate  sauce,  hazelnut  syrup)"});
+            newPriceHashMap.put("Flavored Hot Chocolate", new String[]{"5000", "", "(Chocolate, milk, hazelnut  flavor)"});
+            newPriceHashMap.put("Flavored Hot Chocolate", new String[]{"5000", "", "(Chocolate, milk,  vanilla  flavor)"});
+            newPriceHashMap.put("Tea With Milk", new String[]{"4000", "", ""});
+        }
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
+//            newPriceHashMap.put("", new String[]{"", "", ""});
 
 
 
@@ -950,12 +1098,165 @@ public class ProductsDetailActivity extends AppCompatActivity {
         coldBeverages.add("Beer");
 
         // Header, Child data///
-        listDataChildForAdonis.put(listDataHeaderForsnackCharboul.get(0), sandwiches);
-        listDataChildForAdonis.put(listDataHeaderForsnackCharboul.get(1), plates);
-        listDataChildForAdonis.put(listDataHeaderForsnackCharboul.get(2), coldBeverages);
+        listDataChildForsnackCharboul.put(listDataHeaderForsnackCharboul.get(0), sandwiches);
+        listDataChildForsnackCharboul.put(listDataHeaderForsnackCharboul.get(1), plates);
+        listDataChildForsnackCharboul.put(listDataHeaderForsnackCharboul.get(2), coldBeverages);
+    }
 
+    private void prepareDataForCroissant() {
+        listDataHeaderForCroissants = new ArrayList<>();
+        listDataChildForCroiassants = new HashMap<>();
+
+        listDataHeaderForCroissants.add("Croissants");
+        listDataHeaderForCroissants.add("CAKES / DOZEN");
+        listDataHeaderForCroissants.add("CAKES / PIECE");
+        listDataHeaderForCroissants.add("FRESH JUICE");
+        listDataHeaderForCroissants.add("COLD BEVERAGES");
+        listDataHeaderForCroissants.add("FRESH MOCKTAILS");
+        listDataHeaderForCroissants.add("ICE CREAM");
+        listDataHeaderForCroissants.add("ICED COFFEE DRINKS");
+        listDataHeaderForCroissants.add("HOT BEVERAGES");
+
+        List<String> crossants = new ArrayList<>();
+        crossants.add("Chocolate");
+        crossants.add("Knéfé");
+        crossants.add("Zaatar");
+        crossants.add("Zaatar Special");
+        crossants.add("Olive & Mint");
+        crossants.add("Olive & Mint Special");
+        crossants.add("Spicy Cheese");
+        crossants.add("Spicy Cheese Special");
+        crossants.add("Cheese & Ham");
+        crossants.add("Cheese & Ham Special");
+        crossants.add("12 Small Croissant of any kind");
+
+
+        List<String> cakes = new ArrayList<>();
+        cakes.add("Tartez");
+        cakes.add("Éclair");
+        cakes.add("Chocolate Cream");
+
+
+        List<String> cakeAndPiece = new ArrayList<>();
+        cakeAndPiece.add("Baba au Rhum");
+        cakeAndPiece.add("Baba au Rhum Special");
+        cakeAndPiece.add("Éclair");
+        cakeAndPiece.add("Éclair Special");
+        cakeAndPiece.add("Tarte aux Fruits");
+        cakeAndPiece.add("Sablé Chocolat");
+        cakeAndPiece.add("Sablé Jam");
+        cakeAndPiece.add("Mille Feuilles");
+        cakeAndPiece.add("Boule Chocolat Coco");
+        cakeAndPiece.add("Boule Chocolat Almond");
+        cakeAndPiece.add("Cheese Cake");
+        cakeAndPiece.add("Swiss Roll");
+
+        List<String> freshJuice = new ArrayList<>();
+        freshJuice.add("Orange");
+        freshJuice.add("Grape Fruit");
+        freshJuice.add("Carrot");
+        freshJuice.add("Melon");
+        freshJuice.add("Avocado");
+        freshJuice.add("Apple");
+        freshJuice.add("Strawberry");
+        freshJuice.add("Lemonade");
+        freshJuice.add("Banana With Milk");
+        freshJuice.add("Kiwi, Strawberry & Lemon");
+        freshJuice.add("Polo");
+        freshJuice.add("Cocktail Pieces");
+        freshJuice.add("Cocktail Juice");
+
+        List<String> coldBeverages = new ArrayList<>();
+        coldBeverages.add("Pepsi");
+        coldBeverages.add("7-Up");
+        coldBeverages.add("Mirinda");
+        coldBeverages.add("Mexican Beer");
+        coldBeverages.add("Beer");
+        coldBeverages.add("AMP Energy");
+        coldBeverages.add("H2OH");
+        coldBeverages.add("Water (small)");
+        coldBeverages.add("Water (big)");
+        coldBeverages.add("Nuts");
+        coldBeverages.add("Chips");
+
+        List<String> freshMocktails = new ArrayList<>();
+        freshMocktails.add("Strawberry Freez");
+        freshMocktails.add("Mango Freez");
+        freshMocktails.add("Mango Orange Freez");
+        freshMocktails.add("Peach Freez");
+        freshMocktails.add("Tropical Smoothie");
+        freshMocktails.add("Survivor Smoothie");
+        freshMocktails.add("Hulk");
+        freshMocktails.add("Passion Fruit Reez");
+        freshMocktails.add("Be Cool");
+        freshMocktails.add("Italian Lemonade");
+        freshMocktails.add("Blue Hawaiian Lemonade");
+        freshMocktails.add("Pink Lemonade");
+        freshMocktails.add("Frozen Bloody Orange");
+        freshMocktails.add("Orange Mango Smoothie");
+        freshMocktails.add("Kiwi");
+        freshMocktails.add("Bubble Gum");
+        freshMocktails.add("Virgin Colada ");
+
+        List<String> frozenShakes = new ArrayList<>();
+        frozenShakes.add("Coconut Shake");
+        frozenShakes.add("Melon Shake");
+        frozenShakes.add("Strawberry Shake");
+        frozenShakes.add("Vanilla Shake");
+        frozenShakes.add("Minted Iced Chocolate");
+        frozenShakes.add("Choco Oreo Shake");
+        frozenShakes.add("Banana Berry Shake");
+        frozenShakes.add("Chocolate Milk Shake");
+        frozenShakes.add("Snickers Milk Shake");
+        frozenShakes.add("Black & White");
+        frozenShakes.add("Bubble Gum Shake");
+
+        List<String> icecream = new ArrayList<>();
+        icecream.add("Chocolat Mou");
+        icecream.add("Chikita");
+        icecream.add("Banana Split");
+
+        List<String> icedCoffeeDrinks = new ArrayList<>();
+        icedCoffeeDrinks.add("Coffee Frappe");
+        icedCoffeeDrinks.add("Nescafe Frappe");
+        icedCoffeeDrinks.add("Cappuccino Frappe");
+        icedCoffeeDrinks.add("Caramel Frappucino");
+        icedCoffeeDrinks.add("Toffee Banana Mocha");
+        icedCoffeeDrinks.add("Frozen Tiramisu");
+        icedCoffeeDrinks.add("After Eight Mocha");
+        icedCoffeeDrinks.add("Long Island Frappe");
+        icedCoffeeDrinks.add("Belgian Fever");
+        icedCoffeeDrinks.add("Crunchy");
+
+        List<String> hotBeverages =  new ArrayList<>();
+        hotBeverages.add("Turkish Coffee");
+        hotBeverages.add("Nescafe");
+        hotBeverages.add("Doppio");
+        hotBeverages.add("Cappuccino");
+        hotBeverages.add("Flavored Latté");
+        hotBeverages.add("Mochaccino");
+        hotBeverages.add("Caramel Macchiato");
+        hotBeverages.add("Tiramisu Latté");
+        hotBeverages.add("Chocolate Cookies Latté");
+        hotBeverages.add("Belgian Latté");
+        hotBeverages.add("Crusty Mocha");
+        hotBeverages.add("Flavored Hot Chocolate");
+        hotBeverages.add("Flavored hot chocolate");
+        hotBeverages.add("Tea With Milk");
+
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(0), crossants);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(1), cakes);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(2), cakeAndPiece);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(3), freshJuice);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(4), coldBeverages);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(5), freshMocktails);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(6), frozenShakes);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(7), icecream);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(8), icedCoffeeDrinks);
+        listDataChildForCroiassants.put(listDataHeaderForCroissants.get(9), hotBeverages);
 
     }
+
 
     private void prepareListDataForAdonis() {
         listDataHeaderForAdonis = new ArrayList<>();
