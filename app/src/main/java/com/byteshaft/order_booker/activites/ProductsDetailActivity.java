@@ -65,12 +65,17 @@ public class ProductsDetailActivity extends AppCompatActivity {
     private List<String> listDataHeaderForCroissants;
     private HashMap<String, List<String>>  listDataChildForCroiassants;
 
+    //dagher
     private List<String> listDataHeaderForDagher;
     private HashMap<String, List<String>> listDataChildForDagher;
 
     //for Z Bureger House
     private List<String> listDataHeaderForBurgerHouse;
     private HashMap<String, List<String>>  listDataChildForBuregerHouse;
+
+    // lilla pizzari
+    private List<String> listDataHeaderForPizzari;
+    private HashMap<String, List<String>> listDataChildForPizzari;
 
 
     private HashMap<String, String[]> priceHashMap;
@@ -952,6 +957,64 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Water (small)", new String[]{"500", "", ""});
             newPriceHashMap.put("Laban 3iran", new String[]{"1000", "", ""});
         }
+
+        if (AppGlobals.getCurrentSelectedStore().equals("pizzaria")) {
+            newPriceHashMap.put("Margherita", new String[]{"10000", "", "(tomato sauce, cheese)"});
+            newPriceHashMap.put("Funghi", new String[]{"13000", "", "(frensh mushroom, corn2)"});
+            newPriceHashMap.put("Four cheese", new String[]{"17000", "", "(kashkaval cheese, mozzarella, roquefort, parmesan)"});
+            newPriceHashMap.put("Rocca pizza", new String[]{"17000", "", "(rocca, tomato, feta cheese, parmesan cheese)"});
+            newPriceHashMap.put("Basil & cherry", new String[]{"16000", "", "(fresh basil, cherry tomato, parmesan cheese)"});
+            newPriceHashMap.put("Vegetarian", new String[]{"16000", "", "(onion, fresh mushroom, green pepper, olive, corn, artichoke)"});
+            newPriceHashMap.put("Vegetarian delight", new String[]{"18000", "", "(onion, tomato, fresh mushroom, artichoke, asparagus, olive, corn)"});
+            newPriceHashMap.put("Broccoli pizza", new String[]{"17000", "", "(broccoli, feta cheese, tomato8)"});
+            newPriceHashMap.put("Vesuvio", new String[]{"14000", "", "(Ham)"});
+            newPriceHashMap.put("Hawaiian", new String[]{"15000", "", "(ham, pineapple2)"});
+            newPriceHashMap.put("Capricciosa", new String[]{"15000", "", "(ham, fresh mushroom)"});
+            newPriceHashMap.put("Lebanese pizza", new String[]{"16000", "", "(ham, fresh mushroom, olive, green pepper, corn)"});
+            newPriceHashMap.put("Pepperoni (beef)", new String[]{"14000", "", "(Pepperoni)"});
+            newPriceHashMap.put("Pepperoni (pork)", new String[]{"14000", "", "(pepperoni)"});
+            newPriceHashMap.put("Salami", new String[]{"16000", "", "(without pizza sauce salami , tomato, asperge, kashkaval & mozzarella cheese)"});
+            newPriceHashMap.put("Du chef", new String[]{"16000", "", "(beef meat, onion, fresh mushroom, green pepper, bbq sauce)"});
+            newPriceHashMap.put("Primavera", new String[]{"18000", "", "(tomatobeef meat, bacon, egg, onion)"});
+            newPriceHashMap.put("Carlo", new String[]{"18000", "", "(beef meat, pepperoni, ham)"});
+            newPriceHashMap.put("BBQ chicken", new String[]{"16000", "", "(breast chicken, onion, green pepper, corn, bbq sauce11)"});
+            newPriceHashMap.put("Campagnolia", new String[]{"15000", "", "(pepperoni, fresh mushroom, onion)"});
+            newPriceHashMap.put("Calzone", new String[]{"16000", "", "(bolognese sauce (mince meat, onion, green pepper, carrots), parmesan cheese)"});
+            newPriceHashMap.put("Mexicana chicken", new String[]{"19000", "", "(breast chicken, green pepper, corn , olive, avocado , mexican hot sauce)"});
+            newPriceHashMap.put("Eldorado beef", new String[]{"19000", "", "(tomato, fresh mushroombeef meat, bacon, onion, green pepper, chilli slice)"});
+            newPriceHashMap.put("Lilla italy supreme", new String[]{"20000", "", "(beef meat, ham, pepperoni, onion,  green  pepper, fresh mushroom, tomato)"});
+            newPriceHashMap.put("Soujouk pizza", new String[]{"20000", "", "(green peppersoujouk, onion, tomato)"});
+            newPriceHashMap.put("Pastrami pizza", new String[]{"18000", "", "(pastrami, rocca, tomato)"});
+            newPriceHashMap.put("Pescatore", new String[]{"18000", "", "(shrimp, tuna)"});
+            newPriceHashMap.put("Paradiso", new String[]{"18000", "", "(shrimp, ham, fresh mushroom)"});
+            newPriceHashMap.put("Marinara", new String[]{"18000", "", "(shrimp, mussel)"});
+            newPriceHashMap.put("Super tefat", new String[]{"18000", "", "(shrimp, ham, fresh mushroom)"});
+            newPriceHashMap.put("Seafood", new String[]{"18000", "", "(shrimp, crab, mussel)"});
+            newPriceHashMap.put("Quattro stagion", new String[]{"20000", "", "(large shrimp, crab, ham, fresh mushroom, olive)"});
+            newPriceHashMap.put("Anchovy", new String[]{"20000", "", "(anchovy, artichoke, asparagus)"});
+            newPriceHashMap.put("Super seafood", new String[]{"22000", "", "(large shrimp, crab, tuna, mussel, avocado)"});
+            newPriceHashMap.put("Beef", new String[]{"7000", "", "(beef meat, lettuce, tomato, cucumber, onion)"});
+            newPriceHashMap.put("Chicken", new String[]{"7000", "", "(chicken schnitzel, lettuce, tomato, corn)"});
+            newPriceHashMap.put("Tuna", new String[]{"7000", "", "(tuna, lettuce, tomato, olive, corn, onion)"});
+            newPriceHashMap.put("Fish", new String[]{"7000", "", "(lettuce, pickles, corn)"});
+            newPriceHashMap.put("Beef burger", new String[]{"6000", "", "(beef, pickles, lettuce, tomato)"});
+            newPriceHashMap.put("Cheese burger", new String[]{"7000", "", "(beef, cheese, pickles, lettuce, tomato)"});
+            newPriceHashMap.put("Chicken burger", new String[]{"6000", "", "(chicken, tomato, lettuce, pickles)"});
+            newPriceHashMap.put("Bacon & egg burger", new String[]{"6000", "", "(bacon, egg, onion, tomato, bbq sauce)"});
+            newPriceHashMap.put("Fish burger", new String[]{"6000", "", "(fish, lettuce, pickles)"});
+            newPriceHashMap.put("Extra meat", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Extra chicken", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Fish & chips plate", new String[]{"15000", "", "(fried fish, lettuce, corn, chips, tartar dressing)"});
+            newPriceHashMap.put("French fries", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Extra dressing", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Panachee", new String[]{"16000", "", "(palmito, asparagus, corn, artichoke, lettuce, tomato, mushroom)"});
+            newPriceHashMap.put("Tuna", new String[]{"16000", "", "(tuna, corn, olive, lettuce, tomato, cucumber, lemon, onion)"});
+            newPriceHashMap.put("Chicken", new String[]{"17000", "", "(chicken, avocado, lettuce, tomato, cucumber, corn, parmesan cheese)"});
+            newPriceHashMap.put("Greek", new String[]{"16000", "", "(feta cheese, olive, green pepper, lettuce, tomato, cucumber, onion)"});
+            newPriceHashMap.put("Shrimp", new String[]{"18000", "", "(large shrimp, avocado, corn, lettuce, tomato, cucumber, lemon)"});
+            newPriceHashMap.put("Crab", new String[]{"17000", "", "(crab, lettuce, corn, cherry tomato)"});
+            newPriceHashMap.put("Ham & cheese", new String[]{"15000", "", "(ham, cheese, pineapple,lettuce, corn,tomato,cucumber)"});
+        }
     }
 
     private void prepareListDataForDipnDip() {
@@ -1122,6 +1185,93 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(14), smoothies);
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(15), iceTeaShakes);
         listDataChildForDipNdip.put(listDataHeaderForDipNdip.get(16), softDrinks);
+    }
+
+    private void prePareDataListForPizzari() {
+        listDataHeaderForPizzari = new ArrayList<>();
+        listDataChildForPizzari = new HashMap<>();
+
+        listDataHeaderForPizzari.add("VEGETARIAN PIZZAS");
+        listDataHeaderForPizzari.add("Meat pizzas");
+        listDataHeaderForPizzari.add("Sea food pizza");
+        listDataHeaderForPizzari.add("PITA SANDWICHES");
+        listDataHeaderForPizzari.add("Burger");
+        listDataHeaderForPizzari.add("Salad");
+
+        List<String> vegetratianPizza = new ArrayList<>();
+        vegetratianPizza.add("Margherita");
+        vegetratianPizza.add("Funghi");
+        vegetratianPizza.add("Four cheese");
+        vegetratianPizza.add("Rocca pizza");
+        vegetratianPizza.add("Basil & cherry");
+        vegetratianPizza.add("Vegetarian");
+        vegetratianPizza.add("Vegetarian delight");
+        vegetratianPizza.add("Broccoli pizza");
+
+        List<String> meatPizza = new ArrayList<>();
+        meatPizza.add("Vesuvio");
+        meatPizza.add("Hawaiian");
+        meatPizza.add("Capricciosa");
+        meatPizza.add("Lebanese pizza");
+        meatPizza.add("Pepperoni (beef)");
+        meatPizza.add("Pepperoni (pork)");
+        meatPizza.add("Salami");
+        meatPizza.add("Du chef");
+        meatPizza.add("Primavera");
+        meatPizza.add("Carlo");
+        meatPizza.add("BBQ chicken");
+        meatPizza.add("Campagnolia");
+        meatPizza.add("Calzone");
+        meatPizza.add("Mexicana chicken");
+        meatPizza.add("Eldorado beef");
+        meatPizza.add("Lilla italy supreme");
+        meatPizza.add("Soujouk pizza");
+        meatPizza.add("Pastrami pizza");
+
+        List<String> seaFood = new ArrayList<>();
+        seaFood.add("Pescatore");
+        seaFood.add("Paradiso");
+        seaFood.add("Marinara");
+        seaFood.add("Super tefat");
+        seaFood.add("Seafood");
+        seaFood.add("Quattro stagion");
+        seaFood.add("Anchovy");
+        seaFood.add("Super seafood");
+
+        List<String> sandWitches = new ArrayList<>();
+        sandWitches.add("Beef");
+        sandWitches.add("Chicken");
+        sandWitches.add("Tuna");
+        sandWitches.add("Fish");
+
+        List<String> burger = new ArrayList<>();
+        burger.add("Beef burger");
+        burger.add("Cheese burger");
+        burger.add("Chicken burger");
+        burger.add("Bacon & egg burger");
+        burger.add("Fish burger");
+        burger.add("Fish & chips plate");
+        burger.add("French fries");
+        burger.add("Extra meat");
+        burger.add("Extra chicken");
+        burger.add("Extra dressing");
+
+
+        List<String> salad = new ArrayList<>();
+        salad.add("Panachee");
+        salad.add("Tuna");
+        salad.add("Chicken");
+        salad.add("Greek");
+        salad.add("Shrimp");
+        salad.add("Crab");
+        salad.add("Ham & cheese");
+
+        listDataChildForPizzari.put(listDataHeaderForPizzari.get(0), vegetratianPizza);
+        listDataChildForPizzari.put(listDataHeaderForPizzari.get(1), meatPizza);
+        listDataChildForPizzari.put(listDataHeaderForPizzari.get(2), seaFood);
+        listDataChildForPizzari.put(listDataHeaderForPizzari.get(3), sandWitches);
+        listDataChildForPizzari.put(listDataHeaderForPizzari.get(4), burger);
+        listDataChildForPizzari.put(listDataHeaderForPizzari.get(5), salad);
     }
 
     private void prepareListDataForBurgerHouse() {
@@ -1543,11 +1693,6 @@ public class ProductsDetailActivity extends AppCompatActivity {
         dagher.add("Laban 3iran ");
 
         listDataChildForDagher.put(listDataHeaderForDagher.get(0), dagher);
-
-
-
-
-
 
     }
 
