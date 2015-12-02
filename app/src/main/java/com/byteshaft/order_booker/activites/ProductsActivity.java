@@ -24,7 +24,14 @@ public class ProductsActivity extends AppCompatActivity {
             R.drawable.dip,
             R.drawable.subz,
             R.drawable.massaad,
-            R.drawable.ricardo_snack
+            R.drawable.ricardo_snack,
+            R.drawable.bur,
+            R.drawable.poulet,
+            R.drawable.charboul,
+            R.drawable.dagher,
+            R.drawable.croissant,
+            R.drawable.pizzaria,
+            R.drawable.shawarma
     };
 
     @Override
