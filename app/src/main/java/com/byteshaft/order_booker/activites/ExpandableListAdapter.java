@@ -103,6 +103,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         ingredients.setTypeface(typeFace);
         RadioGroup radioGroup = (RadioGroup) convertView.findViewById(R.id.radio_group);
         final String[] array = priceMap.get(childText);
+        System.out.println(childText);
+        System.out.println(priceMap == null);
+        System.out.println(priceMap.get(childText)[1] == null);
         if (!priceMap.get(childText)[1].trim().isEmpty()) {
             radioGroup.setVisibility(View.VISIBLE);
             AppGlobals.addPRToHashMap(AppGlobals.getCurrentSelectedStore() + "_" +
