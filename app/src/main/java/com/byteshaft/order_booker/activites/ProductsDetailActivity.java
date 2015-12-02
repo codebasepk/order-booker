@@ -76,6 +76,10 @@ public class ProductsDetailActivity extends AppCompatActivity {
     // lilla pizzari
     private List<String> listDataHeaderForPizzari;
     private HashMap<String, List<String>> listDataChildForPizzari;
+    
+    //for le pouelt
+    private List<String> listDataHeaderForLePouelt;
+    private HashMap<String, List<String>>  listDataChildForLePouelt;
 
 
     private HashMap<String, String[]> priceHashMap;
@@ -900,19 +904,103 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
             ///////////////////////////////////  Z burger House End //////////////////////////////
 
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
-            newPriceHashMap.put("", new String[]{"", "", ""});
+            ////////////////////////////////// Le Pouelt  Satarted ///////////////////////////////
+
+            newPriceHashMap.put("Season Salad", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Rocca Salad", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Chicken Salad", new String[]{"9000", "", ""});
+            newPriceHashMap.put("Coleslaw Salad", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Tuna Salad", new String[]{"8000", "", ""});
+            newPriceHashMap.put("Fattouch", new String[]{"8000", "", ""});
+            newPriceHashMap.put("Fattouch (large)", new String[]{"13000", "", ""});
+
+            /// POTATOES
+            newPriceHashMap.put("French Fries (plate)", new String[]{"4000", "", ""});
+            newPriceHashMap.put("French Fries (large)", new String[]{"7000", "", ""});
+            newPriceHashMap.put("French Fries (box)", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Broasted Potatoes", new String[]{"8000", "", ""});
+
+            ////// STARTERS
+            newPriceHashMap.put("Hommos", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Moutabal", new String[]{"5000", "", ""});
+
+            // SANDWICH   3AL  FAHEM
+            newPriceHashMap.put("Shish Tawouk", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Shish Tawouk Platter", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Lahme (lamb meat)", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Kabab", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Chicken", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Steak", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Fish Filet", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Hamburger", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Cheese Burger", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Chicken Burger", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Falafel", new String[]{"2500", "", ""});
+            newPriceHashMap.put("Makanek", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Soujouk", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Shawarma Lahme", new String[]{"4000", "", ""});
+            newPriceHashMap.put("Shawarma djej", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Shawarma Lahme (large)", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Shawarma Djej (large)", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Shawarma Lahme (Saj bread)", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Shawarma Djej (Saj bread)", new String[]{"6000", "", ""});
+            newPriceHashMap.put("Chicken Liver", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Fajita", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Crispy", new String[]{"5000", "", ""});
+            newPriceHashMap.put("Rosto", new String[]{"4000", "", ""});
+
+            // FARROUJ  GHAZ
+            newPriceHashMap.put("Grilled  Chicken", new String[]{"13000", "", ""});
+            newPriceHashMap.put("half Grilled Chicken", new String[]{"7000", "", ""});
+            newPriceHashMap.put("Grilled Chicken Special", new String[]{"15000", "", ""});
+
+            ///Broasted  Chicken
+            newPriceHashMap.put("Chicken", new String[]{"18000", "", ""});
+            newPriceHashMap.put("Drumsticks (10pcs)", new String[]{"20000", "", ""});
+            newPriceHashMap.put("Legs (8pcs)", new String[]{"18000", "", ""});
+            newPriceHashMap.put("Wings (12pcs)", new String[]{"14000", "", ""});
+            newPriceHashMap.put("Wings With Coriander (12pcs)", new String[]{"000", "", ""});   // price missing
+
+            // PLATTERS :
+            newPriceHashMap.put("Chicken Filet (light)", new String[]{"16000", "", "(baked potatoes, lettuce, 300g chicken breast)"});
+            newPriceHashMap.put("Meat Filet (light)", new String[]{"18000", "", "(baked potatoes, lettuce, 300g meat)"});
+            newPriceHashMap.put("Fish Filet (light)", new String[]{"14000", "", ""});
+            newPriceHashMap.put("Shawarma Djej", new String[]{"10000", "", ""});
+            newPriceHashMap.put("Shawarma Lahme", new String[]{"10000", "", ""});
+
+            /// DJEJ  3AL FAHEM :
+            newPriceHashMap.put("Chicken", new String[]{"15000", "", ""});
+            newPriceHashMap.put("Legs (8pcs)", new String[]{"15000", "", ""});
+            newPriceHashMap.put("Wings (12 pcs)", new String[]{"14000", "", ""});
+            newPriceHashMap.put("Wings With Coriander (12pcs)", new String[]{"18000", "", ""});
+
+            // MACHEWE
+            newPriceHashMap.put("1 Kg Lahme Che2af", new String[]{"40000", "", ""});
+            newPriceHashMap.put("1 Kg Tawouk", new String[]{"30000", "", ""});
+            newPriceHashMap.put("1 Kg Kabab", new String[]{"35000", "", ""});
+            newPriceHashMap.put("1 Kg Machewe Mchakal", new String[]{"35000", "", ""});
+
+            /// DESSERT  &  BEVERAGES
+            newPriceHashMap.put("Jello", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Custard", new String[]{"3000", "", ""});
+            newPriceHashMap.put("Laban 3iran", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Water (small)", new String[]{"500", "", ""});
+            newPriceHashMap.put("Water (big)", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Pepsi", new String[]{"1000", "", ""});
+            newPriceHashMap.put("7-Up", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Mirinda", new String[]{"1000", "", ""});
+            newPriceHashMap.put("Pepsi (1.25 L)", new String[]{"2000", "", ""});
+            newPriceHashMap.put("7-Up (1.25 L)", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Mirinda (1.25 L)", new String[]{"2000", "", ""});
+            newPriceHashMap.put("Pepsi (2L)", new String[]{"2500", "", ""});
+            newPriceHashMap.put("7-Up (2L)", new String[]{"2500", "", ""});
+            newPriceHashMap.put("Mirinda (2L)", new String[]{"2500", "", ""});
+
+
+
+            /////////////////////////////////////// le Poulet ended /////////////////////
+
+
             newPriceHashMap.put("", new String[]{"", "", ""});
             newPriceHashMap.put("", new String[]{"", "", ""});
             newPriceHashMap.put("", new String[]{"", "", ""});
@@ -1272,6 +1360,133 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataChildForPizzari.put(listDataHeaderForPizzari.get(3), sandWitches);
         listDataChildForPizzari.put(listDataHeaderForPizzari.get(4), burger);
         listDataChildForPizzari.put(listDataHeaderForPizzari.get(5), salad);
+    }
+
+    private void prepareListDataForLePoulet() {
+
+        listDataHeaderForLePouelt = new ArrayList<>();
+        listDataChildForLePouelt = new HashMap<>();
+
+        listDataHeaderForLePouelt.add("SALADS");
+        listDataHeaderForLePouelt.add("POTATOES");
+        listDataHeaderForLePouelt.add("STARTERS");
+        listDataHeaderForLePouelt.add("Broasted Chicken");
+        listDataHeaderForLePouelt.add("PLATTERS");
+        listDataHeaderForLePouelt.add("DJEJ 3AL FAHEM");
+        listDataHeaderForLePouelt.add("MACHEWE");
+        listDataHeaderForLePouelt.add("DESSERT & BEVERAGES");
+
+        ///SALADS
+        List<String> salads = new ArrayList<>();
+        salads.add("Season Salad");
+        salads.add("Rocca Salad");
+        salads.add("Chicken Salad");
+        salads.add("Coleslaw Salad");
+        salads.add("Tuna Salad");
+        salads.add("Fattouch");
+        salads.add("Fattouch (large)");
+
+        // Potatoes
+        List<String> potatoes = new ArrayList<>();
+        potatoes.add("French Fries (plate)");
+        potatoes.add("French Fries (large)");
+        potatoes.add("French Fries (box)");
+        potatoes.add("Broasted Potatoes");
+
+        // STARTERS
+        List<String> starters = new ArrayList<>();
+        starters.add("Hommos");
+        starters.add("Moutabal");
+
+        // SANDWICH   3AL  FAHEM
+        List<String> sandwichAlFahem = new ArrayList<>();
+        sandwichAlFahem.add("Shish Tawouk");
+        sandwichAlFahem.add("Shish Tawouk Platter");
+        sandwichAlFahem.add("Lahme (lamb meat)");
+        sandwichAlFahem.add("Kabab");
+        sandwichAlFahem.add("Chicken");
+        sandwichAlFahem.add("Steak");
+        sandwichAlFahem.add("Fish Filet");
+        sandwichAlFahem.add("Hamburger");
+        sandwichAlFahem.add("Cheese Burger");
+        sandwichAlFahem.add("Chicken Burger");
+        sandwichAlFahem.add("Falafel");
+        sandwichAlFahem.add("Makanek");
+        sandwichAlFahem.add("Soujouk");
+        sandwichAlFahem.add("Shawarma Lahme");
+        sandwichAlFahem.add("Shawarma djej");
+        sandwichAlFahem.add("Shawarma Lahme (large)");
+        sandwichAlFahem.add("Shawarma Djej (large)");
+        sandwichAlFahem.add("Shawarma Lahme (Saj bread)");
+        sandwichAlFahem.add("Shawarma Djej (Saj bread)");
+        sandwichAlFahem.add("Chicken Liver");
+        sandwichAlFahem.add("Fajita");
+        sandwichAlFahem.add("Crispy");
+        sandwichAlFahem.add("Rosto");
+
+        // FARROUJ  GHAZ
+        List<String> farroujGhaz = new ArrayList<>();
+        farroujGhaz.add("Grilled  Chicken");
+        farroujGhaz.add("half Grilled Chicken");
+        farroujGhaz.add("Grilled Chicken Special");
+
+        ///Broasted  Chicken
+        List<String> broastedChiken = new ArrayList<>();
+        broastedChiken.add("Chicken");
+        broastedChiken.add("Drumsticks (10pcs)");
+        broastedChiken.add("Legs (8pcs)");
+        broastedChiken.add("Wings (12pcs)");
+        broastedChiken.add("Wings With Coriander (12pcs)");
+
+        // PLATTERS
+        List<String> platters = new ArrayList<>();
+        platters.add("Chicken Filet (light)");
+        platters.add("Meat Filet (light)");
+        platters.add("Fish Filet (light)");
+        platters.add("Shawarma Djej");
+        platters.add("Shawarma Lahme");
+
+        ///// DJEJ  3AL FAHEM
+        List<String> djejFahem = new ArrayList<>();
+        djejFahem.add("Chicken");
+        djejFahem.add("Legs (8pcs)");
+        djejFahem.add("Wings (12 pcs)");
+        djejFahem.add("Wings With Coriander (12pcs)");
+
+        /// MACHEWE
+        List<String> machewe = new ArrayList<>();
+        machewe.add("1 Kg Lahme Che2af");
+        machewe.add("1 Kg Tawouk");
+        machewe.add("1 Kg Kabab");
+        machewe.add("1 Kg Machewe Mchakal");
+
+        ///DESSERT  &  BEVERAGES
+        List<String> dessertBeverages = new ArrayList<>();
+        dessertBeverages.add("Jello");
+        dessertBeverages.add("Custard");
+        dessertBeverages.add("Laban 3iran");
+        dessertBeverages.add("Water (small)");
+        dessertBeverages.add("Water (big)");
+        dessertBeverages.add("Pepsi");
+        dessertBeverages.add("7-Up");
+        dessertBeverages.add("Mirinda");
+        dessertBeverages.add("Pepsi (1.25 L)");
+        dessertBeverages.add("7-Up (1.25 L)");
+        dessertBeverages.add("Mirinda (1.25 L)");
+        dessertBeverages.add("Pepsi (2L)");
+        dessertBeverages.add("7-Up (2L)");
+        dessertBeverages.add("Mirinda (2L)");
+
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(0), salads);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(1), potatoes);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(2), starters);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(3), sandwichAlFahem);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(4), farroujGhaz);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(5), broastedChiken);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(6), platters);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(7), djejFahem);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(8), machewe);
+        listDataChildForLePouelt.put(listDataHeaderForLePouelt.get(9), dessertBeverages);
     }
 
     private void prepareListDataForBurgerHouse() {
