@@ -1011,7 +1011,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Drumsticks (10pcs)", new String[]{"20000", "", ""});
             newPriceHashMap.put("Legs (8pcs)", new String[]{"18000", "", ""});
             newPriceHashMap.put("Wings (12pcs)", new String[]{"14000", "", ""});
-            newPriceHashMap.put("Wings With Coriander (12pcs)", new String[]{"000", "", ""});   // price missing
+            newPriceHashMap.put("Wings With Coriander (24pcs)", new String[]{"18000", "", ""});
 
             // PLATTERS :
             newPriceHashMap.put("Chicken Filet (light)", new String[]{"16000", "", "(baked potatoes, lettuce, 300g chicken breast)"});
@@ -1486,7 +1486,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         broastedChiken.add("Drumsticks (10pcs)");
         broastedChiken.add("Legs (8pcs)");
         broastedChiken.add("Wings (12pcs)");
-        broastedChiken.add("Wings With Coriander (12pcs)");
+        broastedChiken.add("Wings With Coriander (24pcs)");
 
         // PLATTERS
         List<String> platters = new ArrayList<>();
@@ -1547,7 +1547,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataHeaderForBurgerHouse.add("The Authentic BURGER beef");
         listDataHeaderForBurgerHouse.add("APPETIZERS");
         listDataHeaderForBurgerHouse.add("SALADS");
-        listDataHeaderForBurgerHouse.add("FISH and Chicken Burgers");
+        listDataHeaderForBurgerHouse.add("FISH & Chicken Burgers");
 
         List<String> authenticBurgers = new ArrayList<>();
         authenticBurgers.add("Classic Sandwich");
