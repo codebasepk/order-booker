@@ -2,12 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        byteshaft {
-            keyAlias 'byteshaft'
-            keyPassword 'shaftsixtyfour'
-            storeFile file('/home/s9iper1/Downloads/byteshaft-store-key.jks')
-            storePassword 'shaftsixtyfour'
-        }
+
     }
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -15,8 +10,8 @@ android {
         applicationId "com.byteshaft.order_booker"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 5
-        versionName "1.2.2"
+        versionCode 6
+        versionName "1.2.3"
     }
     buildTypes {
         release {
@@ -31,5 +26,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
-    compile 'com.parse:parse-android:1.10.3'
+    compile 'com.parse:parse-android:1.11.0'
 }
