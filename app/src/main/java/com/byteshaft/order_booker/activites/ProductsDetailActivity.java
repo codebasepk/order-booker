@@ -1547,7 +1547,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         listDataHeaderForBurgerHouse.add("The Authentic BURGER beef");
         listDataHeaderForBurgerHouse.add("APPETIZERS");
         listDataHeaderForBurgerHouse.add("SALADS");
-        listDataHeaderForBurgerHouse.add("FISH");
+        listDataHeaderForBurgerHouse.add("FISH and Chicken Burgers");
 
         List<String> authenticBurgers = new ArrayList<>();
         authenticBurgers.add("Classic Sandwich");
