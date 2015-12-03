@@ -643,7 +643,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Shawarma Soujouk", new String[]{"4000", "", "(Tomato, parsley, pickles, onion and fries topped with our secret sauce)"});
 
             /// Our special combo
-            newPriceHashMap.put("2 Sandwiches of your choice", new String[]{"9000", "", "(coleslow, fries,soft drink)"});
+            newPriceHashMap.put("2 shawarma djej", new String[]{"9000", "", "(with coleslow,fries,soft drinks)"});
+            newPriceHashMap.put("1 shawarma lahme 1 shawarma djej", new String[]{"9000", "", "(with coleslow,fries,soft drinks)"});
+            newPriceHashMap.put("2 shawarma lahme", new String[]{"9000", "", "(with coleslow ,fries,soft drinks)"});
             newPriceHashMap.put("Chicken", new String[]{"15000", "", "(500g of shawarma with vegetables)"});
             newPriceHashMap.put("Beef", new String[]{"18000", "", "(500g of shawarma with vegetables)"});
 
@@ -1658,7 +1660,9 @@ public class ProductsDetailActivity extends AppCompatActivity {
         shawarmas.add("Shawarma Soujouk");
 
         List<String> specialCombo = new ArrayList<>();
-        specialCombo.add("2 Sandwiches of your choice");
+        specialCombo.add("2 shawarma djej");
+        specialCombo.add("1 shawarma lahme 1 shawarma djej");
+        specialCombo.add("2 shawarma lahme");
         specialCombo.add("Chicken");
         specialCombo.add("Beef");
 

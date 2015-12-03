@@ -19,7 +19,7 @@ public class ProductsActivity extends AppCompatActivity {
 
     private GridView mGridView;
     private int[] imageId = {
-            R.drawable.sandwitchs,
+            R.drawable.shawarma,
             R.drawable.latour,
             R.drawable.dip,
             R.drawable.subz,
@@ -31,7 +31,8 @@ public class ProductsActivity extends AppCompatActivity {
             R.drawable.dagher,
             R.drawable.croissant,
             R.drawable.pizzaria,
-            R.drawable.shawarma
+            R.drawable.sandwitchs
+
     };
 
     @Override
@@ -57,7 +58,7 @@ public class ProductsActivity extends AppCompatActivity {
     private String getItemNameFromPosition(int position) {
         switch (position) {
             case 0:
-                return "Adonis";
+                return "shawarma";
             case 1:
                     return "latour";
             case 2:
@@ -81,7 +82,7 @@ public class ProductsActivity extends AppCompatActivity {
             case 11:
                 return "pizzaria";
             case 12:
-                return "shawarma";
+                return "Adonis";
         }
         return "";
     }
