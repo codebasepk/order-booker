@@ -435,7 +435,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Tawou2", new String[]{"5000", "", ""});
             newPriceHashMap.put("La7em Mechwé", new String[]{"6000", "", ""});
             newPriceHashMap.put("Kabab", new String[]{"5000", "", ""});
-            newPriceHashMap.put("Hamburger", new String[]{"6000", "", ""});
+            newPriceHashMap.put("HamburgeR", new String[]{"6000", "", ""});
             newPriceHashMap.put("Batata", new String[]{"3000", "", ""});
 
             /// S7oun
@@ -2191,7 +2191,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
         sandwishet.add("Tawou2");
         sandwishet.add("La7em Mechwé");
         sandwishet.add("Kabab");
-        sandwishet.add("Hamburger");
+        sandwishet.add("HamburgeR");
         sandwishet.add("Batata");
 
         /// S7oun
