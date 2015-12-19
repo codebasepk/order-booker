@@ -1132,8 +1132,8 @@ public class ProductsDetailActivity extends AppCompatActivity {
             newPriceHashMap.put("Anchovy", new String[]{"20000", "", "(anchovy, artichoke, asparagus)"});
             newPriceHashMap.put("Super seafood", new String[]{"22000", "", "(large shrimp, crab, tuna, mussel, avocado)"});
             newPriceHashMap.put("Beef", new String[]{"7000", "", "(beef meat, lettuce, tomato, cucumber, onion)"});
-            newPriceHashMap.put("Chicken", new String[]{"7000", "", "(chicken schnitzel, lettuce, tomato, corn)"});
-            newPriceHashMap.put("Tuna", new String[]{"7000", "", "(tuna, lettuce, tomato, olive, corn, onion)"});
+            newPriceHashMap.put("Chicken ", new String[]{"7000", "", "(chicken schnitzel, lettuce, tomato, corn)"});
+            newPriceHashMap.put("Tuna ", new String[]{"7000", "", "(tuna, lettuce, tomato, olive, corn, onion)"});
             newPriceHashMap.put("Fish", new String[]{"7000", "", "(lettuce, pickles, corn)"});
             newPriceHashMap.put("Beef burger", new String[]{"6000", "", "(beef, pickles, lettuce, tomato)"});
             newPriceHashMap.put("Cheese burger", new String[]{"7000", "", "(beef, cheese, pickles, lettuce, tomato)"});
@@ -1378,8 +1378,8 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         List<String> sandWitches = new ArrayList<>();
         sandWitches.add("Beef");
-        sandWitches.add("Chicken");
-        sandWitches.add("Tuna");
+        sandWitches.add("Chicken ");
+        sandWitches.add("Tuna ");
         sandWitches.add("Fish");
 
         List<String> burger = new ArrayList<>();
@@ -1397,7 +1397,7 @@ public class ProductsDetailActivity extends AppCompatActivity {
 
         List<String> salad = new ArrayList<>();
         salad.add("Panachee");
-        salad.add("Tuna");
+        salad.add("Tuna)");
         salad.add("Chicken");
         salad.add("Greek");
         salad.add("Shrimp");
